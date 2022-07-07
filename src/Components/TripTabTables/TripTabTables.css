@@ -1,0 +1,28 @@
+.tripTabTable {
+	padding: 0 47px;
+}
+.activTable {
+	background-color: white;
+	padding: 32px;
+}
+.activTable td {
+	/* display: inline; */
+	/* background-color: white; */
+	padding-top: 25px !important;
+	padding-bottom: 25px !important;
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12.8px;
+	line-height: 16px;
+
+	/* identical to box height */
+	text-transform: capitalize;
+
+	color: #808080;
+
+	/* Inside auto layout */
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
