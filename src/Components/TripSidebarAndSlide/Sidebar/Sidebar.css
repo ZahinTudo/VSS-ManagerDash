@@ -3,10 +3,12 @@
 	flex-direction: column;
 	align-items: center;
 	width: 302px;
-	height: 511px;
+	height: calc(100vh - 170px);
+	/* height: 511px; */
 	background: #ffffff;
 	border-radius: 8px;
 	box-shadow: 0 0 5px #c2c2c2;
+	pointer-events: fill;
 }
 .sidebar-title {
 	font-family: "Mulish";

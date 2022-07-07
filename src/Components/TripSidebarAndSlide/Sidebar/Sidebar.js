@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 
 export default function Sidebar() {
+	// ====================================
 	const [prevId, setPrevId] = useState(0);
 	const selectMarkerBox = (index) => {
 		const prev = document.querySelector(
@@ -18,7 +19,9 @@ export default function Sidebar() {
 	return (
 		<div className='sidebar py-3'>
 			<p className='sidebar-title'>Trips</p>
-			<div className='markerWrapper' style={{ flex: 1, overflowY: "scroll" }}>
+			<div
+				className='markerWrapper'
+				style={{ flex: 1, overflowY: "scroll" }}>
 				{[1, 2, 3, 4].map((item, index) => (
 					<div
 						data-markerId={"markerbox-" + index}
@@ -27,7 +30,7 @@ export default function Sidebar() {
 						key={index}>
 						<div className='markerBoxCarLogo'>
 							<img
-								src='/assests/truck.svg'
+								src='/assets/truck.svg'
 								alt=''
 								className='img-fluid'
 							/>
@@ -49,7 +52,7 @@ export default function Sidebar() {
 								</div>
 								<div className='sosBtn'>
 									<img
-										src='/assests/sos.png'
+										src='/assets/sos.png'
 										alt=''
 										className='img-fluid'
 										srcset=''
@@ -59,21 +62,21 @@ export default function Sidebar() {
 							<div className='d-flex iconOptions'>
 								<span style={{ marginRight: "28px" }}>
 									<img
-										src='/assests/pen.svg'
+										src='/assets/pen.svg'
 										alt=''
 										className='img-fluid'
 									/>
 								</span>
 								<span style={{ marginRight: "28px" }}>
 									<img
-										src='/assests/chat.svg'
+										src='/assets/chat.svg'
 										alt=''
 										className='img-fluid'
 									/>
 								</span>
 								<span>
 									<img
-										src='/assests/marker.svg'
+										src='/assets/marker.svg'
 										alt=''
 										className='img-fluid'
 									/>

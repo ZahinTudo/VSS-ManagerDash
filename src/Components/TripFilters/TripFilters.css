@@ -1,10 +1,11 @@
 .tripFilters {
-	padding: 29px 65px 29px 80px;
+	/* padding: 29px 65px 29px 80px; */
 	display: flex;
 	justify-content: space-between;
-	position: absolute;
+	/* position: absolute; */
 	z-index: 500;
 	width: 100%;
+	pointer-events: fill;
 }
 .tripFilters .filter-left {
 	display: flex;
