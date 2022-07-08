@@ -9,6 +9,7 @@
 	border-radius: 8px;
 	box-shadow: 0 0 5px #c2c2c2;
 	pointer-events: fill;
+	position: relative;
 }
 .sidebar-title {
 	font-family: "Mulish";
@@ -94,6 +95,66 @@
 	/* padding-top: 12.5px;
 	padding-bottom: 12.5px; */
 }
+
+/* 
+========================================
+sliding window css
+======================================== */
+.sidebar .slidingBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: white;
+	height: 100%;
+	width: 400px;
+	padding: 1rem;
+	pointer-events: fill;
+	z-index: 500;
+	border-radius: 8px;
+}
+.sidebar .truckLogo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: black;
+}
+.sidebar .slidingBar .slideText {
+	font-size: 0.9rem;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .slidingBar .nav-tabs .nav-item.show .nav-link,
+.sidebar .slidingBar .nav-tabs .nav-link.active {
+	color: #67b1fa;
+	border: none;
+	background-color: transparent;
+	border-color: transparent transparent blue transparent;
+	border-bottom: 2px solid;
+}
+.sidebar .slidingBar .nav.nav-tabs {
+	background-color: #e4e0e077;
+}
+.sidebar .slidingBar .nav-tabs .nav-link {
+	color: black;
+}
+
+.sidebar .slidingBar .nav-tabs .nav-link:hover {
+	border-color: transparent transparent blue transparent;
+}
+.sidebar .slidingBar .markers {
+	padding: 0.5rem;
+}
+.sidebar .slidingBar .markers.active {
+	background-color: #d3d3d338;
+}
+/* 
+========================================
+sliding window css end
+======================================== */
+
 .markerWrapper::-webkit-scrollbar {
 	display: none;
 }

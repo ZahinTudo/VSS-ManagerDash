@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Dashboard.css";
 import Map from "../../Map/Map";
-import Sidebar from "../../Sidebar/Sidebar";
+// import Sidebar from "../../Sidebar/Sidebar";
 
 export default function Dashscreen(props) {
 	return (
@@ -38,9 +38,7 @@ export default function Dashscreen(props) {
 				</div>
 			</div>
 			<div className='d-flex' style={{ flexGrow: 1 }}>
-				<div className='col-3 px-2'>
-					<Sidebar />
-				</div>
+				<div className='col-3 px-2'>{/* <Sidebar /> */}</div>
 				<div className='col-9'>
 					<Map />
 				</div>

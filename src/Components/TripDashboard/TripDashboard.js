@@ -6,6 +6,7 @@ import "./TripDashboard.css";
 import Map from "../Map/Map";
 import Sidebar from "../TripSidebarAndSlide/Sidebar/Sidebar";
 import SlideWindow from "../TripSidebarAndSlide/SlideWindow/SlideWindow";
+
 export default function TripDashboard() {
 	return (
 		<div className='TripDashboard'>

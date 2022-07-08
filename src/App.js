@@ -2,7 +2,7 @@
 import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Admin from "./Components/Admin/Admin";
-import Dashboard from "./Components/Dashboard/Dashboard";
+// import Dashboard from "./Components/Dashboard/Dashboard";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import NormalUser from "./Components/NormalUser/NormalUser";
