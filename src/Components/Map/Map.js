@@ -95,6 +95,15 @@ function Map() {
 						end: "My home",
 						startDate: "11/06/22",
 						endDate: "15/06/22",
+						currentStatus: "driving",
+						zone: "North",
+						truckDetails: {
+							make: "Tata",
+							model: "Primio",
+							capacity: "1.5 Ton",
+							manufacturedAt: "2016",
+							regState: "Chandigarh",
+						},
 					},
 					{
 						position: start1,
@@ -108,6 +117,15 @@ function Map() {
 						end: "My home",
 						startDate: "11/06/22",
 						endDate: "15/06/22",
+						currentStatus: "stopped",
+						zone: "North",
+						truckDetails: {
+							make: "Tata",
+							model: "Primio",
+							capacity: "1.5 Ton",
+							manufacturedAt: "2016",
+							regState: "Chandigarh",
+						},
 					},
 					{
 						position: {
@@ -124,6 +142,15 @@ function Map() {
 						end: "Mumbai",
 						startDate: "11/06/22",
 						endDate: "15/06/22",
+						currentStatus: "driving",
+						zone: "North",
+						truckDetails: {
+							make: "Tata",
+							model: "Primio",
+							capacity: "1.5 Ton",
+							manufacturedAt: "2016",
+							regState: "Chandigarh",
+						},
 					},
 					{
 						position: { lat: 15.496777, lng: 73.827827 },
@@ -137,6 +164,15 @@ function Map() {
 						end: "Mumbai",
 						startDate: "11/06/22",
 						endDate: "15/06/22",
+						currentStatus: "driving",
+						zone: "North",
+						truckDetails: {
+							make: "Tata",
+							model: "Primio",
+							capacity: "1.5 Ton",
+							manufacturedAt: "2016",
+							regState: "Chandigarh",
+						},
 					},
 				];
 				// console.log(start);
