@@ -6,6 +6,7 @@
 	height: var(--nav-height);
 	padding: 0 var(--nav-lr-pad);
 	background-color: white;
+	border-bottom: 2px solid #c5c5c5;
 }
 .tripNavbar .logo {
 	margin-right: var(--nav-logo-me);

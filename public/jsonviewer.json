@@ -1,0 +1,41 @@
+{
+  "tableHeads": [
+    "Driver Name",
+    "Status",
+    "Contact",
+    "preferred Language",
+    "License",
+    "Truck Details",
+    "Last Login",
+    "Actions"
+  ],
+  "tableData": [
+    {
+      "Driver Name": "Rakesh Kumar",
+      "Status": "Emergency",
+      "Contact": "0123456789",
+      "preferred Language": "Hindi,English,marathi",
+      "License": "MH-12-2009-0033020",
+      "Truck Details": "Pune",
+      "Last Login": "24/01/2022"
+    },
+    {
+      "Driver Name": "Rakesh Kumar",
+      "Status": "Emergency",
+      "Contact": "0123456789",
+      "preferred Language": "Hindi,English,marathi",
+      "License": "MH-12-2009-0033020",
+      "Truck Details": "Pune",
+      "Last Login": "24/01/2022"
+    },
+    {
+      "Driver Name": "Rakesh Kumar",
+      "Status": "Emergency",
+      "Contact": "0123456789",
+      "preferred Language": "Hindi,English,marathi",
+      "License": "MH-12-2009-0033020",
+      "Truck Details": "Pune",
+      "Last Login": "24/01/2022"
+    }
+  ]
+}

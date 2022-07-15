@@ -71,14 +71,14 @@ export default function TripFilters() {
 						className='img-fluid'
 					/>
 				</div> */}
-				<div className='d-flex align-items-center'>
+				{/* <div className='d-flex align-items-center'>
 					<div className='boxIcon'>
 						<FontAwesomeIcon color='white' icon={faMap} />
 					</div>
 					<div className='boxIcon bg-white'>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import "./TabTable.css";
@@ -12,9 +13,17 @@ import "./TabTable.css";
 export default function TabTable() {
 	const [activeTrip, setActiveTrip] = useState(null);
 	useEffect(() => {
-		fetch("ActiveTable.json")
-			.then((res) => res.json())
-			.then((result) => setActiveTrip(result))
+		// axios.get("/ActiveTable.json").then((res) => console.log(res.data));
+
+		fetch("/jsonviewer.json")
+			.then((res) => {
+				console.log(res);
+				return res.json();
+			})
+			.then((result) => {
+				console.log(result);
+				setActiveTrip(result);
+			})
 			.catch((err) => console.log(err));
 	}, []);
 	return (

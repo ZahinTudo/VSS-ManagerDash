@@ -14,7 +14,6 @@ function App() {
 					<Home />
 				</Route>
 				<PrivateRoute
-					exact
 					path='/dashboard'
 					component={TripDashboard}></PrivateRoute>
 			</Switch>

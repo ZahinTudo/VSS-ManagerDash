@@ -26,3 +26,36 @@
 	order: 1;
 	flex-grow: 0;
 }
+.tripTabTable .nav-tabs .nav-link {
+	border-width: 3px !important;
+	border-style: solid !important;
+	border-color: transparent !important;
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18.43px;
+	line-height: 23px;
+	text-transform: capitalize;
+	color: #5e5e62;
+}
+.tripTabTable .nav-tabs .nav-link.active {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18.43px;
+	line-height: 23px;
+	text-transform: capitalize;
+	color: #041342 !important;
+
+	background-color: transparent !important;
+	border-color: transparent transparent #041342 transparent !important;
+}
+.tripTabTable .nav-tabs {
+	border-bottom: none !important;
+}
+.tripTabTable .nav-tabs .nav-link:focus,
+.tripTabTable .nav-tabs .nav-link:hover {
+	color: #041342;
+	border-color: transparent transparent #041342 transparent !important;
+	isolation: isolate;
+}

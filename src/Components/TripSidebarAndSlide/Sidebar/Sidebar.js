@@ -37,6 +37,9 @@ export default function Sidebar() {
 		controlAnimation.start({
 			x: displacement + 8,
 			opacity: 1,
+			transition: {
+				duration: 0.1,
+			},
 		});
 		setCurrentId(id);
 	};
@@ -48,6 +51,9 @@ export default function Sidebar() {
 		controlAnimation.start({
 			x: -500,
 			opacity: 0,
+			transition: {
+				duration: 0.1,
+			},
 		});
 	};
 	const centerFocusedMarker = (e, id) => {
