@@ -7,10 +7,40 @@ th {
 	font-weight: 800;
 	font-size: 12.8px;
 	line-height: 16px;
+	/* height: 33px; */
+	padding-top: 25px !important;
+	padding-bottom: 25px !important;
+	/* identical to box height */
+	text-transform: capitalize;
+	border-bottom: 1.5px solid #38394356 !important;
+	color: #808080;
+}
+td {
+	/* display: inline; */
+	/* background-color: white; */
+	padding-top: 25px !important;
+	padding-bottom: 25px !important;
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 16px;
 
 	/* identical to box height */
 	text-transform: capitalize;
 
 	color: #808080;
-}
 
+	/* Inside auto layout */
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+tr {
+	border: transparent !important;
+	vertical-align: middle;
+}
+input.largerCheckbox {
+	width: 26px;
+	height: 26px;
+}

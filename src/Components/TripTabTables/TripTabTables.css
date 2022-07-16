@@ -1,30 +1,14 @@
 .tripTabTable {
-	padding: 0 47px;
+	/* padding: 0 47px; */
 }
 .activTable {
 	background-color: white;
-	padding: 32px;
+	/* padding: 32px; */
 }
-.activTable td {
-	/* display: inline; */
-	/* background-color: white; */
-	padding-top: 25px !important;
-	padding-bottom: 25px !important;
-	font-family: "Mulish";
-	font-style: normal;
-	font-weight: 400;
-	font-size: 12.8px;
-	line-height: 16px;
 
-	/* identical to box height */
-	text-transform: capitalize;
 
-	color: #808080;
-
-	/* Inside auto layout */
-	flex: none;
-	order: 1;
-	flex-grow: 0;
+.tripTabTable .nav-tabs:nth-child(2) {
+	display: none;
 }
 .tripTabTable .nav-tabs .nav-link {
 	border-width: 3px !important;
@@ -33,7 +17,7 @@
 	font-family: "Mulish";
 	font-style: normal;
 	font-weight: 400;
-	font-size: 18.43px;
+	font-size: 14px;
 	line-height: 23px;
 	text-transform: capitalize;
 	color: #5e5e62;
@@ -42,7 +26,7 @@
 	font-family: "Mulish";
 	font-style: normal;
 	font-weight: 700;
-	font-size: 18.43px;
+	font-size: 14px;
 	line-height: 23px;
 	text-transform: capitalize;
 	color: #041342 !important;
@@ -58,4 +42,32 @@
 	color: #041342;
 	border-color: transparent transparent #041342 transparent !important;
 	isolation: isolate;
+}
+.tripTabTable .addBtn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	/* padding: 8px 16px; */
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12.8px;
+	line-height: 17px;
+	text-transform: capitalize;
+
+	color: #ffffff;
+	gap: 4px;
+
+	width: 123px;
+	height: 40px;
+
+	/* Blue (CTA)i */
+	background: #041342;
+
+	/* Background blur */
+	backdrop-filter: blur(4px);
+
+	/* Note: backdrop-filter has minimal browser support */
+	border-radius: 8px;
 }

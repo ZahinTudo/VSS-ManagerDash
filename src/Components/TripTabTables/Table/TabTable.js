@@ -10,28 +10,22 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import "./TabTable.css";
 
-export default function TabTable() {
-	const [activeTrip, setActiveTrip] = useState(null);
+export default function TabTable({ data }) {
+	const [activeTrip, setActiveTrip] = useState(data);
 	useEffect(() => {
-		// axios.get("/ActiveTable.json").then((res) => console.log(res.data));
-
-		fetch("/jsonviewer.json")
-			.then((res) => {
-				console.log(res);
-				return res.json();
-			})
-			.then((result) => {
-				console.log(result);
-				setActiveTrip(result);
-			})
-			.catch((err) => console.log(err));
-	}, []);
+		setActiveTrip(data);
+	}, [data]);
 	return (
-		<Table responsive borderless size='lg'>
+		<Table responsive hover className='table-borderless'>
 			<thead>
 				<tr>
 					<th>
-						<input type='checkbox' name='' id='' />
+						<input
+							className='largerCheckbox'
+							type='checkbox'
+							name=''
+							id=''
+						/>
 					</th>
 					{activeTrip?.tableHeads.map((item, index) => (
 						<th key={index}>{item}</th>
@@ -42,7 +36,12 @@ export default function TabTable() {
 				{activeTrip?.tableData.map((item, index) => (
 					<tr>
 						<td style={{ verticalAlign: "middle" }}>
-							<input type='checkbox' name='' id={index} />
+							<input
+								className='largerCheckbox'
+								type='checkbox'
+								name=''
+								id={index}
+							/>
 						</td>
 						{Object.entries(item).map(([key, value], index) => (
 							<td key={index} style={{ verticalAlign: "middle" }}>
@@ -50,7 +49,7 @@ export default function TabTable() {
 									{key == "Driver Name" ? (
 										<img
 											alt=''
-											src='/assests/user.png'
+											src='/assets/user.png'
 											className='img-fluid'
 										/>
 									) : (
@@ -62,8 +61,12 @@ export default function TabTable() {
 						))}
 
 						<td
-							style={{ verticalAlign: "middle" }}
-							className='d-flex align-items-center text-dark'>
+							style={{
+								verticalAlign: "middle",
+								width: "max-content",
+								display: "table-cell",
+							}}
+							className='align-items-center text-dark'>
 							<span className='actionIcons'>
 								<FontAwesomeIcon icon={faPencil} />
 							</span>
@@ -78,7 +81,7 @@ export default function TabTable() {
 							</span>
 							<span className='actionIcons'>
 								<img
-									src='/assests/sosIcon.svg'
+									src='/assets/sosIcon.svg'
 									alt=''
 									className='img-fluid'
 								/>
