@@ -1,41 +1,46 @@
 {
     "tableHeads":[
-        "Driver Name", 
+        "Truck Details", 
         "Status",
-        "Contact",
-        "preferred Language",
-        "License",
-        "Truck Details",
-        "Last Login",
+        "Make & Model",
+        "Class",
+        "Load Capacity",
+        "Registration State & City",
+        "Registration Date",
         "Actions"
     ],
     "tableData":[
         {
-        "Driver Name":"Rakesh Kumar", 
-        "Status":"Emergency",
-        "Contact":"0123456789",
-        "preferred Language":"Hindi,English,marathi",
-        "License":"MH-12-2009-0033020",
-        "Truck Details":"Pune",
-        "Last Login":"24/01/2022"
+            "Truck Details":{
+                "License":"UP 01 AP 1345",
+                "company":"VN Cosemetics"
+            },        
+            "Status":"Driving",
+            "Make & Model":"Tata Prima",
+            "Class":"Light duty",
+            "Load Capacity":"1.5 Ton",       
+            "Registration":{
+                "State":"Maharastra",
+                "City":"Pune"
+            },
+            "Registration Date":"24/01/2022"
         },
         {
-        "Driver Name":"Rakesh Kumar", 
-        "Status":"Emergency",
-        "Contact":"0123456789",
-        "preferred Language":"Hindi,English,marathi",
-        "License":"MH-12-2009-0033020",
-        "Truck Details":"Pune",
-        "Last Login":"24/01/2022"
-        },
-        {
-        "Driver Name":"Rakesh Kumar", 
-        "Status":"Emergency",
-        "Contact":"0123456789",
-        "preferred Language":"Hindi,English,marathi",
-        "License":"MH-12-2009-0033020",
-        "Truck Details":"Pune",
-        "Last Login":"24/01/2022"
+            "Truck Details":{
+                "License":"UP 01 AP 1345",
+                "company":"VN Cosemetics"
+            },        
+            "Status":"Driving",
+            "Make & Model":"Tata Prima",
+            "Class":"Light duty",
+            "Load Capacity":"1.5 Ton",       
+            "Registration":{
+                "State":"Maharastra",
+                "City":"Pune"
+            },
+            "Registration Date":"24/01/2022"
         }
+        
+        
     ]
 }

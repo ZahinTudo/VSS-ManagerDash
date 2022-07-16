@@ -10,7 +10,7 @@ export default function TripTabTables() {
 	useEffect(() => {
 		// axios.get("/ActiveTable.json").then((res) => console.log(res.data));
 		const fetchUrl =
-			key === "ActiveTrip" ? "/Trucks.json" : "/jsonviewer.json";
+			key === "ActiveTrip" ? "/jsonviewer.json" : "/jsonviewer.json";
 		fetch(fetchUrl)
 			.then((res) => {
 				console.log(res);
@@ -102,6 +102,7 @@ export default function TripTabTables() {
 						<TabTable data={activeTrip} />
 					</div>
 				</Tab>
+
 				<Tab eventKey='InGarage' title='In Garage'>
 					<TabTable data={activeTrip} />
 				</Tab>

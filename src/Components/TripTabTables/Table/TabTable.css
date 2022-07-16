@@ -1,6 +1,10 @@
 .actionIcons {
 	margin-right: 19px;
 }
+table {
+	border-collapse: separate !important;
+	border-spacing: 0 10px !important;
+}
 th {
 	font-family: "Mulish";
 	font-style: normal;
@@ -18,8 +22,8 @@ th {
 td {
 	/* display: inline; */
 	/* background-color: white; */
-	padding-top: 25px !important;
-	padding-bottom: 25px !important;
+	padding-top: 1rem !important;
+	padding-bottom: 1rem !important;
 	font-family: "Mulish";
 	font-style: normal;
 	font-weight: 400;
