@@ -3,6 +3,25 @@ import TripFilters from "../TripFilters/TripFilters";
 import "./TrucksDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
 export default function TrucksDetails() {
+	const tabs = [
+		{
+			name: "Active",
+			url: "/Trucks.json",
+		},
+		{
+			name: "In Garage",
+			url: "/jsonviewer.json",
+		},
+	];
+	const addBtn = () => {
+		//do add function
+	};
+	const deleteBtn = () => {
+		//delete function
+	};
+	const chatBtn = () => {
+		//chat
+	};
 	return (
 		<div
 			style={{
@@ -11,7 +30,13 @@ export default function TrucksDetails() {
 			}}
 			className='truckDetails'>
 			<TripFilters />
-			<TripTabTables />
+			<TripTabTables
+				tabs={tabs}
+				addBtn={addBtn}
+				deleteBtn={deleteBtn}
+				chatBtn={chatBtn}
+				type='truck'
+			/>
 		</div>
 	);
 }
