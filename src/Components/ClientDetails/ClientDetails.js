@@ -1,16 +1,16 @@
 import React from "react";
 import TripFilters from "../TripFilters/TripFilters";
-import "./TrucksDetails.css";
+import "./ClientDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
-export default function TrucksDetails() {
+export default function ClientDetails() {
 	const tabs = [
 		{
 			name: "Active",
-			url: "/Trucks.json",
+			url: "/Clients.json",
 		},
 		{
-			name: "In Garage",
-			url: "/Trucks.json",
+			name: "Deactivated",
+			url: "/Clients.json",
 		},
 	];
 	const addBtn = () => {
@@ -35,7 +35,7 @@ export default function TrucksDetails() {
 				addBtn={addBtn}
 				deleteBtn={deleteBtn}
 				chatBtn={chatBtn}
-				type='truck'
+				type='client'
 			/>
 		</div>
 	);

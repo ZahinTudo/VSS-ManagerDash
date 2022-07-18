@@ -1,5 +1,5 @@
 import React from "react";
-import "./DriverTable.css";
+import "./ClientTable.css";
 import {
 	faCommenting,
 	faMapMarkerAlt,
@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
-export default function DriverTable({ activeTrip }) {
+export default function ClientTable({ activeTrip }) {
 	return (
 		<Table responsive hover className='table-borderless'>
 			<thead>
@@ -42,37 +42,20 @@ export default function DriverTable({ activeTrip }) {
 								<span className='d-flex align-items-center'>
 									{(function () {
 										switch (key) {
-											case "Driver Name":
+											case "State & City":
 												return (
-													<span>
-														<img
-															alt=''
-															src='/assets/user.png'
-															className='img-fluid'
-														/>
-														<span>{value}</span>
-													</span>
+													<div className='d-flex flex-column'>
+														<span>
+															{value.state}
+														</span>
+														<span>
+															{value.city}
+														</span>
+													</div>
 												);
-											case "Status":
-												if (value === "Emergency")
-													return (
-														<>
-															<img
-																src='/assets/Emergency.png'
-																alt=''
-																className='img-fluid'
-															/>
-															<span className='ms-2 text-danger'>
-																{value}
-															</span>
-														</>
-													);
-												if (value === "Driving")
-													return (
-														<>
-															<span>Driving</span>
-														</>
-													);
+											case "Client Company":
+												return <a href=''> {value}</a>;
+
 											default:
 												return value;
 										}

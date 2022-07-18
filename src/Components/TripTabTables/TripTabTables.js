@@ -43,14 +43,14 @@ export default function TripTabTables({
 					</ul>
 				</div>
 				<div className='d-flex align-items-center justify-content-between'>
-					<span onClick={deleteBtn}>
+					<span onClick={deleteBtn} className='actionWrapperBox'>
 						<img
 							src='/assets/trashCan.svg'
 							alt=''
 							className='img-fluid'
 						/>
 					</span>
-					<span onClick={chatBtn} className='mx-4'>
+					<span onClick={chatBtn} className='actionWrapperBox mx-4'>
 						<img
 							src='/assets/chat.svg'
 							alt=''

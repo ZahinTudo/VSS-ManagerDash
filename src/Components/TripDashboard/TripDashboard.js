@@ -8,6 +8,8 @@ import Sidebar from "../TripSidebarAndSlide/Sidebar/Sidebar";
 import SlideWindow from "../TripSidebarAndSlide/SlideWindow/SlideWindow";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import TrucksDetails from "../TrucksDetails/TrucksDetails";
+import DriverDetails from "../DriverDetails/DriverDetails";
+import ClientDetails from "../ClientDetails/ClientDetails";
 
 export default function TripDashboard() {
 	const { url, path } = useRouteMatch();
@@ -40,6 +42,12 @@ export default function TripDashboard() {
 				</Route>
 				<Route exact path={path + "/trucks"}>
 					<TrucksDetails />
+				</Route>
+				<Route exact path={path + "/drivers"}>
+					<DriverDetails />
+				</Route>
+				<Route exact path={path + "/clients"}>
+					<ClientDetails />
 				</Route>
 			</Switch>
 

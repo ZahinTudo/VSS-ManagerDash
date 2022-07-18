@@ -6,31 +6,28 @@ table {
 	border-spacing: 0 10px !important;
 }
 th {
-	font-family: "Mulish";
-	font-style: normal;
-	font-weight: 800;
-	font-size: 12.8px;
-	line-height: 16px;
-	/* height: 33px; */
 	padding-top: 25px !important;
 	padding-bottom: 25px !important;
-	/* identical to box height */
-	text-transform: capitalize;
 	border-bottom: 1.5px solid #38394356 !important;
-	color: #808080;
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 18px;
+	text-transform: capitalize;
+
+	color: #5e5e62;
 }
 td {
 	/* display: inline; */
 	/* background-color: white; */
 	padding-top: 1rem !important;
 	padding-bottom: 1rem !important;
-	font-family: "Mulish";
+	font-family: "Noto Sans";
 	font-style: normal;
 	font-weight: 400;
 	font-size: 13px;
-	line-height: 16px;
-
-	/* identical to box height */
+	line-height: 18px;
 	text-transform: capitalize;
 
 	color: #808080;

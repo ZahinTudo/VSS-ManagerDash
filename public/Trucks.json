@@ -15,7 +15,10 @@
                 "License":"UP 01 AP 1345",
                 "company":"VN Cosemetics"
             },        
-            "Status":"Driving",
+            "Status":{
+                "type":"Driving",
+                "icon":"/assets/drivingSignal.png"
+            },
             "Make & Model":"Tata Prima",
             "Class":"Light duty",
             "Load Capacity":"1.5 Ton",       
@@ -30,7 +33,10 @@
                 "License":"UP 01 AP 1345",
                 "company":"VN Cosemetics"
             },        
-            "Status":"Driving",
+            "Status":{
+                "type":"Driving",
+                "icon":"/assets/drivingSignal.png"
+            },
             "Make & Model":"Tata Prima",
             "Class":"Light duty",
             "Load Capacity":"1.5 Ton",       

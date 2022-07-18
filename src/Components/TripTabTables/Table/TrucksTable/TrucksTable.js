@@ -1,5 +1,5 @@
 import React from "react";
-import "./DriverTable.css";
+import "./TrucksTable.css";
 import {
 	faCommenting,
 	faMapMarkerAlt,
@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
-export default function DriverTable({ activeTrip }) {
+export default function TrucksTable({ activeTrip }) {
 	return (
 		<Table responsive hover className='table-borderless'>
 			<thead>
@@ -42,37 +42,41 @@ export default function DriverTable({ activeTrip }) {
 								<span className='d-flex align-items-center'>
 									{(function () {
 										switch (key) {
-											case "Driver Name":
+											case "Truck Details":
 												return (
-													<span>
-														<img
-															alt=''
-															src='/assets/user.png'
-															className='img-fluid'
-														/>
-														<span>{value}</span>
-													</span>
+													<div className='d-flex flex-column'>
+														<a href='#'>
+															{value.License}
+														</a>
+														<div className='d-inline-block mt-2'>
+															{value.company}
+														</div>
+													</div>
 												);
 											case "Status":
-												if (value === "Emergency")
-													return (
-														<>
+												return (
+													<>
+														<span className='me-2'>
 															<img
-																src='/assets/Emergency.png'
+																src={value.icon}
 																alt=''
 																className='img-fluid'
 															/>
-															<span className='ms-2 text-danger'>
-																{value}
-															</span>
-														</>
-													);
-												if (value === "Driving")
-													return (
-														<>
-															<span>Driving</span>
-														</>
-													);
+														</span>
+														<span>
+															{value.type}
+														</span>
+													</>
+												);
+											case "Registration":
+												return (
+													<div>
+														<div className=''>
+															{value.State}
+														</div>
+														<div>{value.City}</div>
+													</div>
+												);
 											default:
 												return value;
 										}
