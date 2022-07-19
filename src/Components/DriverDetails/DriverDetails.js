@@ -2,8 +2,38 @@ import React from "react";
 import TripFilters from "../TripFilters/TripFilters";
 import "./DriverDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
+import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
+import { useAnimation } from "framer-motion";
 export default function DriverDetails() {
-	const tabs = [
+	const AddSlidingWindowAnimation = useAnimation();
+	const handleAddSlidingWindow = () => {
+		AddSlidingWindowAnimation.start({
+			width: 600,
+			opacity: 1,
+			x: 0,
+			transition: {
+				duration: 0.1,
+			},
+		});
+	};
+	const SlidingWindowTabs = [
+		{
+			name: "Basic Details",
+			id: 1,
+			component: "",
+		},
+		{
+			name: "Bank Details",
+			id: 2,
+			component: "",
+		},
+		{
+			name: "Upload Documents",
+			id: 3,
+			component: "",
+		},
+	];
+	const Tabletabs = [
 		{
 			name: "Active Driver",
 			url: "/Drivers.json",
@@ -56,11 +86,16 @@ export default function DriverDetails() {
 			className='truckDetails'>
 			<TripFilters filters={filters} />
 			<TripTabTables
-				tabs={tabs}
-				addBtn={addBtn}
+				tabs={Tabletabs}
+				addBtn={handleAddSlidingWindow}
 				deleteBtn={deleteBtn}
 				chatBtn={chatBtn}
 				type='driver'
+			/>
+			<AddSlidingWindow
+				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
+				title='Driver'
+				components={SlidingWindowTabs}
 			/>
 		</div>
 	);

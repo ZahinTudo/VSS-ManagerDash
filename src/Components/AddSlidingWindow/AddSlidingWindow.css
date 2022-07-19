@@ -1,4 +1,4 @@
-.addTrip {
+.AddSlidingWindow {
 	position: absolute;
 	z-index: 600;
 	top: 0;
@@ -7,10 +7,10 @@
 	height: 100vh;
 	background-color: rgb(255, 255, 255);
 }
-.addTrip .headNav {
-	padding: 29px 16px 18px;
+.AddSlidingWindow .headNav {
+	padding: 12px 16px 18px;
 }
-.addTrip .tabControl {
+.AddSlidingWindow .tabControl {
 	padding: 0 16px;
 	background: #e0e0e02d;
 	/* opacity: 0.2; */
@@ -26,7 +26,7 @@
 	/* Blue (CTA)i */
 	color: #5e5e62;
 }
-.addTrip .CloseBtn {
+.AddSlidingWindow .CloseBtn {
 	width: 24px;
 	height: 24px;
 	display: flex;
@@ -35,21 +35,21 @@
 	border-radius: 8px;
 	background-color: white;
 }
-.addTrip .CloseBtn:hover {
+.AddSlidingWindow .CloseBtn:hover {
 	background-color: rgba(224, 52, 52, 0.822);
 }
-.addTrip .tabControl > div {
+.AddSlidingWindow .tabControl > div {
 	display: flex;
 	align-items: center;
 	padding: 9px;
 }
 
-.addTrip .tabControl .active {
+.AddSlidingWindow .tabControl .active {
 	color: #041342 !important;
 	/* border-bottom: 5px solid #041342; */
 	position: relative;
 }
-.addTrip .tabControl .active::after {
+.AddSlidingWindow .tabControl .active::after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -58,7 +58,7 @@
 	height: 3px;
 	background-color: #041342;
 }
-.addTrip .circle {
+.AddSlidingWindow .circle {
 	width: 30px;
 	height: 30px;
 	background-color: #5e5e62;
@@ -68,10 +68,10 @@
 	justify-content: center;
 	color: white;
 }
-.addTrip .tabControl .active .circle {
+.AddSlidingWindow .tabControl .active .circle {
 	background-color: #041342 !important;
 }
-.addTrip .title {
+.AddSlidingWindow .title {
 	font-family: "Noto Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -92,8 +92,18 @@
 	padding: 12px 24px;
 	gap: 10px;
 	color: white;
+	cursor: pointer;
 	/* Blue (CTA)i */
 	background: #041342;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+}
+.PrevNextBtn.disabled {
+	color: white;
+	cursor: none;
+	pointer-events: none;
+	/* Blue (CTA)i */
+	background: #747475;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 4px;
 }

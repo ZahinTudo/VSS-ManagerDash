@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import "./TripNavbar.css";
 import { motion, useAnimation } from "framer-motion";
-import AddTrip from "./AddTrip/AddTrip";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
+import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
 
 export default function TripNavbar() {
 	const [PrevActiveNav, setPrevActiveNav] = useState("dash");
@@ -19,9 +19,9 @@ export default function TripNavbar() {
 		setPrevActiveNav(current.dataset.link);
 		handleNavigation(e);
 	};
-	const addTripAnimation = useAnimation();
-	const handleAddTrip = () => {
-		addTripAnimation.start({
+	const AddSlidingWindowAnimation = useAnimation();
+	const handleAddSlidingWindow = () => {
+		AddSlidingWindowAnimation.start({
 			width: 600,
 			opacity: 1,
 			x: 0,
@@ -36,6 +36,18 @@ export default function TripNavbar() {
 		link = link === "dash" ? "" : link;
 		history.push(path + "/" + link);
 	};
+	const SlidingWindowTabs = [
+		{
+			name: "Trip details",
+			id: 1,
+			component: "",
+		},
+		{
+			name: "Route details",
+			id: 2,
+			component: "",
+		},
+	];
 	return (
 		<>
 			<div className='tripNavbar'>
@@ -112,7 +124,9 @@ export default function TripNavbar() {
 							<span>+2</span>
 						</div>
 					</div>
-					<div onClick={handleAddTrip} className='planTripBtn'>
+					<div
+						onClick={handleAddSlidingWindow}
+						className='planTripBtn'>
 						<span
 							className='text-capitalize'
 							style={{ whiteSpace: "nowrap" }}>
@@ -140,7 +154,11 @@ export default function TripNavbar() {
 					</div>
 				</div>
 			</div>
-			<AddTrip addTripAnimation={addTripAnimation} />
+			<AddSlidingWindow
+				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
+				title='trip'
+				components={SlidingWindowTabs}
+			/>
 		</>
 	);
 }
