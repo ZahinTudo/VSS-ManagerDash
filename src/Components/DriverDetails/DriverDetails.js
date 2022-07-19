@@ -26,6 +26,27 @@ export default function DriverDetails() {
 	const chatBtn = () => {
 		//chat
 	};
+	const handleFiltering = () => {
+		//filtering
+	};
+	const filters = [
+		{
+			name: "status",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "zone",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "language",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "last trip",
+			Onclick: handleFiltering,
+		},
+	];
 	return (
 		<div
 			style={{
@@ -33,7 +54,7 @@ export default function DriverDetails() {
 				flex: 1,
 			}}
 			className='truckDetails'>
-			<TripFilters />
+			<TripFilters filters={filters} />
 			<TripTabTables
 				tabs={tabs}
 				addBtn={addBtn}

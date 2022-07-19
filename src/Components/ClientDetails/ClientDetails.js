@@ -13,6 +13,27 @@ export default function ClientDetails() {
 			url: "/Clients.json",
 		},
 	];
+	const handleFiltering = () => {
+		//filtering
+	};
+	const filters = [
+		{
+			name: "status",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "ongoing",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "state",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "city",
+			Onclick: handleFiltering,
+		},
+	];
 	const addBtn = () => {
 		//do add function
 	};
@@ -29,7 +50,7 @@ export default function ClientDetails() {
 				flex: 1,
 			}}
 			className='truckDetails'>
-			<TripFilters />
+			<TripFilters filters={filters} />
 			<TripTabTables
 				tabs={tabs}
 				addBtn={addBtn}

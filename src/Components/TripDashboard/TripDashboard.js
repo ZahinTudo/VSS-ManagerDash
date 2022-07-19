@@ -13,7 +13,32 @@ import ClientDetails from "../ClientDetails/ClientDetails";
 
 export default function TripDashboard() {
 	const { url, path } = useRouteMatch();
-	console.log(url, path);
+	const handleFiltering = () => {
+		//filtering
+	};
+	const filters = [
+		{
+			name: "source",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "class",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "capacity",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "model",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "company",
+			Onclick: handleFiltering,
+		},
+	];
+	// console.log(url, path);
 	return (
 		<div className='TripDashboard'>
 			<TripNavbar />
@@ -32,7 +57,7 @@ export default function TripDashboard() {
 								pointerEvents: "none",
 								padding: "8px 65px 29px 24px",
 							}}>
-							<TripFilters />
+							<TripFilters filters={filters} />
 							<div style={{ marginTop: "8px" }}>
 								<Sidebar />
 							</div>

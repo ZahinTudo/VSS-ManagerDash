@@ -22,6 +22,31 @@ export default function TrucksDetails() {
 	const chatBtn = () => {
 		//chat
 	};
+	const handleFiltering = () => {
+		//filtering
+	};
+	const filters = [
+		{
+			name: "source",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "class",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "capacity",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "model",
+			Onclick: handleFiltering,
+		},
+		{
+			name: "company",
+			Onclick: handleFiltering,
+		},
+	];
 	return (
 		<div
 			style={{
@@ -29,7 +54,7 @@ export default function TrucksDetails() {
 				flex: 1,
 			}}
 			className='truckDetails'>
-			<TripFilters />
+			<TripFilters filters={filters} />
 			<TripTabTables
 				tabs={tabs}
 				addBtn={addBtn}

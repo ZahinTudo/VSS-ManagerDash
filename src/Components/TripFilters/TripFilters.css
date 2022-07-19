@@ -9,7 +9,7 @@
 }
 .tripFilters .filter-left {
 	display: flex;
-	width: 90%;
+	/* width: 90%; */
 	/* width: 615.5px; */
 	height: 64px;
 	margin-right: 12.5px;
@@ -26,6 +26,15 @@
 	border: 1.2px solid #afafaf;
 	border-radius: 4px;
 	/* margin-right: 32px; */
+}
+.tripFilters .filters {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12.8px;
+	line-height: 17px;
+	text-transform: capitalize;
+	color: #2f2f33;
 }
 .tripFilters .addDriverBtn {
 	display: flex;
