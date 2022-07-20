@@ -19,7 +19,7 @@ export function NormalInputs({
 	workFlowName,
 }) {
 	return (
-		<Form.Group className=' my-2' md='' controlId=''>
+		<Form.Group className='' md='' controlId=''>
 			<Form.Label
 				className={
 					required ? "required text-secondary" : "text-secondary"
@@ -149,7 +149,7 @@ export function SelectInputs({
 				disabled={disabled}
 				required={`${required}`}
 				aria-label={label}>
-				<option value='0' hidden>
+				<option value='' disabled selected>
 					{placeholder}
 				</option>
 

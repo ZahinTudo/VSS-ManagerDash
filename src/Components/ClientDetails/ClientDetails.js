@@ -75,7 +75,7 @@ export default function ClientDetails() {
 				width: "100vw",
 				flex: 1,
 			}}
-			className='truckDetails'>
+			className='DetailsIndividualPage'>
 			<TripFilters filters={filters} />
 			<TripTabTables
 				tabs={tabs}

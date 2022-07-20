@@ -1,65 +1,70 @@
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Col, Form } from "react-bootstrap";
 import "./UploadInput.css";
-export default function UploadInput({ Btntype, disable }) {
+export default function UploadInput({
+	label,
+	required,
+	onChange,
+	placeholder,
+	type,
+}) {
 	const uploadHandle = () => {
 		document.querySelector("#uploadFile").click();
 	};
 	const fileUpload = ({ target }) => {
 		const file = target.files[0];
 		console.log(file, file.name);
-		disable(false);
+		const fileNameField = document.querySelector(".fileName");
+		fileNameField.innerHTML = file.name;
+		// disable(false);
 	};
 	return (
-		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-between'>
-			<div className='col'>
-				<h4 className='title fw-bold text-capitalize'>
-					{Btntype === "Upload" && "Upload"} id proof
-				</h4>
-				{Btntype === "Re-Upload" ? (
-					<div className='d-flex text-info'>
-						<a target='_blank' href='#'>
-							view
-						</a>
-						<span className='mx-2'>|</span>
-						<a href='#' rel='noreferrer' download>
-							download
-						</a>
+		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-center'>
+			<Form.Group className=' w-100' controlId='upload'>
+				<Form.Label className={required ? "required" : ""}>
+					{"Upload logo"}
+				</Form.Label>
+				<div className='position-relative'>
+					<div
+						className='border d-flex align-items-center uploadField'
+						style={{
+							overflowX: "scroll",
+							overflowY: "hidden",
+							borderRadius: "5px",
+							height: "42px",
+							padding: "5px 5px",
+						}}>
+						<div
+							className='border d-flex align-items-center py-1 px-2'
+							style={{
+								cursor: "pointer",
+								borderRadius: "5px",
+								minWidth: "max-content",
+								whiteSpace: "nowrap",
+							}}
+							onClick={uploadHandle}>
+							<input
+								onChange={fileUpload}
+								hidden
+								className=''
+								id='uploadFile'
+								style={{ width: "0" }}
+								type='file'
+								name=''
+							/>
+							<img
+								src='/assets/upload.png'
+								alt=''
+								className='img-fluid'
+							/>
+							<span className='ms-2'>Choose file</span>
+						</div>
+						<span className='ms-2 fileName'></span>
 					</div>
-				) : (
-					""
-				)}
-				<p className='text'>
-					(Document to be uploaded should be in pdf format and the
-					file size should be 5MB only)
-				</p>
-			</div>
-			<div
-				style={{ cursor: "pointer" }}
-				className='col text-end'
-				onClick={uploadHandle}>
-				<input
-					onChange={fileUpload}
-					hidden
-					className=''
-					id='uploadFile'
-					style={{ width: "0" }}
-					type='file'
-					name=''
-				/>
-				<span className='uploadBtn  text-end '>
-					{/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
-					<span className='d-flex align-items-center justify-content-center'>
-						<img
-							src='/assets/images/upload.svg'
-							alt=''
-							className='img-fluid'
-						/>
-					</span>
-					<span className='ms-2 text'>{Btntype}</span>
-				</span>
-			</div>
+				</div>
+			</Form.Group>
 		</div>
 	);
 }
