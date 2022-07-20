@@ -39,7 +39,9 @@ export default function AddTrucks() {
 						<span className='title'>{vehicles[item].License}</span>
 						<div className='py-3'>
 							<span className='text-success me-2'>Added </span>
-							<span onClick={() => handleRemove(index)}>
+							<span
+								style={{ cursor: "pointer" }}
+								onClick={() => handleRemove(index)}>
 								<FontAwesomeIcon icon={faTimes} />
 							</span>
 						</div>
@@ -54,6 +56,7 @@ export default function AddTrucks() {
 								<span className='title'>{item.License}</span>
 								<div
 									className='py-3'
+									style={{ cursor: "pointer" }}
 									onClick={() => handleAdd(index)}>
 									<FontAwesomeIcon icon={faPlus} />
 								</div>
