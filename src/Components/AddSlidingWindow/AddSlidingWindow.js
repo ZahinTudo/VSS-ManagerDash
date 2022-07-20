@@ -75,9 +75,6 @@ export default function AddSlidingWindow({
 									!submitFlag && "disabled"
 								}`}>
 								<span className=''>Submit</span>
-								{/* <span className='d-flex align-items-center'>
-									<FontAwesomeIcon icon={faAngleRight} />
-								</span> */}
 							</span>
 						)}
 					</div>
