@@ -81,9 +81,12 @@ export default function AddSlidingWindow({
 					activeKey={key}
 					onSelect={(k) => setKey(k)}
 					className='mb-3'>
-					<Tab eventKey={1}>1</Tab>
-					<Tab eventKey={2}>2</Tab>
-					<Tab eventKey={3}>3</Tab>
+					{components.map((item, index) => {
+						console.log(item);
+						return <Tab eventKey={index + 1}>{item.component}</Tab>;
+					})}
+					{/* <Tab eventKey={2}>2</Tab>
+					<Tab eventKey={3}>3</Tab> */}
 				</Tabs>
 			</div>
 		</motion.div>

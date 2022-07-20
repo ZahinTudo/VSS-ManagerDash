@@ -4,6 +4,7 @@ import "./ClientDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
 import { useAnimation } from "framer-motion";
+import BasicDetailsComponent from "./BasicDetailsComponent/BasicDetailsComponent";
 export default function ClientDetails() {
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
@@ -20,12 +21,12 @@ export default function ClientDetails() {
 		{
 			name: "Basic Details",
 			id: 1,
-			component: "",
+			component: <BasicDetailsComponent />,
 		},
 		{
 			name: "add truck",
 			id: 2,
-			component: "",
+			component: "2",
 		},
 	];
 	const tabs = [
