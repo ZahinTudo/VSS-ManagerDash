@@ -24,7 +24,7 @@ export default function UploadInput({
 		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-center'>
 			<Form.Group className=' w-100' controlId='upload'>
 				<Form.Label className={required ? "required" : ""}>
-					{"Upload logo"}
+					{label}
 				</Form.Label>
 				<div className='position-relative'>
 					<div

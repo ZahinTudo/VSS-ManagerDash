@@ -121,6 +121,7 @@
 	font-weight: 400;
 	font-size: 14px !important;
 	line-height: 19px;
+	border-radius: 8px;
 	/* color: #0e0d0d; */
 	/* identical to box height */
 	text-transform: capitalize;

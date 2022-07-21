@@ -41,6 +41,19 @@ export function NormalInputs({
 	);
 }
 export function DateInputs({ type, required, placeholder, label, onBlur }) {
+	const dateChangeHandle = (e) => {
+		const dateInput = e.currentTarget.value;
+		console.log(dateInput);
+		if (dateInput != "") {
+			document
+				.querySelector(".dateInput ~ span")
+				.classList.remove("d-flex");
+			document.querySelector(".dateInput ~ span").classList.add("d-none");
+			return;
+		}
+		document.querySelector(".dateInput ~ span").classList.remove("d-none");
+		document.querySelector(".dateInput ~ span").classList.add("d-flex");
+	};
 	return (
 		<Form.Group className=' ' as={Col} md='' controlId='date'>
 			<Form.Label className={required ? "required" : ""}>
@@ -48,22 +61,32 @@ export function DateInputs({ type, required, placeholder, label, onBlur }) {
 			</Form.Label>
 			<div className='position-relative'>
 				<Form.Control
-					className='px-3  py-2'
-					onBlur={onBlur}
+					className='dateInput px-3  py-2'
+					onBlur={(e) => {
+						e.currentTarget.type = "text";
+					}}
+					onChange={dateChangeHandle}
 					required={require}
 					name={label}
-					type={type}
+					type='text'
+					onFocus={(e) => {
+						e.currentTarget.type = "date";
+					}}
 					placeholder={placeholder}
 				/>
 				<span
-					className='position-absolute '
+					className='position-absolute  d-flex'
 					style={{
 						top: "50%",
 						right: "10%",
 						color: "#076EB3",
 						transform: "translate(-10%,-50%)",
 					}}>
-					<FontAwesomeIcon icon={faCalendar} />
+					<img
+						src='/assets/calander.png'
+						alt=''
+						className='img-fluid'
+					/>
 				</span>
 			</div>
 		</Form.Group>

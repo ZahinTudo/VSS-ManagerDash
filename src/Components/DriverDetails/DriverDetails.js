@@ -4,6 +4,9 @@ import "./DriverDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
 import { useAnimation } from "framer-motion";
+import DriverBasicDetails from "./DriverBasicDetails/DriverBasicDetails";
+import DriverBankDetails from "./DriverBankDetails/DriverBankDetails";
+import UploadDocuments from "./UploadDocuments/UploadDocuments";
 export default function DriverDetails() {
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
@@ -20,17 +23,17 @@ export default function DriverDetails() {
 		{
 			name: "Basic Details",
 			id: 1,
-			component: "",
+			component: <DriverBasicDetails />,
 		},
 		{
 			name: "Bank Details",
 			id: 2,
-			component: "",
+			component: <DriverBankDetails />,
 		},
 		{
 			name: "Upload Documents",
 			id: 3,
-			component: "",
+			component: <UploadDocuments />,
 		},
 	];
 	const Tabletabs = [
