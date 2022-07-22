@@ -32,7 +32,7 @@ export default function DriverBasicDetails() {
 					<DateInputs
 						type='date'
 						required={true}
-						placeholder='Birth date'
+						placeholder='Date of Birth'
 						label='Date of Birth'
 						onBlur={() => {}}
 					/>

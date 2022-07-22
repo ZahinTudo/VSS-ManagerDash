@@ -4,6 +4,9 @@ import "./TrucksDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
 import { useAnimation } from "framer-motion";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
+import TruckBasicDetails from "./TruckBasicDetails/TruckBasicDetails";
+import TrucksUploadDocuments from "./TrucksUploadDocuments/TrucksUploadDocuments";
+import TrucksPermits from "./TrucksPermits/TrucksPermits";
 export default function TrucksDetails() {
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
@@ -20,17 +23,17 @@ export default function TrucksDetails() {
 		{
 			name: "Basic Details",
 			id: 1,
-			component: "",
+			component: <TruckBasicDetails />,
 		},
 		{
 			name: "Upload Documents",
 			id: 2,
-			component: "",
+			component: <TrucksUploadDocuments />,
 		},
 		{
 			name: "Permits",
 			id: 3,
-			component: "",
+			component: <TrucksPermits />,
 		},
 	];
 	const Tabletabs = [
