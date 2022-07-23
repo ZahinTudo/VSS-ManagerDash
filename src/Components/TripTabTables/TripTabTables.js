@@ -72,7 +72,7 @@ export default function TripTabTables({
 				id='controlled-tab-example'
 				activeKey={key}
 				onSelect={(k) => setKey(k)}
-				className='mb-3'>
+				className='mb-3 detailsTable'>
 				{tabs.map((item, index) => {
 					return (
 						<Tab key={index} eventKey={item.name} title='In Garage'>

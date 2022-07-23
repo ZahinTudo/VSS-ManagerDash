@@ -1,11 +1,11 @@
 .actionIcons {
 	margin-right: 19px;
 }
-table {
+.tripTabTable table {
 	border-collapse: separate !important;
 	border-spacing: 0 10px !important;
 }
-th {
+.tripTabTable th {
 	padding-top: 25px !important;
 	padding-bottom: 25px !important;
 	border-bottom: 1.5px solid #38394356 !important;
@@ -18,7 +18,7 @@ th {
 
 	color: #5e5e62;
 }
-td {
+.tripTabTable td {
 	/* display: inline; */
 	/* background-color: white; */
 	padding-top: 1rem !important;
@@ -37,11 +37,11 @@ td {
 	order: 1;
 	flex-grow: 0;
 }
-tr {
+.tripTabTable tr {
 	border: transparent !important;
 	vertical-align: middle;
 }
-input.largerCheckbox {
+.tripTabTable input.largerCheckbox {
 	width: 26px;
 	height: 26px;
 }

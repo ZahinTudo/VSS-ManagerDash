@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export function NormalInputs({
+	className,
 	type,
 	required,
 	placeholder,
@@ -27,7 +28,7 @@ export function NormalInputs({
 				{label}
 			</Form.Label>
 			<Form.Control
-				className='px-3  py-2'
+				className={"px-3  py-2 " + className}
 				onBlur={onBlur}
 				onChange={onBlur}
 				required={required}
