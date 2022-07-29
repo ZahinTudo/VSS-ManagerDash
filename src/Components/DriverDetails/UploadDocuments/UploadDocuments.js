@@ -107,7 +107,7 @@ export default function UploadDocuments() {
 					</div>
 					<div className='col'>
 						<DateInputs
-							type='date'
+							type='datetime-local'
 							required={true}
 							placeholder='DD/MM/YYYY'
 							label='Last check up Date'

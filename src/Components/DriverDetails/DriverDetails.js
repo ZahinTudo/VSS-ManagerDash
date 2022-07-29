@@ -8,7 +8,8 @@ import DriverBasicDetails from "./DriverBasicDetails/DriverBasicDetails";
 import DriverBankDetails from "./DriverBankDetails/DriverBankDetails";
 import UploadDocuments from "./UploadDocuments/UploadDocuments";
 export default function DriverDetails() {
-	const AddSlidingWindowAnimation = useAnimation();
+    const AddSlidingWindowAnimation = useAnimation();
+    
 	const handleAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
 			width: 600,
@@ -38,15 +39,15 @@ export default function DriverDetails() {
 	];
 	const Tabletabs = [
 		{
-			name: "Active Driver",
+			name: " Occupied",
 			url: "/Drivers.json",
 		},
 		{
-			name: "Available Driver",
+			name: "Available",
 			url: "/Drivers.json",
 		},
 		{
-			name: "Offline Driver",
+			name: "Deactivated",
 			url: "/Drivers.json",
 		},
 	];

@@ -16,6 +16,7 @@ export default function SlidingBar({
 	currentId,
 }) {
 	const { allMarkers } = useSelector((state) => state.allMarkers);
+	const [tripDetails, setTripDetails] = useState(null);
 	const [key, setKey] = useState("Tracking");
 	const setHeight = () => {
 		const heightToSubtract =
@@ -25,8 +26,16 @@ export default function SlidingBar({
 		console.log(heightToSubtract, tabElement);
 		tabElement.style.height = `calc(100% -  ${heightToSubtract}px)`;
 	};
+	const getTheTripData = (tripId) => {
+		fetch(`http://3.111.225.21:9005/logisticsManager/getTrip?id=${tripId}`)
+			.then((res) => res.json())
+			.then((result) => setTripDetails(result))
+			.catch((err) => console.log(err, tripId));
+	};
+
 	useEffect(() => {
 		setHeight();
+		getTheTripData(currentId);
 	}, [currentId]);
 	return (
 		<motion.div
@@ -43,9 +52,10 @@ export default function SlidingBar({
 							<FontAwesomeIcon icon={faAngleLeft} />
 						</span>
 						<div>
-							<span>{allMarkers[currentId]?.License}</span>
-							{allMarkers[currentId]?.currentStatus ==
-							"driving" ? (
+							<span>
+								{tripDetails?.trip?.truck.registrationNumber}
+							</span>
+							{tripDetails?.trip?.truck.isActive === true ? (
 								<div>
 									<img
 										src='/assets/drivingSignal.png'
@@ -88,7 +98,7 @@ export default function SlidingBar({
 						<div className='col d-flex flex-column '>
 							<small className='text-secondary'>Source</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.Start}
+								{tripDetails?.trip?.source}
 							</span>
 						</div>
 						<div className='col d-flex flex-column '>
@@ -96,31 +106,36 @@ export default function SlidingBar({
 								Destination
 							</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.end}
+								{tripDetails?.trip?.destination}
 							</span>
 						</div>
 						<div className='col d-flex flex-column '>
 							<small className='text-secondary'>Client</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.company}
+								{
+									tripDetails?.trip?.truck.truckCompany
+										.companyName
+								}
 							</span>
 						</div>
 						<div className='col d-flex flex-column '>
 							<small className='text-secondary'>Start Date</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.startDate}
+								{tripDetails?.trip?.startDate.split("T")[0]}
 							</span>
 						</div>
 						<div className='col d-flex flex-column '>
 							<small className='text-secondary'>End Date</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.endDate}
+								{tripDetails?.trip?.expectedEndDate.split(
+									"T"
+								)[0] || "not selected"}
 							</span>
 						</div>
 						<div className='col d-flex flex-column '>
 							<small className='text-secondary'>Zone</small>
 							<span className='slideText'>
-								{allMarkers[currentId]?.zone}
+								{tripDetails?.trip?.via}
 							</span>
 						</div>
 					</div>
@@ -229,25 +244,26 @@ export default function SlidingBar({
 							<div className='col d-flex flex-column '>
 								<small className='text-secondary'>Make</small>
 								<span className='slideText'>
-									{allMarkers[currentId]?.truckDetails.make}
+									{
+										allMarkers[currentId]?.truck
+											.classOfVehicle
+									}
 								</span>
 							</div>
 							<div className='col d-flex flex-column '>
 								<small className='text-secondary'>Model</small>
 								<span className='slideText'>
-									{allMarkers[currentId]?.truckDetails.model}
+									{
+										allMarkers[currentId]?.truck
+											.classOfVehicle
+									}
 								</span>
 							</div>
 							<div className='col d-flex flex-column '>
 								<small className='text-secondary'>
 									Load Capacity
 								</small>
-								<span className='slideText'>
-									{
-										allMarkers[currentId]?.truckDetails
-											.capacity
-									}
-								</span>
+								<span className='slideText'>{"1 ton"}</span>
 							</div>
 							<div className='col d-flex flex-column '>
 								<small className='text-secondary'>
@@ -255,8 +271,8 @@ export default function SlidingBar({
 								</small>
 								<span className='slideText'>
 									{
-										allMarkers[currentId]?.truckDetails
-											.regState
+										allMarkers[currentId]?.truck
+											.registeredState
 									}
 								</span>
 							</div>
@@ -268,8 +284,8 @@ export default function SlidingBar({
 								</small>
 								<span className='slideText'>
 									{
-										allMarkers[currentId]?.truckDetails
-											.manufacturedAt
+										allMarkers[currentId]?.truck
+											.registeredDate
 									}
 								</span>
 							</div>

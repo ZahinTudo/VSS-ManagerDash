@@ -42,7 +42,7 @@ export default function TrucksDetails() {
 			url: "/Trucks.json",
 		},
 		{
-			name: "In Garage",
+			name: "Inactive",
 			url: "/Trucks.json",
 		},
 	];

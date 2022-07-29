@@ -2,8 +2,8 @@
     "tableHeads":[
         "Truck Details", 
         "Status",
-        "Make & Model",
-        "Class",
+        "Permits",
+        "Make and model",
         "Load Capacity",
         "Registration State & City",
         "Registration Date",

@@ -9,6 +9,7 @@ export const MarkerSlice = createSlice({
 	initialState,
 	reducers: {
 		setMarkers: (state, action) => {
+			// state.allMarkers = { ...action.payload };
 			state.allMarkers = [...action.payload];
 		},
 	},

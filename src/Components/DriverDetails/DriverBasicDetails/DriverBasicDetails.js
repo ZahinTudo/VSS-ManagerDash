@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	DateInputs,
 	NormalInputs,
@@ -7,6 +7,16 @@ import {
 import UploadInput from "../../ModularComponents/UploadInput/UploadInput";
 import "./DriverBasicDetails.css";
 export default function DriverBasicDetails() {
+	const [prev, setPrev] = useState("male");
+	// const [gender, setGender] = useState("male");
+	const setGender = (e) => {
+		const target = e.currentTarget;
+		const prevGender = document.querySelector(`[data-gender=${prev}]`);
+		console.log(target, prevGender);
+		prevGender.classList.remove("active");
+		setPrev(target.dataset.gender);
+		target.classList.add("active");
+	};
 	return (
 		<div>
 			<div className='row row-cols-2 mb-2'>
@@ -53,6 +63,7 @@ export default function DriverBasicDetails() {
 					</span>
 					<div className=' d-flex'>
 						<div
+							onClick={setGender}
 							data-gender='male'
 							className='me-3 btn genderRadioBtn active'>
 							<input
@@ -64,6 +75,7 @@ export default function DriverBasicDetails() {
 							<div>Male</div>
 						</div>
 						<div
+							onClick={setGender}
 							data-gender='female'
 							className='me-3 btn genderRadioBtn'>
 							<input
@@ -75,6 +87,7 @@ export default function DriverBasicDetails() {
 							<div>female</div>
 						</div>
 						<div
+							onClick={setGender}
 							data-gender='other'
 							className='me-3 btn genderRadioBtn'>
 							<input

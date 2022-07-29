@@ -63,15 +63,15 @@ export function DateInputs({ type, required, placeholder, label, onBlur }) {
 			<div className='position-relative'>
 				<Form.Control
 					className='dateInput px-3  py-2'
-					onBlur={(e) => {
-						e.currentTarget.type = "text";
-					}}
+					// onBlur={(e) => {
+					// 	e.currentTarget.type = "text";
+					// }}
 					onChange={dateChangeHandle}
 					required={require}
 					name={label}
 					type='text'
 					onFocus={(e) => {
-						e.currentTarget.type = "date";
+						e.currentTarget.type = type;
 					}}
 					placeholder={placeholder}
 				/>

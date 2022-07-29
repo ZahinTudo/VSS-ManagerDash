@@ -62,129 +62,138 @@ function Map() {
 		marker.addListener("click", () => infowindow.open(map, marker));
 	};
 
+	// useEffect(() => {
+	// 	fetch("/sirTrack2.geojson")
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 			const coordinateData = data.features[0].geometry.coordinates[0];
+	// 			const coordinateData2 =
+	// 				data.features[0].geometry.coordinates[1];
+
+	// 			setCoordinates(coordinateData);
+	// 			setCoordinates2(coordinateData2);
+	// 			const start = {
+	// 				lng: coordinateData[0][0],
+	// 				lat: coordinateData[0][1],
+	// 			};
+	// 			const start1 = {
+	// 				lng: coordinateData2[0][0],
+	// 				lat: coordinateData2[0][1],
+	// 			};
+	// 			console.log(start1);
+	// 			const Marker = [
+	// 				{
+	// 					position: start,
+	// 					icon: "https://purepng.com/public/uploads/large/yellow-truck-n1f.png",
+	// 					info: "<div><h2>Marker 1</h2><p>Truck no : 1<br/> Driver : Saman</p></div>",
+	// 					company: "Flipcart Ltd.",
+	// 					title: "Marker 1",
+	// 					driver: "Saman",
+	// 					License: "UP 01 AP 1341",
+	// 					Start: "Tudo tech",
+	// 					end: "My home",
+	// 					startDate: "11/06/22",
+	// 					endDate: "15/06/22",
+	// 					currentStatus: "driving",
+	// 					zone: "North",
+	// 					truckDetails: {
+	// 						make: "Tata",
+	// 						model: "Primio",
+	// 						capacity: "1.5 Ton",
+	// 						manufacturedAt: "2016",
+	// 						regState: "Chandigarh",
+	// 					},
+	// 				},
+	// 				{
+	// 					position: start1,
+	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
+	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
+	// 					company: "Amazon Ltd.",
+	// 					title: "Marker 2",
+	// 					driver: "Arvin",
+	// 					License: "UP 01 AP 1342",
+	// 					Start: "Tudo tech",
+	// 					end: "My home",
+	// 					startDate: "11/06/22",
+	// 					endDate: "15/06/22",
+	// 					currentStatus: "stopped",
+	// 					zone: "North",
+	// 					truckDetails: {
+	// 						make: "Tata",
+	// 						model: "Primio",
+	// 						capacity: "1.5 Ton",
+	// 						manufacturedAt: "2016",
+	// 						regState: "Chandigarh",
+	// 					},
+	// 				},
+	// 				{
+	// 					position: {
+	// 						lat: 19.228825,
+	// 						lng: 72.854118,
+	// 					},
+	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
+	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
+	// 					company: "Apple pvt. Ltd.",
+	// 					title: "Mumbai",
+	// 					driver: "Zahin",
+	// 					License: "ZP 01 AP 1343",
+	// 					Start: "Goa",
+	// 					end: "Mumbai",
+	// 					startDate: "11/06/22",
+	// 					endDate: "15/06/22",
+	// 					currentStatus: "driving",
+	// 					zone: "North",
+	// 					truckDetails: {
+	// 						make: "Tata",
+	// 						model: "Primio",
+	// 						capacity: "1.5 Ton",
+	// 						manufacturedAt: "2016",
+	// 						regState: "Chandigarh",
+	// 					},
+	// 				},
+	// 				{
+	// 					position: { lat: 15.496777, lng: 73.827827 },
+	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
+	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
+	// 					company: "VN Cosmetics",
+	// 					title: "Goa",
+	// 					driver: "Puja",
+	// 					License: "UP 01 AP 1344",
+	// 					Start: "Goa",
+	// 					end: "Mumbai",
+	// 					startDate: "11/06/22",
+	// 					endDate: "15/06/22",
+	// 					currentStatus: "driving",
+	// 					zone: "North",
+	// 					truckDetails: {
+	// 						make: "Tata",
+	// 						model: "Primio",
+	// 						capacity: "1.5 Ton",
+	// 						manufacturedAt: "2016",
+	// 						regState: "Chandigarh",
+	// 					},
+	// 				},
+	// 			];
+
+	// 			setMarker(Marker);
+	// 			setcenter(start);
+	// 			setStart(start);
+	// 			setStart1(start1);
+	// 		});
+	// }, [isLoaded]);
 	useEffect(() => {
-		fetch("/sirTrack2.geojson")
+		fetch("http://3.111.225.21:9005/logisticsManager/getAllActiveTrips/")
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				const coordinateData = data.features[0].geometry.coordinates[0];
-				const coordinateData2 =
-					data.features[0].geometry.coordinates[1];
-
-				setCoordinates(coordinateData);
-				setCoordinates2(coordinateData2);
-				const start = {
-					lng: coordinateData[0][0],
-					lat: coordinateData[0][1],
-				};
-				const start1 = {
-					lng: coordinateData2[0][0],
-					lat: coordinateData2[0][1],
-				};
-				console.log(start1);
-				const Marker = [
-					{
-						position: start,
-						icon: "https://purepng.com/public/uploads/large/yellow-truck-n1f.png",
-						info: "<div><h2>Marker 1</h2><p>Truck no : 1<br/> Driver : Saman</p></div>",
-						company: "Flipcart Ltd.",
-						title: "Marker 1",
-						driver: "Saman",
-						License: "UP 01 AP 1341",
-						Start: "Tudo tech",
-						end: "My home",
-						startDate: "11/06/22",
-						endDate: "15/06/22",
-						currentStatus: "driving",
-						zone: "North",
-						truckDetails: {
-							make: "Tata",
-							model: "Primio",
-							capacity: "1.5 Ton",
-							manufacturedAt: "2016",
-							regState: "Chandigarh",
-						},
-					},
-					{
-						position: start1,
-						icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-						info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-						company: "Amazon Ltd.",
-						title: "Marker 2",
-						driver: "Arvin",
-						License: "UP 01 AP 1342",
-						Start: "Tudo tech",
-						end: "My home",
-						startDate: "11/06/22",
-						endDate: "15/06/22",
-						currentStatus: "stopped",
-						zone: "North",
-						truckDetails: {
-							make: "Tata",
-							model: "Primio",
-							capacity: "1.5 Ton",
-							manufacturedAt: "2016",
-							regState: "Chandigarh",
-						},
-					},
-					{
-						position: {
-							lat: 19.228825,
-							lng: 72.854118,
-						},
-						icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-						info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-						company: "Apple pvt. Ltd.",
-						title: "Mumbai",
-						driver: "Zahin",
-						License: "ZP 01 AP 1343",
-						Start: "Goa",
-						end: "Mumbai",
-						startDate: "11/06/22",
-						endDate: "15/06/22",
-						currentStatus: "driving",
-						zone: "North",
-						truckDetails: {
-							make: "Tata",
-							model: "Primio",
-							capacity: "1.5 Ton",
-							manufacturedAt: "2016",
-							regState: "Chandigarh",
-						},
-					},
-					{
-						position: { lat: 15.496777, lng: 73.827827 },
-						icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-						info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-						company: "VN Cosmetics",
-						title: "Goa",
-						driver: "Puja",
-						License: "UP 01 AP 1344",
-						Start: "Goa",
-						end: "Mumbai",
-						startDate: "11/06/22",
-						endDate: "15/06/22",
-						currentStatus: "driving",
-						zone: "North",
-						truckDetails: {
-							make: "Tata",
-							model: "Primio",
-							capacity: "1.5 Ton",
-							manufacturedAt: "2016",
-							regState: "Chandigarh",
-						},
-					},
-				];
-				// console.log(start);
-				// try {
-				// 	dispatch(setMarkers(Marker));
-				// } catch (error) {
-				// 	console.log(error);
-				// }
-				setMarker(Marker);
-				setcenter(start);
-				setStart(start);
-				setStart1(start1);
+				if (data.statusCode === 200) setMarker(data.activeTrips);
+				else {
+					alert("not success");
+				}
+				// setcenter(start);
+				// setStart(start);
+				// setStart1(start1);
 			});
 	}, [isLoaded]);
 	const handleDetailsModal = (details, marker) => {
@@ -197,27 +206,36 @@ function Map() {
 	// create marker on google map
 
 	const createMarker = (markerObj) => {
+		console.log({
+			lat: parseFloat(markerObj.currentLocation.latitude),
+			lng: parseFloat(markerObj.currentLocation.longitude),
+		});
 		// eslint-disable-next-line no-undef
 		const marker = new google.maps.Marker({
-			position: markerObj.position,
+			position: {
+				lat: markerObj.currentLocation.latitude,
+				lng: markerObj.currentLocation.longitude,
+			},
 			map: map,
 			icon: {
-				url: markerObj.icon,
+				url: "https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG.png",
 				// set marker width and height
 				// eslint-disable-next-line no-undef
 				scaledSize: new google.maps.Size(50, 50),
 			},
-			title: markerObj.title,
+			title: markerObj.truck.registrationNumber,
 		});
 
 		// eslint-disable-next-line no-undef
 		const InfoWindowContent = (
 			<div style={{ width: "max-content", height: "max-content" }}>
 				<div id='driverName'>
-					<span>Driver : {markerObj.driver}</span>
+					<span>Driver : {markerObj.driver.firstName}</span>
 				</div>
 				<div id='licenceNo'>
-					<span>License No. : {markerObj.License}</span>
+					<span>
+						License No. : {markerObj.truck.registrationNumber}
+					</span>
 				</div>
 			</div>
 		);
@@ -234,10 +252,10 @@ function Map() {
 
 		return marker;
 	};
+
 	let m = [];
 	useEffect(() => {
-		console.log(coordinates, isLoaded);
-		if (isLoaded && map != null) {
+		if (isLoaded && markerList.length > 0 && map != null) {
 			dispatch(setMarkers(markerList));
 			// alert("hello");
 			// eslint-disable-next-line no-undef
@@ -245,24 +263,12 @@ function Map() {
 			let sources = [];
 			let destinations = [];
 			markerList.map((x, id) => {
-				console.log(source.includes(x.Start), x.Start, source);
-				if (!sources.includes(x.Start)) {
-					sources = [...sources, x.Start];
-				}
-				if (!destinations.includes(x.end)) {
-					destinations = [...destinations, x.end];
-				}
-				setSource((prev) => {
-					const newSources = [...sources];
-					return newSources;
-				});
-				setDestination((prev) => {
-					const newDestination = [...destinations];
-					return newDestination;
-				});
+				console.log(x);
+
 				const marker = createMarker(x);
+				console.log(marker);
 				m.push({ marker, id });
-				console.log(marker.position.lat());
+				// console.log(marker.position.lat());
 				// eslint-disable-next-line no-undef
 				const latLng = new google.maps.LatLng(
 					marker.position.lat(),
@@ -271,68 +277,10 @@ function Map() {
 				bounds.extend(latLng);
 			});
 			map.fitBounds(bounds);
-			if (coordinates != null && coordinates2 != null && isLoaded) {
-				const len = coordinates.length;
-				let i = 0;
-				setTimeout(() => {
-					const interval = setInterval(() => {
-						let newPosition;
-						if (i < len) {
-							newPosition = {
-								lng: coordinates[i][0],
-								lat: coordinates[i][1],
-							};
-							// setStart(start);
-							let newData;
-							m[0]?.marker.setPosition(newPosition);
-							if (m[0]?.marker !== undefined) {
-								setMarker((prev) => {
-									newData = [...prev];
-									newData[m[0]?.id]["position"] = newPosition;
-
-									return newData;
-								});
-							}
-							if (i === len - 1) {
-								m[0]?.marker.setIcon({
-									url: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/14210/traffic-collision-clipart-md.png",
-									// set marker width and height
-									// eslint-disable-next-line no-undef
-									scaledSize: new google.maps.Size(50, 50),
-								});
-							}
-						}
-						newPosition = {
-							lng: coordinates2[i][0],
-							lat: coordinates2[i][1],
-						};
-
-						// setStart1(start1);
-						m[1]?.marker.setPosition(newPosition);
-						if (m[1]?.marker != undefined) {
-							setMarker((prev) => {
-								const newData = [...prev];
-								newData[m[1]?.id]["position"] = newPosition;
-
-								return newData;
-							});
-						}
-						if (i === coordinates2.length - 1) {
-							m[1]?.marker.setIcon({
-								url: "https://cdn.pixabay.com/photo/2012/04/24/13/12/motorcycle-40000_960_720.png",
-								// set marker width and height
-								// eslint-disable-next-line no-undef
-								scaledSize: new google.maps.Size(50, 50),
-							});
-							clearInterval(interval);
-						}
-						// dispatch(setMarkers([...markerList]));
-						i += 1;
-					}, 500);
-				}, 5000);
-			}
+			map.setZoom(3);
+			map.setCenter(bounds.getSouthWest());
 		}
-	}, [map, coordinates, coordinates2, isLoaded]);
+	}, [map, markerList, isLoaded]);
 
 	const handleSingleCLick = (e) => {
 		console.log("clicked", e);
@@ -380,49 +328,11 @@ function Map() {
 					onLoad={onLoad}
 					onUnmount={onUnmount}
 					mapContainerStyle={containerStyle}
-					// center={center}
+					// center={{
+					// 	lat: 12.9,
+					// 	lng: 13.6,
+					// }}
 					zoom={10}>
-					{/* <div
-						className='position-absolute'
-						style={{ left: "15rem", top: "3rem" }}>
-						<select
-							name='source'
-							id='source'
-							onChange={FilterMarkerBound}>
-							<option value='' disabled selected>
-								Select Source
-							</option>
-
-							{source.map((item, id) => {
-								return (
-									<option key={`source` + id} value={item}>
-										{item}
-									</option>
-								);
-							})}
-						</select>
-					</div>
-					<div
-						className='position-absolute'
-						style={{ left: "35rem", top: "3rem" }}>
-						<select
-							name='source'
-							id='destination'
-							onChange={FilterMarkerBound}>
-							<option value='destination' disabled selected>
-								Select Destination
-							</option>
-							{destination.map((item, id) => {
-								return (
-									<option
-										key={`destination` + id}
-										value={item}>
-										{item}
-									</option>
-								);
-							})}
-						</select>
-					</div> */}
 					{/* Child components, such as markers, info windows, etc. */}
 				</GoogleMap>
 			</>

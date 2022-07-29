@@ -14,7 +14,7 @@ export default function Sidebar() {
 
 	const controlAnimation = useAnimation();
 
-	const slidebarOpen = (type, id) => {
+	const slidebarOpen = (type, id, TripId) => {
 		const displacement = document.querySelector(".sidebar").offsetWidth;
 		if (prevActiveId == null) {
 			setPrevActiveId(type + "-" + id);
@@ -41,7 +41,7 @@ export default function Sidebar() {
 				duration: 0.1,
 			},
 		});
-		setCurrentId(id);
+		setCurrentId(TripId);
 	};
 	const slidebarClose = () => {
 		const swithToNotActive = document.querySelector(
@@ -102,7 +102,9 @@ export default function Sidebar() {
 						<div
 							key={"marker-" + index}
 							data-markerId={"active-" + index}
-							onClick={() => slidebarOpen("active", index)}
+							onClick={() =>
+								slidebarOpen("active", index, item.id)
+							}
 							className={`markerBox`}>
 							<div className='markerBoxCarLogo'>
 								<img
@@ -115,13 +117,16 @@ export default function Sidebar() {
 								<div className='truckDetail'>
 									<div className='col-8 d-flex flex-column'>
 										<span className='truckLiciense'>
-											{item.License}
+											{item.truck.registrationNumber}
 										</span>
 										<span className='truckCompany'>
-											{item.company}
+											{
+												item.truck.truckCompany
+													.companyName
+											}
 										</span>
 										<span className='truckRoute'>
-											{item.Start}-{item.end}
+											{item.source}-{item.destination}
 										</span>
 									</div>
 									<div className='col-4 sosBtn'>
@@ -173,7 +178,9 @@ export default function Sidebar() {
 						<div
 							key={"marker-" + index}
 							data-markerId={"schedule-" + index}
-							onClick={() => slidebarOpen("schedule", index)}
+							onClick={() =>
+								slidebarOpen("schedule", index, item.id)
+							}
 							className={`markerBox`}>
 							<div className='markerScheduleDate'>
 								<span className='month'>Jan</span>
@@ -190,7 +197,7 @@ export default function Sidebar() {
 											{item.company}
 										</span>
 										<span className='truckRoute'>
-											{item.Start}-{item.end}
+											{item.source}-{item.destinatin}
 										</span>
 									</div>
 								</div>
