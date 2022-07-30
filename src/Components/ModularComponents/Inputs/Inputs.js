@@ -29,7 +29,7 @@ export function NormalInputs({
 			</Form.Label>
 			<Form.Control
 				className={"px-3  py-2 " + className}
-				onBlur={onBlur}
+				// onBlur={onBlur}
 				onChange={onBlur}
 				required={required}
 				name={label}
@@ -167,7 +167,8 @@ export function SelectInputs({
 				{label}
 			</Form.Label>
 			<Form.Select
-				onBlur={onBlur}
+				onChange={onBlur}
+				// onBlur={onBlur}
 				className='grayDefault px-3  py-2'
 				name={label}
 				disabled={disabled}

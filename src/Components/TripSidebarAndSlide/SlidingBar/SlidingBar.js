@@ -155,7 +155,7 @@ export default function SlidingBar({
 					</span>
 					<div className='d-flex align-items-center'>
 						<a href className='text-dark'>
-							{allMarkers[currentId]?.driver}
+							{allMarkers[currentId]?.driver.firstname}
 						</a>
 						<span className='mx-3'>
 							<img
