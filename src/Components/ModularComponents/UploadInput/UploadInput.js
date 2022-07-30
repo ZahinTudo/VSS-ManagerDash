@@ -96,7 +96,11 @@ export default function UploadInput({
 							UpLoadedDocs[name]?.map((item, index) => {
 								return (
 									<div key={index} className='files'>
-										<span>{item.name}</span>
+										<span title={item.name}>
+											{item.name.length > 10
+												? item.name.slice(0, 9) + ".."
+												: item.name}
+										</span>
 										<span>&times;</span>
 									</div>
 								);
