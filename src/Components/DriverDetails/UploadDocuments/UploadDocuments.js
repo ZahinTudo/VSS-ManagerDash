@@ -43,14 +43,14 @@ export default function UploadDocuments() {
 		console.log(file, file.name, target.name);
 		if (typeof driverUploadDoc[target.name] !== "undefined") {
 			setDriverUploadDoc((prev) => {
-				const newData = { ...driverUploadDoc };
+				const newData = { ...prev };
 				newData[target.name] = [...newData[target.name], file];
 				dispatch(setUploadDoc(newData));
 				return newData;
 			});
 		} else {
 			setDriverUploadDoc((prev) => {
-				const newData = { ...driverUploadDoc };
+				const newData = { ...prev };
 				newData[target.name] = [file];
 				dispatch(setUploadDoc(newData));
 				return newData;
@@ -94,6 +94,7 @@ export default function UploadDocuments() {
 							name='licence doc'
 							label='Upload Document'
 							required={true}
+							UpLoadedDocs={addDriver["uploadDoc"]}
 						/>
 					</div>
 				</div>
@@ -133,6 +134,7 @@ export default function UploadDocuments() {
 							name='id doc'
 							label='Upload Document'
 							required={true}
+							UpLoadedDocs={addDriver["uploadDoc"]}
 						/>
 					</div>
 				</div>
@@ -171,6 +173,7 @@ export default function UploadDocuments() {
 							onChange={fileUpload}
 							remove={handleUploadFileDetails}
 							name='health doc'
+							UpLoadedDocs={addDriver["uploadDoc"]}
 							label='Upload Document'
 							required={true}
 						/>

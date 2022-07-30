@@ -11,6 +11,7 @@ export default function UploadInput({
 	name,
 	type,
 	remove,
+	UpLoadedDocs,
 }) {
 	const uploadHandle = () => {
 		document.querySelector(`.${name.split(" ")[0]}_uploadFile`).click();
@@ -22,6 +23,7 @@ export default function UploadInput({
 	// 	fileNameField.innerHTML = file.name;
 	// 	// disable(false);
 	// };
+	console.log(UpLoadedDocs);
 	return (
 		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-center'>
 			<Form.Group className=' w-100' controlId='upload'>
@@ -90,10 +92,15 @@ export default function UploadInput({
 								className='img-fluid'
 							/>
 						</div>
-						<div className='files'>
-							<span>Aadhar1.jpg</span>
-							<span>&times;</span>
-						</div>
+						{UpLoadedDocs &&
+							UpLoadedDocs[name]?.map((item, index) => {
+								return (
+									<div key={index} className='files'>
+										<span>{item.name}</span>
+										<span>&times;</span>
+									</div>
+								);
+							})}
 					</div>
 				</div>
 			</Form.Group>
