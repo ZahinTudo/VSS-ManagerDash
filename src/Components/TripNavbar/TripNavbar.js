@@ -7,6 +7,7 @@ import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
 
 export default function TripNavbar() {
+	const [missing, SetMissing] = useState([]);
 	const [PrevActiveNav, setPrevActiveNav] = useState("dash");
 	const { url, path } = useRouteMatch();
 	const location = useLocation();
@@ -158,6 +159,7 @@ export default function TripNavbar() {
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				title='trip'
 				components={SlidingWindowTabs}
+				missing={missing}
 			/>
 		</>
 	);

@@ -16,14 +16,7 @@ export default function UploadInput({
 	const uploadHandle = () => {
 		document.querySelector(`.${name.split(" ")[0]}_uploadFile`).click();
 	};
-	// const fileUpload = ({ target }) => {
-	// 	const file = target.files[0];
-	// 	console.log(file, file.name);
-	// 	const fileNameField = document.querySelector(".fileName");
-	// 	fileNameField.innerHTML = file.name;
-	// 	// disable(false);
-	// };
-	// console.log(UpLoadedDocs);
+
 	return (
 		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-center'>
 			<Form.Group className=' w-100' controlId='upload'>
@@ -31,42 +24,6 @@ export default function UploadInput({
 					{label}
 				</Form.Label>
 				<div className='position-relative'>
-					{/* <div
-						className='border d-flex align-items-center uploadField'
-						style={{
-							overflowX: "scroll",
-							overflowY: "hidden",
-							borderRadius: "5px",
-							height: "42px",
-							padding: "5px 5px",
-						}}>
-						<div
-							className='border d-flex align-items-center py-1 px-2'
-							style={{
-								cursor: "pointer",
-								borderRadius: "5px",
-								minWidth: "max-content",
-								whiteSpace: "nowrap",
-							}}
-							onClick={uploadHandle}>
-							<input
-								onChange={fileUpload}
-								hidden
-								className=''
-								id='uploadFile'
-								style={{ width: "0" }}
-								type='file'
-								name=''
-							/>
-							<img
-								src='/assets/upload.png'
-								alt=''
-								className='img-fluid'
-							/>
-							<span className='ms-2'>Choose file</span>
-						</div>
-						<span className='ms-2 fileName'></span>
-					</div> */}
 					<div className='d-flex align-items-center'>
 						<div
 							className='d-flex align-items-center py-1 '
@@ -80,8 +37,9 @@ export default function UploadInput({
 							<input
 								onChange={onChange}
 								hidden
+								required={required}
 								className={`${name.split(" ")[0]}_uploadFile`}
-								// id='uploadFile'
+								id={name.split(" ").join("")}
 								style={{ width: "0" }}
 								type='file'
 								name={name}
@@ -101,7 +59,10 @@ export default function UploadInput({
 												? item.name.slice(0, 9) + ".."
 												: item.name}
 										</span>
-										<span>&times;</span>
+										<span
+											onClick={() => remove(index, name)}>
+											&times;
+										</span>
 									</div>
 								);
 							})}

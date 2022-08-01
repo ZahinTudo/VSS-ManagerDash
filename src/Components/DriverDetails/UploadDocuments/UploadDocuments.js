@@ -8,10 +8,25 @@ import {
 } from "../../ModularComponents/Inputs/Inputs";
 import { setUploadDoc } from "../../../Redux-toolkit/AddDriverSlice";
 
-export default function UploadDocuments() {
+export default function UploadDocuments({ missingCheck }) {
 	const [driverUploadDoc, setDriverUploadDoc] = useState({});
 	const { addDriver } = useSelector((state) => state.addDriver);
 	const dispatch = useDispatch();
+
+	const handleRemove = (id, name) => {
+		console.log(id, name, driverUploadDoc);
+		setDriverUploadDoc((prev) => {
+			const newData = { ...prev };
+			const files = newData[name].filter((item, index) => index != id);
+			newData[name] = files;
+			if (files.length == 0) {
+				document.querySelector(`#${name.split(" ").join("")}`).value =
+					null;
+			}
+			return checkMissingRequired(newData);
+		});
+	};
+
 	function debounce(func, timeout = 1000) {
 		let timer;
 		return function (...args) {
@@ -34,10 +49,32 @@ export default function UploadDocuments() {
 		setDriverUploadDoc((prev) => {
 			const newData = { ...prev };
 			newData[name] = value;
-			dispatch(setUploadDoc(newData));
-			return newData;
+			// dispatch(setUploadDoc(newData));
+			return checkMissingRequired(newData);
 		});
 	});
+	const checkMissingRequired = (data) => {
+		const requiredField = [
+			...document.querySelectorAll(".driverUpdoc [required]"),
+		];
+		let Missingflag = false;
+		const keys = Object.keys(data);
+		requiredField.forEach((item, ind) => {
+			console.log(keys, item);
+			// console.log(!keys.includes(item.name), item.value.length == 0);
+			if (!keys.includes(item.name) || item.value.length == 0) {
+				Missingflag = true;
+
+				return;
+			}
+
+			// Missingflag = false;
+		});
+		data.missing = Missingflag;
+		missingCheck(2, Missingflag);
+		dispatch(setUploadDoc(data));
+		return data;
+	};
 	const fileUpload = ({ target }) => {
 		const file = target.files[0];
 		console.log(file, file.name, target.name);
@@ -45,20 +82,20 @@ export default function UploadDocuments() {
 			setDriverUploadDoc((prev) => {
 				const newData = { ...prev };
 				newData[target.name] = [...newData[target.name], file];
-				dispatch(setUploadDoc(newData));
-				return newData;
+				// dispatch(setUploadDoc(newData));
+				return checkMissingRequired(newData);
 			});
 		} else {
 			setDriverUploadDoc((prev) => {
 				const newData = { ...prev };
 				newData[target.name] = [file];
-				dispatch(setUploadDoc(newData));
-				return newData;
+				// dispatch(setUploadDoc(newData));
+				return checkMissingRequired(newData);
 			});
 		}
 	};
 	return (
-		<div>
+		<div className='driverUpdoc'>
 			<div>
 				<div>
 					<label htmlFor=''>Licence Details</label>
@@ -90,7 +127,7 @@ export default function UploadDocuments() {
 					<div className='col d-flex'>
 						<UploadInput
 							onChange={fileUpload}
-							remove={handleUploadFileDetails}
+							remove={handleRemove}
 							name='licence doc'
 							label='Upload Document'
 							required={true}
@@ -111,7 +148,7 @@ export default function UploadDocuments() {
 									name: "Aadhar Card",
 								},
 							]}
-							required={true}
+							required={false}
 							placeholder='Proof Type'
 							label='Proof Type'
 							onBlur={handleUploadFileDetails}
@@ -119,7 +156,7 @@ export default function UploadDocuments() {
 					</div>
 					<div className='col'>
 						<NormalInputs
-							required={true}
+							required={false}
 							placeholder='ID number'
 							label='ID number'
 							onBlur={handleUploadFileDetails}
@@ -130,10 +167,10 @@ export default function UploadDocuments() {
 					<div className='col'>
 						<UploadInput
 							onChange={fileUpload}
-							remove={handleUploadFileDetails}
+							remove={handleRemove}
 							name='id doc'
 							label='Upload Document'
-							required={true}
+							required={false}
 							UpLoadedDocs={addDriver["uploadDoc"]}
 						/>
 					</div>
@@ -151,7 +188,7 @@ export default function UploadDocuments() {
 									name: "B+ve",
 								},
 							]}
-							required={true}
+							required={false}
 							placeholder='Blood Group'
 							label='Blood Group '
 							onBlur={handleUploadFileDetails}
@@ -160,7 +197,7 @@ export default function UploadDocuments() {
 					<div className='col'>
 						<DateInputs
 							type='datetime-local'
-							required={true}
+							required={false}
 							placeholder='DD/MM/YYYY'
 							label='Last check up Date'
 							onBlur={handleUploadFileDetails}
@@ -171,11 +208,11 @@ export default function UploadDocuments() {
 					<div className='col'>
 						<UploadInput
 							onChange={fileUpload}
-							remove={handleUploadFileDetails}
+							remove={handleRemove}
 							name='health doc'
 							UpLoadedDocs={addDriver["uploadDoc"]}
 							label='Upload Document'
-							required={true}
+							required={false}
 						/>
 					</div>
 				</div>

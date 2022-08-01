@@ -174,7 +174,7 @@ export function SelectInputs({
 				className='grayDefault px-3  py-2'
 				name={label}
 				disabled={disabled}
-				required={`${required}`}
+				required={required}
 				aria-label={label}>
 				<option value='' disabled selected>
 					{placeholder}

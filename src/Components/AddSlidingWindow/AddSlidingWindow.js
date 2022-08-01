@@ -13,6 +13,7 @@ export default function AddSlidingWindow({
 	AddSlidingWindowAnimation,
 	title,
 	components,
+	missing,
 }) {
 	const [key, setKey] = useState(1);
 	const [submitFlag, setsubmitFlag] = useState(false);
@@ -85,8 +86,28 @@ export default function AddSlidingWindow({
 							style={{ cursor: "pointer" }}
 							onClick={() => setKey(index + 1)}
 							className={`me-3 ${item.id === key && "active"}`}>
-							<div className='circle me-2'>{index + 1}</div>
-							<span>{item.name}</span>
+							{missing.includes(item.id) && item.id !== key ? (
+								<div className='d-flex align-items-center'>
+									<span>
+										<img
+											src='/assets/missingIcon.png'
+											alt=''
+											className='img-fluid'
+										/>
+									</span>
+									<div className='missingTabTitle'>
+										<span>{item.name}</span>
+										<span>Missing details</span>
+									</div>
+								</div>
+							) : (
+								<>
+									<div className='circle me-2'>
+										{index + 1}
+									</div>
+									<span>{item.name}</span>
+								</>
+							)}
 						</div>
 					))}
 				</div>

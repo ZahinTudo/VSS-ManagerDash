@@ -158,3 +158,29 @@
 	display: flex;
 	flex-direction: column;
 }
+.missingTabTitle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.missingTabTitle > span:first-child {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 12.8px;
+	line-height: 17px;
+	letter-spacing: 0.4px;
+
+	color: #bb0606;
+}
+.missingTabTitle > span:last-child {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 8.96px;
+	line-height: 12px;
+	letter-spacing: 0.4px;
+
+	color: #bb0606;
+}

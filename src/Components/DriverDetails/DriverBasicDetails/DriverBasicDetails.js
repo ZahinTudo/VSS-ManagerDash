@@ -13,7 +13,7 @@ export default function DriverBasicDetails({ missingCheck }) {
 	const [prev, setPrev] = useState("");
 	const { addDriver } = useSelector((state) => state.addDriver);
 	const dispatch = useDispatch();
-	// const [gender, setGenderRadio] = useState("male");
+	
 	console.log(addDriver);
 
 	const setGender = (e) => {
@@ -22,8 +22,7 @@ export default function DriverBasicDetails({ missingCheck }) {
 			const prevGender = document.querySelector(`[data-gender=${prev}]`);
 			prevGender.classList.remove("active");
 		}
-		// console.log(target, prevGender);
-		// setGenderRadio(target.dataset.gender);
+	
 		document.querySelector(".radioGender").value = target.dataset.gender;
 		setPrev(target.dataset.gender);
 		target.classList.add("active");
@@ -32,7 +31,8 @@ export default function DriverBasicDetails({ missingCheck }) {
 			newData["gender"] = target.dataset.gender;
 			return checkMissingRequired(newData);
 		});
-	};
+    };
+    
 	const checkMissingRequired = (data) => {
 		const requiredField = [
 			...document.querySelectorAll(".basicDetails [required]"),
@@ -43,11 +43,14 @@ export default function DriverBasicDetails({ missingCheck }) {
 			console.log(!keys.includes(item.name), item.value.length == 0);
 			if (!keys.includes(item.name) || item.value.length == 0) {
 				Missingflag = true;
+
 				return;
 			}
+
 			// Missingflag = false;
 		});
 		data.missing = Missingflag;
+		missingCheck(1, Missingflag);
 		dispatch(setBasicDetails(data));
 		return data;
 	};
@@ -56,7 +59,7 @@ export default function DriverBasicDetails({ missingCheck }) {
 		const value = e.currentTarget.value;
 		updateBasicData(name, value);
 	};
-	function debounce(func, timeout = 1000) {
+	function debounce(func, timeout = 500) {
 		let timer;
 		return function (...args) {
 			if (timer) {

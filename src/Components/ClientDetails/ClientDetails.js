@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TripFilters from "../TripFilters/TripFilters";
 import "./ClientDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
@@ -7,6 +7,7 @@ import { useAnimation } from "framer-motion";
 import BasicDetailsComponent from "./BasicDetailsComponent/BasicDetailsComponent";
 import AddTrucks from "./AddTrucks/AddTrucks";
 export default function ClientDetails() {
+    const [missing,setMissing]=useState([])
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
@@ -89,6 +90,7 @@ export default function ClientDetails() {
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				title='Client'
 				components={SlidingWindowTabs}
+				missing={missing}
 			/>
 		</div>
 	);

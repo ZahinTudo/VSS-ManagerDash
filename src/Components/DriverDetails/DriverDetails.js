@@ -20,24 +20,32 @@ export default function DriverDetails() {
 			},
 		});
 	};
-	// const missingCheck = (id, payload) => {
-	// 	setSlidingWindowTabs((prev) => {
-	// 		const newData = { ...prev };
-	// 		newData[id].missing = payload;
-	// 		console.log("cheeeeeecked", newData);
-	// 		return newData;
-	// 	});
-	// };
+	const [missing, setMissing] = useState([]);
+	const missingCheck = (id, payload) => {
+		console.log(id, payload);
+		if (payload) {
+			setMissing((prev) => {
+				const newData = [id, ...prev];
+				return newData;
+			});
+		} else {
+			setMissing((prev) => {
+				const newData = [...prev].filter((item) => item != id);
+				console.log(newData);
+				return newData;
+			});
+		}
+	};
 	const [SlidingWindowTabs, setSlidingWindowTabs] = useState([
 		{
 			name: "Basic Details",
 			id: 1,
-			component: <DriverBasicDetails />,
+			component: <DriverBasicDetails missingCheck={missingCheck} />,
 		},
 		{
 			name: "Upload Documents",
 			id: 2,
-			component: <UploadDocuments />,
+			component: <UploadDocuments missingCheck={missingCheck} />,
 		},
 	]);
 	const [Tabletabs, setTabletabs] = useState([
@@ -104,6 +112,7 @@ export default function DriverDetails() {
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				title='Driver'
 				components={SlidingWindowTabs}
+				missing={missing}
 			/>
 		</div>
 	);

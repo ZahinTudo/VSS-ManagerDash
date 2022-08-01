@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TripFilters from "../TripFilters/TripFilters";
 import "./TrucksDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
@@ -8,6 +8,7 @@ import TruckBasicDetails from "./TruckBasicDetails/TruckBasicDetails";
 import TrucksUploadDocuments from "./TrucksUploadDocuments/TrucksUploadDocuments";
 import TrucksPermits from "./TrucksPermits/TrucksPermits";
 export default function TrucksDetails() {
+	const [missing, setMissing] = useState([]);
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
@@ -99,6 +100,7 @@ export default function TrucksDetails() {
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				title='truck'
 				components={SlidingWindowTabs}
+				missing={missing}
 			/>
 		</div>
 	);
