@@ -32,7 +32,7 @@ export default function UploadDocuments() {
 
 	const updateUploadData = debounce((name, value) => {
 		setDriverUploadDoc((prev) => {
-			const newData = { ...driverUploadDoc };
+			const newData = { ...prev };
 			newData[name] = value;
 			dispatch(setUploadDoc(newData));
 			return newData;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TripFilters from "../TripFilters/TripFilters";
 import "./DriverDetails.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
@@ -8,8 +8,8 @@ import DriverBasicDetails from "./DriverBasicDetails/DriverBasicDetails";
 import DriverBankDetails from "./DriverBankDetails/DriverBankDetails";
 import UploadDocuments from "./UploadDocuments/UploadDocuments";
 export default function DriverDetails() {
-    const AddSlidingWindowAnimation = useAnimation();
-    
+	const AddSlidingWindowAnimation = useAnimation();
+
 	const handleAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
 			width: 600,
@@ -20,24 +20,27 @@ export default function DriverDetails() {
 			},
 		});
 	};
-	const SlidingWindowTabs = [
+	// const missingCheck = (id, payload) => {
+	// 	setSlidingWindowTabs((prev) => {
+	// 		const newData = { ...prev };
+	// 		newData[id].missing = payload;
+	// 		console.log("cheeeeeecked", newData);
+	// 		return newData;
+	// 	});
+	// };
+	const [SlidingWindowTabs, setSlidingWindowTabs] = useState([
 		{
 			name: "Basic Details",
 			id: 1,
 			component: <DriverBasicDetails />,
 		},
 		{
-			name: "Bank Details",
-			id: 2,
-			component: <DriverBankDetails />,
-		},
-		{
 			name: "Upload Documents",
-			id: 3,
+			id: 2,
 			component: <UploadDocuments />,
 		},
-	];
-	const Tabletabs = [
+	]);
+	const [Tabletabs, setTabletabs] = useState([
 		{
 			name: " Occupied",
 			url: "/Drivers.json",
@@ -50,7 +53,8 @@ export default function DriverDetails() {
 			name: "Deactivated",
 			url: "/Drivers.json",
 		},
-	];
+	]);
+
 	const addBtn = () => {
 		//do add function
 	};

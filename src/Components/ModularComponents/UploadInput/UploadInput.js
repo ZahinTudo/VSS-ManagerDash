@@ -23,7 +23,7 @@ export default function UploadInput({
 	// 	fileNameField.innerHTML = file.name;
 	// 	// disable(false);
 	// };
-	console.log(UpLoadedDocs);
+	// console.log(UpLoadedDocs);
 	return (
 		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-center'>
 			<Form.Group className=' w-100' controlId='upload'>

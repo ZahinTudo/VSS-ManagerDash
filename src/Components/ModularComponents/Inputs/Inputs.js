@@ -43,8 +43,10 @@ export function NormalInputs({
 }
 export function DateInputs({ type, required, placeholder, label, onBlur }) {
 	const dateChangeHandle = (e) => {
+		// const name = e.currentTarget.name;
 		const dateInput = e.currentTarget.value;
 		console.log(dateInput);
+		onBlur(e);
 		if (dateInput != "") {
 			document
 				.querySelector(".dateInput ~ span")
@@ -67,7 +69,7 @@ export function DateInputs({ type, required, placeholder, label, onBlur }) {
 					// 	e.currentTarget.type = "text";
 					// }}
 					onChange={dateChangeHandle}
-					required={require}
+					required={required}
 					name={label}
 					type='text'
 					onFocus={(e) => {
