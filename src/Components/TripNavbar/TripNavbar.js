@@ -5,9 +5,10 @@ import "./TripNavbar.css";
 import { motion, useAnimation } from "framer-motion";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
+import RouteDetails from "./RouteDetails/RouteDetails";
 
 export default function TripNavbar() {
-	const [missing, SetMissing] = useState([]);
+	const [missing, setMissing] = useState([]);
 	const [PrevActiveNav, setPrevActiveNav] = useState("dash");
 	const { url, path } = useRouteMatch();
 	const location = useLocation();
@@ -31,6 +32,21 @@ export default function TripNavbar() {
 			},
 		});
 	};
+	const missingCheck = (id, payload) => {
+		console.log(id, payload);
+		if (payload) {
+			setMissing((prev) => {
+				const newData = [id, ...prev];
+				return newData;
+			});
+		} else {
+			setMissing((prev) => {
+				const newData = [...prev].filter((item) => item != id);
+				console.log(newData);
+				return newData;
+			});
+		}
+	};
 	const handleNavigation = (e) => {
 		const target = e.currentTarget;
 		let link = target.dataset.link;
@@ -46,7 +62,7 @@ export default function TripNavbar() {
 		{
 			name: "Route details",
 			id: 2,
-			component: "",
+			component: <RouteDetails missingCheck={missingCheck} />,
 		},
 	];
 	return (

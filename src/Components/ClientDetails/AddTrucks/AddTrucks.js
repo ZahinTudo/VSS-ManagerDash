@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import "./AddTrucks.css";
 import { NormalInputs } from "../../ModularComponents/Inputs/Inputs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { setClientTruck } from "../../../Redux-toolkit/AddClientSlice";
 
 export default function AddTrucks() {
 	const { allMarkers } = useSelector((state) => state.allMarkers);
 	const [selected, setselected] = useState([]);
 	const [vehicles, SetVehicles] = useState(allMarkers);
+	const dispatch = useDispatch();
+	console.log(vehicles);
 	const handleAdd = (index) => {
-		setselected([...selected, index]);
+		const data = [...selected, index];
+		dispatch(setClientTruck(data));
+		setselected(data);
 	};
 	const handleRemove = (index) => {
 		// const index=selected
 		console.log(index);
 		const updated = selected.filter((val, id) => id != index);
+		dispatch(setClientTruck(updated));
 		setselected(updated);
 	};
 	return (
@@ -36,13 +42,22 @@ export default function AddTrucks() {
 					<div
 						style={{ borderBottom: "1px solid #cecece40" }}
 						className='d-flex align-items-center justify-content-between'>
-						<span className='title'>{vehicles[item].License}</span>
+						<span className='title'>
+							{vehicles[item].truck.registrationNumber}
+						</span>
 						<div className='py-3'>
-							<span className='text-success me-2'>Added </span>
+							{/* <span className='text-success me-2'>Added </span> */}
 							<span
 								style={{ cursor: "pointer" }}
 								onClick={() => handleRemove(index)}>
-								<FontAwesomeIcon icon={faTimes} />
+								<span>
+									<img
+										src='/assets/checkBoxChecked.png'
+										alt=''
+										className='img-fluid'
+									/>
+								</span>
+								{/* <FontAwesomeIcon icon={faTimes} /> */}
 							</span>
 						</div>
 					</div>
@@ -53,12 +68,21 @@ export default function AddTrucks() {
 							<div
 								style={{ borderBottom: "1px solid #cecece40" }}
 								className='d-flex align-items-center justify-content-between'>
-								<span className='title'>{item.License}</span>
+								<span className='title'>
+									{item.truck.registrationNumber}
+								</span>
 								<div
 									className='py-3'
 									style={{ cursor: "pointer" }}
 									onClick={() => handleAdd(index)}>
-									<FontAwesomeIcon icon={faPlus} />
+									<span>
+										<img
+											src='/assets/checkBoxUnChecked.png'
+											alt=''
+											className='img-fluid'
+										/>
+									</span>
+									{/* <FontAwesomeIcon icon={faPlus} /> */}
 								</div>
 							</div>
 						);

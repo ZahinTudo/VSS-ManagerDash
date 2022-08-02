@@ -7,7 +7,7 @@ import { useAnimation } from "framer-motion";
 import BasicDetailsComponent from "./BasicDetailsComponent/BasicDetailsComponent";
 import AddTrucks from "./AddTrucks/AddTrucks";
 export default function ClientDetails() {
-    const [missing,setMissing]=useState([])
+	const [missing, setMissing] = useState([]);
 	const AddSlidingWindowAnimation = useAnimation();
 	const handleAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
@@ -19,16 +19,32 @@ export default function ClientDetails() {
 			},
 		});
 	};
+
+	const missingCheck = (id, payload) => {
+		console.log(id, payload);
+		if (payload) {
+			setMissing((prev) => {
+				const newData = [id, ...prev];
+				return newData;
+			});
+		} else {
+			setMissing((prev) => {
+				const newData = [...prev].filter((item) => item != id);
+				console.log(newData);
+				return newData;
+			});
+		}
+	};
 	const SlidingWindowTabs = [
 		{
 			name: "Basic Details",
 			id: 1,
-			component: <BasicDetailsComponent />,
+			component: <BasicDetailsComponent missingCheck={missingCheck} />,
 		},
 		{
 			name: "add truck",
 			id: 2,
-			component: <AddTrucks />,
+			component: <AddTrucks missingCheck={missingCheck} />,
 		},
 	];
 	const tabs = [

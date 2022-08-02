@@ -15,10 +15,10 @@ export default function TextAreaInput({
 			<textarea
 				required={required}
 				onBlur={onBlur}
-				className='form-control'
+				className='form-control textArea'
 				id='exampleFormControlTextarea1'
 				placeholder={placeholder}
-				rows='4'></textarea>
+				rows='3'></textarea>
 		</div>
 	);
 }

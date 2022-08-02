@@ -20,21 +20,31 @@ export default function TrucksDetails() {
 			},
 		});
 	};
+	const missingCheck = (id, payload) => {
+		console.log(id, payload);
+		if (payload) {
+			setMissing((prev) => {
+				const newData = [id, ...prev];
+				return newData;
+			});
+		} else {
+			setMissing((prev) => {
+				const newData = [...prev].filter((item) => item != id);
+				console.log(newData);
+				return newData;
+			});
+		}
+	};
 	const SlidingWindowTabs = [
 		{
 			name: "Basic Details",
 			id: 1,
-			component: <TruckBasicDetails />,
+			component: <TruckBasicDetails missingCheck={missingCheck} />,
 		},
 		{
 			name: "Upload Documents",
 			id: 2,
-			component: <TrucksUploadDocuments />,
-		},
-		{
-			name: "Permits",
-			id: 3,
-			component: <TrucksPermits />,
+			component: <TrucksUploadDocuments missingCheck={missingCheck} />,
 		},
 	];
 	const Tabletabs = [

@@ -24,7 +24,7 @@ export default function UploadInput({
 					{label}
 				</Form.Label>
 				<div className='position-relative'>
-					<div className='d-flex align-items-center'>
+					<div className='d-flex align-items-center '>
 						<div
 							className='d-flex align-items-center py-1 '
 							style={{
@@ -50,22 +50,27 @@ export default function UploadInput({
 								className='img-fluid'
 							/>
 						</div>
-						{UpLoadedDocs &&
-							UpLoadedDocs[name]?.map((item, index) => {
-								return (
-									<div key={index} className='files'>
-										<span title={item.name}>
-											{item.name.length > 10
-												? item.name.slice(0, 9) + ".."
-												: item.name}
-										</span>
-										<span
-											onClick={() => remove(index, name)}>
-											&times;
-										</span>
-									</div>
-								);
-							})}
+						<div className='d-flex flex-wrap align-items-center justify-content-start'>
+							{UpLoadedDocs &&
+								UpLoadedDocs[name]?.map((item, index) => {
+									return (
+										<div key={index} className='files mb-1'>
+											<span title={item.name}>
+												{item.name.length > 10
+													? item.name.slice(0, 9) +
+													  ".."
+													: item.name}
+											</span>
+											<span
+												onClick={() =>
+													remove(index, name)
+												}>
+												&times;
+											</span>
+										</div>
+									);
+								})}
+						</div>
 					</div>
 				</div>
 			</Form.Group>
