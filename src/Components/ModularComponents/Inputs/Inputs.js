@@ -17,7 +17,7 @@ export function NormalInputs({
 	label,
 	onBlur,
 	disabled,
-	workFlowName,
+	value,
 }) {
 	return (
 		<Form.Group className='' md='' controlId=''>
@@ -36,7 +36,39 @@ export function NormalInputs({
 				type={type}
 				disabled={disabled}
 				placeholder={placeholder}
-				value={workFlowName}
+				value={value}
+			/>
+		</Form.Group>
+	);
+}
+export function LocationInputs({
+	className,
+	type,
+	required,
+	placeholder,
+	label,
+	onBlur,
+	disabled,
+	value,
+}) {
+	return (
+		<Form.Group className='' md='' controlId=''>
+			<Form.Label
+				className={
+					required ? "required text-secondary" : "text-secondary"
+				}>
+				{label}
+			</Form.Label>
+			<Form.Control
+				className={"px-3  py-2 " + className}
+				// onBlur={onBlur}
+				onChange={onBlur}
+				required={required}
+				name={label}
+				type={type}
+				disabled={disabled}
+				placeholder={placeholder}
+				value={value}
 			/>
 		</Form.Group>
 	);

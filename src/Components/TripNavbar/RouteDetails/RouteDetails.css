@@ -1,0 +1,117 @@
+.addTribSecTitle {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px !important;
+	line-height: 22px;
+
+	/* identical to box height */
+	text-transform: capitalize;
+
+	/* Black */
+	color: #000000;
+}
+.routeSection {
+	margin-top: 1rem;
+	padding-left: 2rem;
+}
+.noteBtn span {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 18px;
+	text-transform: capitalize;
+
+	/* grayscale / gray */
+	color: #9fa2b4;
+}
+/* .routeSet::before {
+	content: "";
+	width: 2px;
+	height: 100%;
+	position: absolute;
+	background-color: #e2e2e2;
+	left: -2rem;
+	top: 0;
+} */
+.routeSetion {
+	position: relative;
+}
+.pinOnMap {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12.8px;
+	line-height: 17px;
+	text-decoration-line: underline;
+	text-transform: capitalize;
+	cursor: pointer;
+	color: #216cb0;
+}
+
+.noteBtn .btnBox {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 9px 37px;
+	gap: 10px;
+
+	width: 98px;
+	height: 42px;
+
+	background: #f2f2f2;
+	border-radius: 8px;
+}
+.routeSection {
+	position: relative;
+}
+.tripInfoForm {
+	position: relative;
+}
+/* .tripInfoForm:before {
+	content: "";
+	width: 2px;
+	height: 100%;
+	position: absolute;
+	background-color: #e2e2e2;
+	left: 0;
+	top: 39px;
+} */
+.routeSection:before {
+	content: "";
+	width: 2px;
+	height: 130%;
+	position: absolute;
+	background-color: #e2e2e2;
+	left: 0;
+	top: 39px;
+}
+.routeSection:last-child {
+	margin-top: 5rem;
+}
+.routeSection:last-child:before {
+	content: "";
+	width: 2px;
+	height: 20%;
+	position: absolute;
+	background-color: #e2e2e2;
+	left: 0;
+	top: 0;
+}
+.addStop {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14.06px;
+	line-height: 19px;
+	letter-spacing: 0.4px;
+	color: #216cb0;
+}
+#addWindow-tabpane-1 > div:nth-child(1) {
+	padding-bottom: 2rem;
+}
+
+.addTripDetails img {
+	pointer-events: none;
+}

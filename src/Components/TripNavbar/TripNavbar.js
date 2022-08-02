@@ -5,6 +5,8 @@ import "./TripNavbar.css";
 import { motion, useAnimation } from "framer-motion";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
+// import RouteDetails from "./RouteDetails/RouteDetails";
+import TripDetails from "./TripDetails/TripDetails";
 import RouteDetails from "./RouteDetails/RouteDetails";
 
 export default function TripNavbar() {
@@ -55,14 +57,14 @@ export default function TripNavbar() {
 	};
 	const SlidingWindowTabs = [
 		{
-			name: "Trip details",
+			name: "Route details",
 			id: 1,
-			component: "",
+			component: <RouteDetails />,
 		},
 		{
-			name: "Route details",
+			name: "Trip details",
 			id: 2,
-			component: <RouteDetails missingCheck={missingCheck} />,
+			component: <TripDetails missingCheck={missingCheck} />,
 		},
 	];
 	return (
