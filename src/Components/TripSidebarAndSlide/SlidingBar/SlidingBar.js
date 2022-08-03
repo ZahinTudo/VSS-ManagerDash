@@ -27,7 +27,9 @@ export default function SlidingBar({
 		tabElement.style.height = `calc(100% -  ${heightToSubtract}px)`;
 	};
 	const getTheTripData = (tripId) => {
-		fetch(`http://3.111.225.21:9005/logisticsManager/getTrip?id=${tripId}`)
+		fetch(
+			`http://vahan247.tudotechnologies.com:9005/logisticsManager/getTrip?id=${tripId}`
+		)
 			.then((res) => res.json())
 			.then((result) => setTripDetails(result))
 			.catch((err) => console.log(err, tripId));
