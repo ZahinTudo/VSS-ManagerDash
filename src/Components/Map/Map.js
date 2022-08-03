@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactDOMServer from "react-dom/server";
-// import "./App.css";
 import { Marker } from "@react-google-maps/api";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Home from "./Home";
 import {
 	GoogleMap,
 	LoadScript,
 	InfoWindow,
 	useJsApiLoader,
+	Autocomplete,
 } from "@react-google-maps/api";
 // import VehicleDetailsModal from "./Components/VehicleDetailsModal/VehicleDetailsModal";
 import VehicleDetailsModal from "../VehicleDetailsModal/VehicleDetailsModal";
@@ -23,8 +22,6 @@ const containerStyle = {
 };
 
 function Map() {
-	const [coordinates, setCoordinates] = useState(null);
-	const [coordinates2, setCoordinates2] = useState(null);
 	const [markerList, setMarker] = useState([]);
 	const [start, setStart] = useState(null);
 	const [start1, setStart1] = useState(null);
@@ -35,19 +32,18 @@ function Map() {
 	const [VehicleDetailsModalshow, setVehicleDetailsModal] =
 		React.useState(false);
 	const [map, setMap] = React.useState(/** @type google.maps.Map */ (null));
-	// const { allMarkers } = useSelector((state) => state.allMarkers);
-	// const { MapRef } = useSelector((state) => state.MapRef);
+
 	const dispatch = useDispatch();
 
 	// var directionsService = new google.maps.DirectionsService();
-	const googleMapsApiKey = process.env.GOOGLE_MAP_API_KEY;
+	const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+	console.log(googleMapsApiKey);
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
-		googleMapsApiKey,
+		googleMapsApiKey: googleMapsApiKey,
+		libraries: ["places"],
 	});
 	const onLoad = React.useCallback(function callback(map) {
-		// const bounds = new window.google.maps.LatLngBounds(start_point);
-		// map.fitBounds(bounds);
 		dispatch(setMapRef(map));
 		setMap(map);
 	}, []);
@@ -62,128 +58,10 @@ function Map() {
 		marker.addListener("click", () => infowindow.open(map, marker));
 	};
 
-	// useEffect(() => {
-	// 	fetch("/sirTrack2.geojson")
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 			const coordinateData = data.features[0].geometry.coordinates[0];
-	// 			const coordinateData2 =
-	// 				data.features[0].geometry.coordinates[1];
-
-	// 			setCoordinates(coordinateData);
-	// 			setCoordinates2(coordinateData2);
-	// 			const start = {
-	// 				lng: coordinateData[0][0],
-	// 				lat: coordinateData[0][1],
-	// 			};
-	// 			const start1 = {
-	// 				lng: coordinateData2[0][0],
-	// 				lat: coordinateData2[0][1],
-	// 			};
-	// 			console.log(start1);
-	// 			const Marker = [
-	// 				{
-	// 					position: start,
-	// 					icon: "https://purepng.com/public/uploads/large/yellow-truck-n1f.png",
-	// 					info: "<div><h2>Marker 1</h2><p>Truck no : 1<br/> Driver : Saman</p></div>",
-	// 					company: "Flipcart Ltd.",
-	// 					title: "Marker 1",
-	// 					driver: "Saman",
-	// 					License: "UP 01 AP 1341",
-	// 					Start: "Tudo tech",
-	// 					end: "My home",
-	// 					startDate: "11/06/22",
-	// 					endDate: "15/06/22",
-	// 					currentStatus: "driving",
-	// 					zone: "North",
-	// 					truckDetails: {
-	// 						make: "Tata",
-	// 						model: "Primio",
-	// 						capacity: "1.5 Ton",
-	// 						manufacturedAt: "2016",
-	// 						regState: "Chandigarh",
-	// 					},
-	// 				},
-	// 				{
-	// 					position: start1,
-	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-	// 					company: "Amazon Ltd.",
-	// 					title: "Marker 2",
-	// 					driver: "Arvin",
-	// 					License: "UP 01 AP 1342",
-	// 					Start: "Tudo tech",
-	// 					end: "My home",
-	// 					startDate: "11/06/22",
-	// 					endDate: "15/06/22",
-	// 					currentStatus: "stopped",
-	// 					zone: "North",
-	// 					truckDetails: {
-	// 						make: "Tata",
-	// 						model: "Primio",
-	// 						capacity: "1.5 Ton",
-	// 						manufacturedAt: "2016",
-	// 						regState: "Chandigarh",
-	// 					},
-	// 				},
-	// 				{
-	// 					position: {
-	// 						lat: 19.228825,
-	// 						lng: 72.854118,
-	// 					},
-	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-	// 					company: "Apple pvt. Ltd.",
-	// 					title: "Mumbai",
-	// 					driver: "Zahin",
-	// 					License: "ZP 01 AP 1343",
-	// 					Start: "Goa",
-	// 					end: "Mumbai",
-	// 					startDate: "11/06/22",
-	// 					endDate: "15/06/22",
-	// 					currentStatus: "driving",
-	// 					zone: "North",
-	// 					truckDetails: {
-	// 						make: "Tata",
-	// 						model: "Primio",
-	// 						capacity: "1.5 Ton",
-	// 						manufacturedAt: "2016",
-	// 						regState: "Chandigarh",
-	// 					},
-	// 				},
-	// 				{
-	// 					position: { lat: 15.496777, lng: 73.827827 },
-	// 					icon: "http://www.mamotorcycles.com.mt/wp-content/uploads/2020/11/22MY_Ninja_650_WT1_STU__1_.png",
-	// 					info: "<div><h2>Marker 2</h2><p>Truck no : 2<br/> Driver : Zahin</p></div>",
-	// 					company: "VN Cosmetics",
-	// 					title: "Goa",
-	// 					driver: "Puja",
-	// 					License: "UP 01 AP 1344",
-	// 					Start: "Goa",
-	// 					end: "Mumbai",
-	// 					startDate: "11/06/22",
-	// 					endDate: "15/06/22",
-	// 					currentStatus: "driving",
-	// 					zone: "North",
-	// 					truckDetails: {
-	// 						make: "Tata",
-	// 						model: "Primio",
-	// 						capacity: "1.5 Ton",
-	// 						manufacturedAt: "2016",
-	// 						regState: "Chandigarh",
-	// 					},
-	// 				},
-	// 			];
-
-	// 			setMarker(Marker);
-	// 			setcenter(start);
-	// 			setStart(start);
-	// 			setStart1(start1);
-	// 		});
-	// }, [isLoaded]);
 	useEffect(() => {
-		fetch("http://3.111.225.21:9005/logisticsManager/getAllActiveTrips/")
+		fetch(
+			"http://vahan247.tudotechnologies.com:9005/logisticsManager/getAllActiveTrips/"
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -332,9 +210,20 @@ function Map() {
 					// 	lat: 12.9,
 					// 	lng: 13.6,
 					// }}
+					options={{
+						zoomControl: false,
+						streetViewControl: false,
+						mapTypeControl: false,
+						fullscreenControl: false,
+					}}
 					zoom={10}>
 					{/* Child components, such as markers, info windows, etc. */}
 				</GoogleMap>
+				{/* <div style={{ position: "absolute", left: "50%", top: "50%" }}>
+					<Autocomplete>
+						<input type='text' />
+					</Autocomplete>
+				</div> */}
 			</>
 		) : (
 			<></>

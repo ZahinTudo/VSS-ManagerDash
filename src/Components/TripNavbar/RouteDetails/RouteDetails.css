@@ -115,3 +115,15 @@
 .addTripDetails img {
 	pointer-events: none;
 }
+.pac-container {
+	z-index: 10000 !important;
+	width: auto !important;
+	position: fixed;
+	top: 0;
+	/* left: 0 !important;
+	right: 0 !important; */
+	/* display: block !important; */
+}
+/* .pac-container:empty{
+    display: none !important;
+} */

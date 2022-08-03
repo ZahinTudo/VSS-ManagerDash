@@ -9,6 +9,8 @@ import UploadInput from "../../ModularComponents/UploadInput/UploadInput";
 import "./TripDetails.css";
 import TextAreaInput from "../../ModularComponents/TextAreaInput/TextAreaInput";
 import { setTripDetails } from "../../../Redux-toolkit/AddTripSlice";
+import { useJsApiLoader } from "@react-google-maps/api";
+import Map from "../../Map/Map";
 export default function TripDetails({ missingCheck }) {
 	const [RouteDetails, setRouteDetails] = useState({});
 

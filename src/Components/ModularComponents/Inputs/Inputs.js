@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import $ from "jquery";
 import React, { useEffect } from "react";
 import { Col, Form, FormControl, InputGroup } from "react-bootstrap";
+import { Autocomplete } from "@react-google-maps/api";
 import "./Inputs.css";
 import {
 	faCalendar,
@@ -178,23 +179,6 @@ export function SelectInputs({
 	onBlur,
 	disabled,
 }) {
-	// const selectDefHandler = () => {
-	// 	const selectDef = $(".grayDefault");
-	// 	selectDef.each((ind, obj) => {
-	// 		const val = $(obj).val();
-	// 		if (val == 0) {
-	// 			$(obj).addClass("empty");
-	// 		} else $(obj).removeClass("empty");
-	// 	});
-	// };
-	// useEffect(() => {
-	// 	selectDefHandler();
-	// 	const selectDef = $(".grayDefault");
-	// 	selectDef.change(() => {
-	// 		selectDefHandler();
-	// 	});
-	// }, []);
-
 	return (
 		<Form.Group className='' as={Col} md='' controlId=''>
 			<Form.Label className={required ? "required" : ""}>

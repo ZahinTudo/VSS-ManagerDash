@@ -7,9 +7,26 @@ import {
 	NormalInputs,
 	SelectInputs,
 } from "../../ModularComponents/Inputs/Inputs";
+import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 import TextAreaInput from "../../ModularComponents/TextAreaInput/TextAreaInput";
 import "./RouteDetails.css";
+import PinOnMap from "../PinOnMap/PinOnMap";
+import { useAnimation } from "framer-motion";
+import { useCallback } from "react";
 export default function RouteDetails() {
+	const pinMapAnimation = useAnimation();
+	// const [AutoCompleteRef, setAutoCompleteRef] = useState(null);
+	let marker;
+	const [map, setMap] = useState(null);
+	const mapOpen = () => {
+		pinMapAnimation.start({
+			x: "-100%",
+			opacity: 1,
+			transition: {
+				duration: 0.15,
+			},
+		});
+	};
 	const handleBasidDetailInput = (e, index) => {
 		setTripInfo((prev) => {
 			const newData = [...prev];
@@ -17,22 +34,30 @@ export default function RouteDetails() {
 			return newData;
 		});
 	};
-
+	const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+	console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
+	const { isLoaded } = useJsApiLoader({
+		id: "google-map-script",
+		googleMapsApiKey: googleMapsApiKey,
+		libraries: ["places"],
+	});
 	const [TripInfo, setTripInfo] = useState([
 		{
 			location: "dhaka",
 			note: "start",
+			autoCompleteRef: null,
 		},
 		{
 			location: "",
 			note: "",
+			autoCompleteRef: null,
 		},
 		{
 			location: "",
 			note: "end",
+			autoCompleteRef: null,
 		},
 	]);
-	// const [newTripInfo, setNewTripInfo] = useState({});
 
 	//save reference for dragItem and dragOverItem
 	const dragItem = useRef(null);
@@ -57,11 +82,6 @@ export default function RouteDetails() {
 		setTripInfo(_TripInfo);
 	};
 
-	//handle name change
-	// const handleNameChange = (e) => {
-	// 	setNewTripInfo(e.target.value);
-	// };
-
 	//handle new item addition
 	const handleAddItem = () => {
 		const _TripInfo = [...TripInfo];
@@ -80,13 +100,57 @@ export default function RouteDetails() {
 		const target = e.currentTarget.dataset.target;
 		const targetId = e.currentTarget.dataset.id;
 		document.querySelector(`#${target}`).classList.add("d-none");
-		// console.log(e.currentTarget.closest(".noteBtn"));
 		document.querySelector(
 			`[data-target=noteBtn-${targetId}]`
 		).style.display = "block";
 	};
+	const onLoad = (autocomplete, index) => {
+		console.log("autocomplete: ", autocomplete);
+		setTripInfo((prev) => {
+			const newData = [...prev];
+			newData[index].autoCompleteRef = autocomplete;
+			return newData;
+		});
+		// AutoCompleteRef = autocomplete;
+	};
+	const onMapLoad = useCallback(function callback(map) {
+		// dispatch(setMapRef(map));
+		navigator.geolocation.getCurrentPosition(
+			function (position) {
+				map.setCenter({
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				});
+				map.setZoom(10);
+				// initMap(position.coords.latitude, position.coords.longitude);
+			},
+			function errorCallback(error) {
+				console.log(error);
+			}
+		);
+		setMap(map);
+	}, []);
+
+	const onPlaceChanged = (index) => {
+		const place = TripInfo[index].autoCompleteRef.getPlace();
+		if (place !== null) {
+			map.setCenter(place.geometry.location);
+			map.setZoom(15);
+			// eslint-disable-next-line no-undef
+			marker = new google.maps.Marker({
+				position: place.geometry.location,
+				map: map,
+				draggable: true,
+			});
+
+			console.log(place.geometry.location);
+		} else {
+			console.log("Autocomplete is not loaded yet!");
+		}
+	};
 	return (
 		<div className='addTripDetails'>
+			<PinOnMap pinMapAnimation={pinMapAnimation} onMapLoad={onMapLoad} />
 			<div style={{ paddingLeft: "2rem" }}>
 				<p className='addTribSecTitle'>Time Information</p>
 				<div
@@ -214,18 +278,33 @@ export default function RouteDetails() {
 								}}>
 								<div className='d-flex  mb-2'>
 									<div className='col'>
-										<LocationInputs
-											type='text'
-											value={item.location}
-											required={false}
-											placeholder='Source Source'
-											label='Source Source'
-											onBlur={(e) =>
-												handleBasidDetailInput(e, index)
-											}
-										/>
+										{isLoaded && (
+											<Autocomplete
+												onLoad={(searchBox) =>
+													onLoad(searchBox, index)
+												}
+												onPlaceChanged={() =>
+													onPlaceChanged(index)
+												}>
+												<LocationInputs
+													type='text'
+													value={item.location}
+													required={false}
+													placeholder='Source Source'
+													label='Source Source'
+													onBlur={(e) =>
+														handleBasidDetailInput(
+															e,
+															index
+														)
+													}
+												/>
+											</Autocomplete>
+										)}
 										<div className='d-flex align-items-center justify-content-end'>
-											<span className='d-flex align-items-center'>
+											<span
+												onClick={mapOpen}
+												className='d-flex align-items-center'>
 												<img
 													src='/assets/pin.png'
 													alt=''
