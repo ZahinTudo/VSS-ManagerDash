@@ -43,17 +43,20 @@ export default function RouteDetails() {
 	});
 	const [TripInfo, setTripInfo] = useState([
 		{
-			location: "dhaka",
+			location: "",
+			coordinate: null,
 			note: "start",
 			autoCompleteRef: null,
 		},
 		{
 			location: "",
+			coordinate: null,
 			note: "",
 			autoCompleteRef: null,
 		},
 		{
 			location: "",
+			coordinate: null,
 			note: "end",
 			autoCompleteRef: null,
 		},
@@ -80,14 +83,18 @@ export default function RouteDetails() {
 
 		//update the actual array
 		setTripInfo(_TripInfo);
+
+		console.log(marker);
 	};
 
 	//handle new item addition
 	const handleAddItem = () => {
 		const _TripInfo = [...TripInfo];
 		_TripInfo.splice(_TripInfo.length - 1, 0, {
-			location: "new",
+			location: "",
+			coordinate: null,
 			note: "",
+			autoCompleteRef: null,
 		});
 		setTripInfo(_TripInfo);
 	};
@@ -133,6 +140,9 @@ export default function RouteDetails() {
 
 	const onPlaceChanged = (index) => {
 		const place = TripInfo[index].autoCompleteRef.getPlace();
+		TripInfo[index].coordinate = place.geometry.location;
+		TripInfo[index].location = place.formatted_address;
+		// console.log(place);
 		if (place !== null) {
 			map.setCenter(place.geometry.location);
 			map.setZoom(15);
@@ -148,6 +158,41 @@ export default function RouteDetails() {
 				},
 				title: "Location marker",
 				draggable: true,
+			});
+
+			/**
+			 * Finds the new position of the marker when the marker is dragged.
+			 */
+
+			// eslint-disable-next-line no-undef
+			google.maps.event.addListener(marker, "dragend", function (event) {
+				var lat, long, address, resultArray, citi;
+
+				console.log("i am dragged");
+				lat = marker.getPosition().lat();
+				long = marker.getPosition().lng();
+
+				// eslint-disable-next-line no-undef
+				var geocoder = new google.maps.Geocoder();
+				geocoder.geocode(
+					{ latLng: marker.getPosition() },
+					function (result, status) {
+						if ("OK" === status) {
+							// This line can also be written like if ( status == google.maps.GeocoderStatus.OK ) {
+							address = result[0].formatted_address;
+							setTripInfo((prev) => {
+								const newData = [...prev];
+								newData[index].location = address;
+								return newData;
+							});
+						} else {
+							console.log(
+								"Geocode was not successful for the following reason: " +
+									status
+							);
+						}
+					}
+				);
 			});
 
 			console.log(place.geometry.location);
