@@ -102,6 +102,7 @@ function Map() {
 				scaledSize: new google.maps.Size(50, 50),
 			},
 			title: markerObj.truck.registrationNumber,
+			// draggable: true,
 		});
 
 		// eslint-disable-next-line no-undef

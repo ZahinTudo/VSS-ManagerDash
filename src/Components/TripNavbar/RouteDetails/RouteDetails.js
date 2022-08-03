@@ -140,6 +140,13 @@ export default function RouteDetails() {
 			marker = new google.maps.Marker({
 				position: place.geometry.location,
 				map: map,
+				icon: {
+					url: "https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG.png",
+					// set marker width and height
+					// eslint-disable-next-line no-undef
+					scaledSize: new google.maps.Size(50, 50),
+				},
+				title: "Location marker",
 				draggable: true,
 			});
 
