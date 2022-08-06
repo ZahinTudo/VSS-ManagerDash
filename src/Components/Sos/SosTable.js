@@ -4,6 +4,7 @@ import "./SosTable.css";
 import TripTabTables from "../TripTabTables/TripTabTables";
 import { useAnimation } from "framer-motion";
 import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
+import SosLogs from "./SosLogs/SosLogs";
 
 export default function SosTable() {
 	const [missing, setMissing] = useState([]);
@@ -100,11 +101,9 @@ export default function SosTable() {
 				chatBtn={chatBtn}
 				type='Sos'
 			/>
-			{/* <AddSlidingWindow
+			{/* <SosLogs
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				title='truck'
-				components={SlidingWindowTabs}
-				missing={missing}
 			/> */}
 		</div>
 	);
