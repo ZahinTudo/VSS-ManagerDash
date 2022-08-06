@@ -27,7 +27,7 @@ export default function TripFilters({ filters }) {
 					</div>
 				))}
 
-				<div className='d-flex align-items-center '>
+				{/* <div className='d-flex align-items-center '>
 					<span className=''>
 						<img
 							src='/assets/filterFlag.png'
@@ -35,7 +35,7 @@ export default function TripFilters({ filters }) {
 							className='img-fluid'
 						/>
 					</span>
-				</div>
+				</div> */}
 				<div className='d-flex align-items-center filters'>
 					<FontAwesomeIcon icon={faSliders} className='me-3' />
 					<span

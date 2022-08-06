@@ -59,9 +59,7 @@ function Map() {
 	};
 
 	useEffect(() => {
-		fetch(
-			"http://vahan247.tudotechnologies.com:9005/logisticsManager/getAllActiveTrips/"
-		)
+		fetch("https://devser.vahan247.com/logisticsManager/getAllActiveTrips/")
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);

@@ -135,7 +135,7 @@ export default function TripNavbar() {
 					</div>
 				</div>
 				<div className='nav-right'>
-					<div className='sosNotify'>
+					<div onClick={handleNavigation} data-link="SOS" className='sosNotify'>
 						<div className='sosBtn'>
 							<img src='/assets/sosRed.png' alt='' />
 						</div>

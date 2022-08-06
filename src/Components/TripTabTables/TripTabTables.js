@@ -17,7 +17,7 @@ export default function TripTabTables({
 		<div className='tripTabTable'>
 			<div className='d-flex align-items-center justify-content-between'>
 				<div>
-					<ul className='mb-3 nav nav-tabs' role='tablist'>
+					<ul className='mb-2 nav nav-tabs' role='tablist'>
 						{tabs.map((item, index) => {
 							return (
 								<li
@@ -42,30 +42,34 @@ export default function TripTabTables({
 						})}
 					</ul>
 				</div>
-				<div className='d-flex align-items-center justify-content-between'>
-					<span onClick={deleteBtn} className='actionWrapperBox'>
-						<img
-							src='/assets/trashCan.svg'
-							alt=''
-							className='img-fluid'
-						/>
-					</span>
-					<span onClick={chatBtn} className='actionWrapperBox mx-4'>
-						<img
-							src='/assets/chat.svg'
-							alt=''
-							className='img-fluid'
-						/>
-					</span>
-					<div className='addBtn' onClick={addBtn}>
-						<span className='me-2'>Add {type}</span>
-						<img
-							src='/assets/addTrucks.png'
-							alt=''
-							className='img-fluid'
-						/>
+				{type != "Sos" && (
+					<div className='d-flex align-items-center justify-content-between'>
+						<span onClick={deleteBtn} className='actionWrapperBox'>
+							<img
+								src='/assets/trashCan.svg'
+								alt=''
+								className='img-fluid'
+							/>
+						</span>
+						<span
+							onClick={chatBtn}
+							className='actionWrapperBox mx-4'>
+							<img
+								src='/assets/chat.svg'
+								alt=''
+								className='img-fluid'
+							/>
+						</span>
+						<div className='addBtn' onClick={addBtn}>
+							<span className='me-2'>Add {type}</span>
+							<img
+								src='/assets/addTrucks.png'
+								alt=''
+								className='img-fluid'
+							/>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 			<Tabs
 				defaultActiveKey={key}
@@ -75,7 +79,7 @@ export default function TripTabTables({
 				className='mb-3 detailsTable'>
 				{tabs.map((item, index) => {
 					return (
-						<Tab key={index} eventKey={item.name} title='In Garage'>
+						<Tab key={index} eventKey={item.name}>
 							<TabTable url={item.url} type={type} />
 						</Tab>
 					);

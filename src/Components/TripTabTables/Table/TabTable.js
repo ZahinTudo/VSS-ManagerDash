@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import ClientTable from "./ClientTable/ClientTable";
 import DriverTable from "./DriverTable/DriverTable";
+import SosTable from "./SosTable/SosTable";
 import "./TabTable.css";
 import TrucksTable from "./TrucksTable/TrucksTable";
 
@@ -25,6 +26,7 @@ export default function TabTable({ url, type }) {
 		getData();
 	}, []);
 	if (type === "truck") return <TrucksTable activeTrip={activeTrip} />;
+	if (type === "Sos") return <SosTable activeTrip={activeTrip} />;
 
 	if (type === "driver") return <DriverTable activeTrip={activeTrip} />;
 

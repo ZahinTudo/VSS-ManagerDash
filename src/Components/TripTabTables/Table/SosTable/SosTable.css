@@ -1,0 +1,13 @@
+.viewSOS {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 8px 10px;
+	gap: 10px;
+	color: white;
+	width: 112px;
+	height: 35px;
+
+	background: #bb0606;
+	border-radius: 4px;
+}

@@ -10,6 +10,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import TrucksDetails from "../TrucksDetails/TrucksDetails";
 import DriverDetails from "../DriverDetails/DriverDetails";
 import ClientDetails from "../ClientDetails/ClientDetails";
+import SosTable from "../Sos/SosTable";
 
 export default function TripDashboard() {
 	const { url, path } = useRouteMatch();
@@ -73,6 +74,9 @@ export default function TripDashboard() {
 				</Route>
 				<Route exact path={path + "/clients"}>
 					<ClientDetails />
+				</Route>
+				<Route exact path={path + "/SOS"}>
+					<SosTable />
 				</Route>
 			</Switch>
 

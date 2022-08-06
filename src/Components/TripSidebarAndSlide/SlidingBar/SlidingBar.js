@@ -28,7 +28,7 @@ export default function SlidingBar({
 	};
 	const getTheTripData = (tripId) => {
 		fetch(
-			`http://vahan247.tudotechnologies.com:9005/logisticsManager/getTrip?id=${tripId}`
+			`https://devser.vahan247.com/logisticsManager/getTrip?id=${tripId}`
 		)
 			.then((res) => res.json())
 			.then((result) => setTripDetails(result))
