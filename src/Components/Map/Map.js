@@ -63,10 +63,12 @@ function Map() {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				if (data.statusCode === 200) setMarker(data.activeTrips);
-				else {
+				if (data.statusCode === 200) {
+					setMarker(data.activeTrips);
+				} else {
 					alert("not success");
 				}
+				// socket
 				// setcenter(start);
 				// setStart(start);
 				// setStart1(start1);
@@ -88,6 +90,7 @@ function Map() {
 		});
 		// eslint-disable-next-line no-undef
 		const marker = new google.maps.Marker({
+			marker_Id: markerObj.id,
 			position: {
 				lat: markerObj.currentLocation.latitude,
 				lng: markerObj.currentLocation.longitude,
@@ -129,8 +132,61 @@ function Map() {
 
 		return marker;
 	};
-
 	let m = [];
+	let activeSockets = [];
+	const subscribeToLocationUpdate = (tripId) => {
+		const updateSocket = new WebSocket(
+			"ws://" +
+				`3.111.225.21:9005` +
+				"/ws/trip/tripLocation" +
+				tripId +
+				"/"
+		);
+
+		updateSocket.onopen = function (e) {
+			updateSocket.send(
+				JSON.stringify({ message: "Sending message to server" })
+			);
+		};
+
+		updateSocket.onmessage = function (e) {
+			// console.log(JSON.parse(e.data));
+			let data = JSON.parse(e.data);
+			data = JSON.parse(data.details);
+			// // const data = JSON.parse(e.data);
+			console.log("data", data, tripId);
+			const target = m.filter((item) => item.marker_Id == tripId);
+			// // console.log(m, tripId, target);
+			const lat = data.location.lat;
+			const lng = data.location.lng;
+			// eslint-disable-next-line no-undef
+			// const myLatlng = new google.maps.LatLng(lat, lng);
+			target[0].setPosition(data.location);
+			// setWebSocketLocation(data)
+
+			// document.querySelector(`#${tripId}`).innerHTML = data.message;
+		};
+
+		updateSocket.onclose = function (e) {
+			console.log("Chat socket closed unexpectedly");
+		};
+
+		var socketDetails = { tripId: tripId, socket: updateSocket };
+		console.log("====================================");
+		console.log(socketDetails);
+		console.log("====================================");
+
+		// activeSockets.push(socketDetails);
+	};
+
+	const unsubscribetoSocket = (selectedTripId) => {
+		for (var i = 0; i < activeSockets.length; i++) {
+			if (activeSockets[i].tripId == selectedTripId) {
+				activeSockets[i].socket.close();
+			}
+		}
+	};
+
 	useEffect(() => {
 		if (isLoaded && markerList.length > 0 && map != null) {
 			dispatch(setMarkers(markerList));
@@ -143,8 +199,10 @@ function Map() {
 				console.log(x);
 
 				const marker = createMarker(x);
+				m.push(marker);
+				subscribeToLocationUpdate(marker.marker_Id);
 				console.log(marker);
-				m.push({ marker, id });
+				// m.push({ marker, id });
 				// console.log(marker.position.lat());
 				// eslint-disable-next-line no-undef
 				const latLng = new google.maps.LatLng(

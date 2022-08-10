@@ -63,6 +63,7 @@ export default function TripDashboard() {
 								<Sidebar />
 							</div>
 						</div>
+						{/* socket part need to be done */}
 						<Map />
 					</div>
 				</Route>
