@@ -5,7 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import SlideWindow from "../../../../TripSidebarAndSlide/SlideWindow/SlideWindow";
 
-export default function TruckDetailsSlidingWindow({ TruckDetailsAnimation }) {
+export default function TruckDetailsSlidingWindow({
+	TruckDetailsAnimation,
+	truckDetails,
+}) {
+	console.log(truckDetails);
 	const handleClose = () => {
 		TruckDetailsAnimation.start({
 			x: 700,
@@ -22,8 +26,11 @@ export default function TruckDetailsSlidingWindow({ TruckDetailsAnimation }) {
 				x: 700,
 			}}
 			animate={TruckDetailsAnimation}>
-			Truck Details
-			<span onClick={handleClose}>&times;</span>
+			<div>
+				<div className='d-flex flex-column align-items-center justify-content-center'>
+					{truckDetails?.["Truck Details"].License}
+				</div>
+			</div>
 		</motion.div>
 	);
 }

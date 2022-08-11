@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TrucksTable.css";
 import {
 	faCommenting,
@@ -12,6 +12,7 @@ import PermitSlidingWindow from "./PermitSlidingWindow/PermitSlidingWindow";
 import { useAnimation } from "framer-motion";
 import TruckDetailsSlidingWindow from "./TruckDetailsSlidingWindow/TruckDetailsSlidingWindow";
 export default function TrucksTable({ activeTrip }) {
+	const [ClickedTruckId, setClickedTruckId] = useState(null);
 	const PermitAnimatinoSlide = useAnimation();
 	const handlePermitOpen = () => {
 		PermitAnimatinoSlide.start({
@@ -22,7 +23,9 @@ export default function TrucksTable({ activeTrip }) {
 		});
 	};
 	const TruckDetailsAnimation = useAnimation();
-	const handleTruckDetailsOpen = () => {
+	const handleTruckDetailsOpen = (e) => {
+		console.log(e.currentTarget.dataset.id, activeTrip);
+		setClickedTruckId(e.currentTarget.dataset.id);
 		TruckDetailsAnimation.start({
 			x: 0,
 			transition: {
@@ -34,6 +37,7 @@ export default function TrucksTable({ activeTrip }) {
 		<div className=''>
 			<PermitSlidingWindow PermitAnimatinoSlide={PermitAnimatinoSlide} />
 			<TruckDetailsSlidingWindow
+				truckDetails={activeTrip?.tableData[ClickedTruckId]}
 				TruckDetailsAnimation={TruckDetailsAnimation}
 			/>
 			<Table responsive hover className='table-borderless'>
@@ -53,14 +57,14 @@ export default function TrucksTable({ activeTrip }) {
 					</tr>
 				</thead>
 				<tbody>
-					{activeTrip?.tableData.map((item, index) => (
+					{activeTrip?.tableData.map((item, id) => (
 						<tr>
 							<td style={{ verticalAlign: "middle" }}>
 								<input
 									className='largerCheckbox'
 									type='checkbox'
 									name=''
-									id={index}
+									id={"checkbox-" + id}
 								/>
 							</td>
 							{Object.entries(item).map(([key, value], index) => (
@@ -75,6 +79,7 @@ export default function TrucksTable({ activeTrip }) {
 														<div className='d-flex flex-column'>
 															<span
 																className='links'
+																data-id={id}
 																onClick={
 																	handleTruckDetailsOpen
 																}
