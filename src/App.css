@@ -36,3 +36,11 @@ img {
 	-o-user-select: none;
 	user-select: none;
 }
+.search {
+	width: 322px;
+	height: 40px;
+	padding: 12px;
+	border: 1.2px solid #afafaf;
+	border-radius: 4px;
+	/* margin-right: 32px; */
+}

@@ -19,8 +19,8 @@ export default function AddSlidingWindow({
 	const [submitFlag, setsubmitFlag] = useState(false);
 	const handleCloseAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
-			width: 0,
-			x: 500,
+			
+			x: 700,
 			opacity: 0,
 			transition: {
 				duration: 0.15,
@@ -32,7 +32,7 @@ export default function AddSlidingWindow({
 		<motion.div
 			className='AddSlidingWindow'
 			style={{ zIndex: 600 }}
-			initial={{ width: 0, x: 500, opacity: 0 }}
+			initial={{  x: 700, opacity: 0 }}
 			animate={AddSlidingWindowAnimation}>
 			<div className=' d-flex flex-column h-100'>
 				<div className='headNav '>
