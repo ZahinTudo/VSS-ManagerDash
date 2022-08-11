@@ -150,18 +150,20 @@ function Map() {
 		};
 
 		updateSocket.onmessage = function (e) {
-			// console.log(JSON.parse(e.data));
 			let data = JSON.parse(e.data);
-			data = JSON.parse(data.details);
+			// console.log(JSON.parse(e.data));
+			// data = JSON.parse(data.details);
 			// // const data = JSON.parse(e.data);
 			console.log("data", data, tripId);
 			const target = m.filter((item) => item.marker_Id == tripId);
 			// // console.log(m, tripId, target);
-			const lat = data.location.lat;
-			const lng = data.location.lng;
+			// const lat = data.details.location.lat;
+			// const lng = data.details.location.lng;
 			// eslint-disable-next-line no-undef
 			// const myLatlng = new google.maps.LatLng(lat, lng);
-			target[0].setPosition(data.location);
+			// target[0].setVisible(false);
+			target[0].setPosition(data.details.location);
+			// target[0].setVisible(true);
 			// setWebSocketLocation(data)
 
 			// document.querySelector(`#${tripId}`).innerHTML = data.message;
