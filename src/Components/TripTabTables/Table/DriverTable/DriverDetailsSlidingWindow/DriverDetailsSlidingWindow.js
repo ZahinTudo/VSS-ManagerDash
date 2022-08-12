@@ -7,6 +7,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import SlideWindow from "../../../../TripSidebarAndSlide/SlideWindow/SlideWindow";
 import { Tab, Tabs } from "react-bootstrap";
 import PersonalDetailsTab from "./PersonalDetailsTab/PersonalDetailsTab";
+import DocumentsTab from "./DocumentsTab/DocumentsTab";
 
 export default function DriverDetailsSlidingWindow({
 	driverDetailsAnimation,
@@ -186,9 +187,28 @@ export default function DriverDetailsSlidingWindow({
 						activeKey={key}
 						onSelect={(k) => setKey(k)}
 						className='mb-3'>
+						{/* ========================================================
+                                          Personal Details
+                        ======================================================== */}
 						<Tab eventKey='Personal Details'>
 							<div className='PersonalDetails'>
 								<PersonalDetailsTab />
+							</div>
+						</Tab>
+						{/* ========================================================
+                                            Documents
+                        ======================================================== */}
+						<Tab eventKey='Documents'>
+							<div className='Documents'>
+								<DocumentsTab />
+							</div>
+						</Tab>
+						{/* ========================================================
+                                           Bank Details
+                        ======================================================== */}
+						<Tab eventKey='Bank Details'>
+							<div className='BankDetails'>
+								<DocumentsTab />
 							</div>
 						</Tab>
 						{/* ========================================================

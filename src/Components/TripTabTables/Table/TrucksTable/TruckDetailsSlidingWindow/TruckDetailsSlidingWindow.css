@@ -94,10 +94,10 @@
 
 .TruckDetailsSlidingWindow .documents,
 .TruckDetailsSlidingWindow .TripHistory {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow-y: auto;
 }
 /* .TruckDetailsSlidingWindow .permit {
 	height: 100%;
@@ -193,7 +193,7 @@
 }
 
 .TruckDetailsSlidingWindow .bottomTabs {
-	height: calc(100% - 320px);
+	height: calc(100% - 346px);
 	/* overflow-y: auto;
 	overflow-x: hidden; */
 }

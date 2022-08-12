@@ -11,7 +11,8 @@
 .DriverDetailsSlidingWindow .bottomTabs {
 	height: calc(100% - 225px);
 }
-.DriverDetailsSlidingWindow .PersonalDetails {
+.DriverDetailsSlidingWindow .PersonalDetails,
+.DriverDetailsSlidingWindow .Documents {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -79,20 +80,24 @@
 	color: #000000;
 }
 
-.DriverDetailsSlidingWindow .PersonalDetails::-webkit-scrollbar {
-	display: none;
+.DriverDetailsSlidingWindow .nav-tabs {
+	background: rgba(94, 94, 98, 0.05);
 }
 /* =========================================
 ScrollBar hide
 ========================================= */
 .DriverDetailsSlidingWindow .PersonalDetails::-webkit-scrollbar,
-.DriverDetailsSlidingWindow .TripHistory::-webkit-scrollbar {
+.DriverDetailsSlidingWindow
+	.TripHistory::-webkit-scrollbar
+	.DriverDetailsSlidingWindow
+	.Documents::-webkit-scrollbar {
 	display: none;
 }
 
 /* Hide scrollbar for IE, Edge add Firefox */
 .DriverDetailsSlidingWindow .PersonalDetails,
-.DriverDetailsSlidingWindow .TripHistory {
+.DriverDetailsSlidingWindow .TripHistory,
+.DriverDetailsSlidingWindow .Documents {
 	-ms-overflow-style: none;
 	scrollbar-width: none; /* Firefox */
 }
