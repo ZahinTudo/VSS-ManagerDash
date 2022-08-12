@@ -51,7 +51,7 @@
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 22px;
-
+	margin-top: 0.5rem;
 	/* identical to box height */
 	text-transform: capitalize;
 
@@ -94,10 +94,10 @@
 
 .TruckDetailsSlidingWindow .documents,
 .TruckDetailsSlidingWindow .TripHistory {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto;
 }
 /* .TruckDetailsSlidingWindow .permit {
 	height: 100%;
