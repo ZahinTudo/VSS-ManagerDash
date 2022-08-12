@@ -71,7 +71,13 @@ export default function DriverTable({ activeTrip }) {
 																src='/assets/user.png'
 																className='img-fluid'
 															/>
-															<span>{value}</span>
+															<span
+																style={{
+																	cursor: "pointer",
+																}}
+																className='text-info'>
+																{value}
+															</span>
 														</span>
 													);
 												case "Status":
