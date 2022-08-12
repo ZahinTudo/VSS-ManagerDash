@@ -1,0 +1,90 @@
+.TruckDetailsSlidingWindow {
+	width: 698px;
+	height: 100vh;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1rem 2rem;
+	box-shadow: 0 0 20px 0px gray;
+}
+.TruckDetailsSlidingWindow .LicensePlate {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 26px;
+
+	/* identical to box height */
+	text-transform: capitalize;
+
+	color: #151515;
+}
+.TruckDetailsSlidingWindow .companyAndStatus {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 18px;
+
+	/* identical to box height */
+	text-transform: capitalize;
+
+	color: #000000;
+}
+.truckDetailsSlideInfo .title {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+
+	/* Grey */
+	color: #5e5e62;
+}
+.truckDetailsSlideInfo .infoText {
+	/* H3/R */
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 22px;
+
+	/* identical to box height */
+	text-transform: capitalize;
+
+	/* Black */
+	color: #000000;
+}
+.TruckDetailsSlidingWindow .driverPersonal {
+	border: 1px solid rgba(223, 224, 235, 0.4);
+	border-left: none;
+	border-right: none;
+	padding: .7rem 0.2rem;
+}
+.TruckDetailsSlidingWindow .driverPersonal .label {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+
+	/* Grey */
+	color: #5e5e62;
+}
+.TruckDetailsSlidingWindow .driverPersonal .driverName {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+
+	/* Blue (CTA)i */
+	color: #041342;
+}
