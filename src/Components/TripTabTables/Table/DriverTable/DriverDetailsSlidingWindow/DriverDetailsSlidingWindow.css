@@ -12,7 +12,9 @@
 	height: calc(100% - 225px);
 }
 .DriverDetailsSlidingWindow .PersonalDetails,
-.DriverDetailsSlidingWindow .Documents {
+.DriverDetailsSlidingWindow .Documents,
+.DriverDetailsSlidingWindow .BankDetails,
+.DriverDetailsSlidingWindow .TripHistory {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -87,16 +89,16 @@
 ScrollBar hide
 ========================================= */
 .DriverDetailsSlidingWindow .PersonalDetails::-webkit-scrollbar,
-.DriverDetailsSlidingWindow
-	.TripHistory::-webkit-scrollbar
-	.DriverDetailsSlidingWindow
-	.Documents::-webkit-scrollbar {
+.DriverDetailsSlidingWindow .BankDetails::-webkit-scrollbar,
+.DriverDetailsSlidingWindow .TripHistory::-webkit-scrollbar,
+.DriverDetailsSlidingWindow .Documents::-webkit-scrollbar {
 	display: none;
 }
 
 /* Hide scrollbar for IE, Edge add Firefox */
 .DriverDetailsSlidingWindow .PersonalDetails,
 .DriverDetailsSlidingWindow .TripHistory,
+.DriverDetailsSlidingWindow .BankDetails,
 .DriverDetailsSlidingWindow .Documents {
 	-ms-overflow-style: none;
 	scrollbar-width: none; /* Firefox */

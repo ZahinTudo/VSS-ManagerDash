@@ -8,6 +8,8 @@ import SlideWindow from "../../../../TripSidebarAndSlide/SlideWindow/SlideWindow
 import { Tab, Tabs } from "react-bootstrap";
 import PersonalDetailsTab from "./PersonalDetailsTab/PersonalDetailsTab";
 import DocumentsTab from "./DocumentsTab/DocumentsTab";
+import TripHistory from "./TripHistory/TripHistory";
+import BankDetails from "./BankDetails/BankDetails";
 
 export default function DriverDetailsSlidingWindow({
 	driverDetailsAnimation,
@@ -148,7 +150,7 @@ export default function DriverDetailsSlidingWindow({
 					</div>
 				</div>
 				{/* ==============================================================
-            Tab contents
+                                    Tab contents
             ============================================================== */}
 				<div className='my-2 bottomTabs'>
 					<div>
@@ -208,13 +210,15 @@ export default function DriverDetailsSlidingWindow({
                         ======================================================== */}
 						<Tab eventKey='Bank Details'>
 							<div className='BankDetails'>
-								<DocumentsTab />
+								<BankDetails />
 							</div>
 						</Tab>
 						{/* ========================================================
                                              Trip History 
                         ======================================================== */}
-						<Tab eventKey='Trip History'>Trip history</Tab>
+						<Tab eventKey='Trip History'>
+							<TripHistory />
+						</Tab>
 					</Tabs>
 				</div>
 			</div>
