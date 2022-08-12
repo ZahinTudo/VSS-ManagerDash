@@ -44,3 +44,47 @@ img {
 	border-radius: 4px;
 	/* margin-right: 32px; */
 }
+
+/* =======================================
+input field general style
+======================================= */
+.form-control:focus {
+	box-shadow: none !important;
+}
+input,
+select {
+	padding: 11px 12px !important;
+	font-family: "Noto Sans" !important;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px !important;
+	line-height: 19px;
+	border-radius: 8px;
+	/* color: #0e0d0d; */
+	/* identical to box height */
+	text-transform: capitalize;
+
+	/* grayscale / gray dark */
+	/* color: #4b506d49 !important; */
+}
+select:required:invalid {
+	color: gray !important;
+}
+option[value=""][disabled] {
+	display: none;
+}
+option {
+	color: black !important;
+}
+
+label {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400 !important;
+	font-size: 14px !important;
+	line-height: 19px;
+	text-transform: capitalize;
+
+	/* Grey */
+	color: #5e5e62 !important;
+}
