@@ -81,27 +81,39 @@ export default function DriverTable({ activeTrip }) {
 														</span>
 													);
 												case "Status":
-													if (value === "Emergency")
-														return (
-															<>
+													return (
+														<>
+															<span className='me-2'>
 																<img
-																	src='/assets/Emergency.png'
+																	src={
+																		value.icon
+																	}
 																	alt=''
 																	className='img-fluid'
 																/>
-																<span className='ms-2 text-danger'>
-																	{value}
-																</span>
-															</>
-														);
-													if (value === "Driving")
-														return (
-															<>
-																<span>
-																	Driving
-																</span>
-															</>
-														);
+															</span>
+															<span
+																className={`${
+																	value.type ==
+																		"Emergency" &&
+																	"text-danger"
+																} ${
+																	value.type ==
+																		"Driving" &&
+																	"text-success"
+																} ${
+																	value.type ==
+																		"stopped" &&
+																	"text-secondary"
+																} ${
+																	value.type ==
+																		"Action Req." &&
+																	"text-warning"
+																}`}>
+																{value.type}
+															</span>
+														</>
+													);
 												default:
 													return value;
 											}
@@ -118,24 +130,22 @@ export default function DriverTable({ activeTrip }) {
 								}}
 								className='align-items-center text-dark'>
 								<span className='actionIcons'>
-									<FontAwesomeIcon icon={faPencil} />
-								</span>
-								<span className='actionIcons'>
-									<FontAwesomeIcon icon={faTrash} />
-								</span>
-								<span className='actionIcons'>
-									<FontAwesomeIcon icon={faCommenting} />
-								</span>
-								<span className='actionIcons'>
-									<FontAwesomeIcon icon={faMapMarkerAlt} />
-								</span>
-								<span className='actionIcons'>
 									<img
-										src='/assets/sosIcon.svg'
+										src='/assets/editPencil.png'
 										alt=''
 										className='img-fluid'
 									/>
 								</span>
+								<span className='actionIcons'>
+									<img
+										src='/assets/chat.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								</span>
+								{item.Status.type == "Emergency" && (
+									<span className='sosLog'>SOS LOGS</span>
+								)}
 							</td>
 						</tr>
 					))}

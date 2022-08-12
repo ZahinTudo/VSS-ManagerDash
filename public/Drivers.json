@@ -12,7 +12,10 @@
   "tableData": [
     {
       "Driver Name": "Rakesh Kumar",
-      "Status": "Emergency",
+       "Status":{
+                "type":"Driving",
+                "icon":"/assets/drivingSignal.png"
+            },
       "Contact": "0123456789",
       "preferred Language": "Hindi,English,marathi",
       "License": "MH-12-2009-0033020",
@@ -21,7 +24,10 @@
     },
     {
       "Driver Name": "Rakesh Kumar",
-      "Status": "Emergency",
+       "Status":{
+                "type":"Emergency",
+                "icon":"/assets/alarm.png"
+            },
       "Contact": "0123456789",
       "preferred Language": "Hindi,English,marathi",
       "License": "MH-12-2009-0033020",
@@ -30,7 +36,10 @@
     },
     {
       "Driver Name": "Rakesh Kumar",
-      "Status": "Emergency",
+       "Status":{
+                "type":"Action Req.",
+                "icon":"/assets/actionReq.png"
+            },
       "Contact": "0123456789",
       "preferred Language": "Hindi,English,marathi",
       "License": "MH-12-2009-0033020",
