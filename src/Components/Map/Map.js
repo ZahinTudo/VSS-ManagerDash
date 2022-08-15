@@ -137,7 +137,7 @@ function Map() {
 	const subscribeToLocationUpdate = (tripId) => {
 		const updateSocket = new WebSocket(
 			"ws://" +
-				`3.111.225.21:9005` +
+				process.env.REACT_APP_BASE_URL_PORT +
 				"/ws/trip/tripLocation" +
 				tripId +
 				"/"
@@ -151,7 +151,7 @@ function Map() {
 
 		updateSocket.onmessage = function (e) {
 			let data = JSON.parse(e.data);
-			// console.log(JSON.parse(e.data));
+			console.log("changing msg", data);
 			// data = JSON.parse(data.details);
 			// // const data = JSON.parse(e.data);
 			console.log("data", data, tripId);
@@ -170,7 +170,7 @@ function Map() {
 		};
 
 		updateSocket.onclose = function (e) {
-			console.log("Chat socket closed unexpectedly");
+			console.log("Chat socket closed unexpectedly", e);
 		};
 
 		var socketDetails = { tripId: tripId, socket: updateSocket };

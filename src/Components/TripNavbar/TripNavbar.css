@@ -150,3 +150,108 @@
 	color: #000000;
 	margin-right: var(--nav-userName-me);
 }
+.tripNavbar .profileDropDown {
+	/* position: absolute; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	justify-content: space-between;
+	padding: 16px;
+
+	position: absolute;
+	width: 194px;
+	height: 228px;
+	right: 0px;
+	top: 150%;
+	/* bottom: 0; */
+	z-index: 800;
+	background: #ffffff;
+	box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+.tripNavbar .nameBox {
+	width: 46px;
+	height: 46px;
+	left: 0px;
+	top: 0px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* Extra/stopped */
+	background: #f27063;
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+	text-align: center;
+	text-transform: capitalize;
+
+	color: #ffffff;
+	font-stretch: 100;
+	font-variation-settings: "CTGR" 0;
+}
+.tripNavbar .name {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 26px;
+
+	/* identical to box height */
+	/* text-align: center; */
+	text-transform: capitalize;
+
+	color: #000000;
+}
+.tripNavbar .designation {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+	/* text-align: center; */
+	text-transform: capitalize;
+
+	/* Grey */
+	color: #5e5e62;
+	font-stretch: 100;
+}
+.tripNavbar .profileDropDown .DropDownItems {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+	cursor: pointer;
+	/* identical to box height */
+	text-align: center;
+	text-transform: capitalize;
+	margin-left: 1.5rem;
+	/* Black */
+	color: #000000;
+	font-stretch: 100;
+	font-variation-settings: "CTGR" 0;
+}
+.tripNavbar .profileDropDown .DropDownItems.logout {
+	font-family: "Noto Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19px;
+
+	/* identical to box height */
+	text-align: center;
+	text-transform: capitalize;
+
+	/* Extra/Emergency */
+	color: #bb0606;
+	font-stretch: 100;
+	font-variation-settings: "CTGR" 0;
+}

@@ -95,6 +95,9 @@ export default function TrucksTable({ activeTrip }) {
 													return (
 														<>
 															<span
+																style={{
+																	cursor: "pointer",
+																}}
 																onClick={
 																	handlePermitOpen
 																}

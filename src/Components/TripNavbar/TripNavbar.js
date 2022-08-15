@@ -8,13 +8,17 @@ import AddSlidingWindow from "../AddSlidingWindow/AddSlidingWindow";
 // import RouteDetails from "./RouteDetails/RouteDetails";
 import TripDetails from "./TripDetails/TripDetails";
 import RouteDetails from "./RouteDetails/RouteDetails";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../Redux-toolkit/LoginSlice";
 
 export default function TripNavbar() {
 	const [missing, setMissing] = useState([]);
+	const [showProfileDropDown, setshowProfileDropDown] = useState(false);
 	const [PrevActiveNav, setPrevActiveNav] = useState("dash");
 	const { url, path } = useRouteMatch();
 	const location = useLocation();
 	const history = useHistory();
+	const dispatch = useDispatch();
 	const navClick = (e) => {
 		const prev = document.querySelector(`[data-link=${PrevActiveNav}]`);
 		prev.classList.remove("active");
@@ -135,7 +139,10 @@ export default function TripNavbar() {
 					</div>
 				</div>
 				<div className='nav-right'>
-					<div onClick={handleNavigation} data-link="SOS" className='sosNotify'>
+					<div
+						onClick={handleNavigation}
+						data-link='SOS'
+						className='sosNotify'>
 						<div className='sosBtn'>
 							<img src='/assets/sosRed.png' alt='' />
 						</div>
@@ -153,23 +160,78 @@ export default function TripNavbar() {
 						</span>
 						<FontAwesomeIcon icon={faPlus} />
 					</div>
-					<div className='d-flex align-items-center'>
-						<div className='userIcon'>
-							<img
-								className='img-fluid'
-								src='/assets/userIcon.png'
-								alt=''
-								srcset=''
-							/>
+					<div className='d-flex align-items-center position-relative'>
+						<div
+							style={{ cursor: "pointer" }}
+							onClick={() =>
+								setshowProfileDropDown(!showProfileDropDown)
+							}
+							className='position-relative d-flex align-items-center'>
+							<div className='userIcon'>
+								<img
+									className='img-fluid'
+									src='/assets/userIcon.png'
+									alt=''
+									srcset=''
+								/>
+							</div>
+							<span
+								className='userName'
+								style={{ whiteSpace: "nowrap" }}>
+								Hi! anubhav
+							</span>
+							<span>
+								<FontAwesomeIcon icon={faAngleDown} />
+							</span>
 						</div>
-						<span
-							className='userName'
-							style={{ whiteSpace: "nowrap" }}>
-							Hi! anubhav
-						</span>
-						<span>
-							<FontAwesomeIcon icon={faAngleDown} />
-						</span>
+						{showProfileDropDown && (
+							<div className='profileDropDown'>
+								<div className='d-flex align-items-center justify-content-evenly w-100 border-bottom py-2'>
+									<div className='nameBox'>A</div>
+									<div className='d-flex flex-column'>
+										<span className='name'>Anubhav</span>
+										<span className='designation'>
+											Manager
+										</span>
+									</div>
+								</div>
+								<div className='d-flex align-items-center  w-100 border-bottom p-2'>
+									<img
+										src='/assets/profileDropDown/user.png'
+										alt=''
+										className='img-fluid'
+									/>
+									<span className='DropDownItems'>
+										{" "}
+										my profile
+									</span>
+								</div>
+								<div className='d-flex align-items-center  w-100 border-bottom p-2'>
+									<img
+										src='/assets/profileDropDown/Chat.png'
+										alt=''
+										className='img-fluid'
+									/>
+									<span className='DropDownItems'>
+										Message logs
+									</span>
+								</div>
+								<div className='d-flex align-items-center  w-100 border-bottom p-2'>
+									<img
+										src='/assets/profileDropDown/logout.png'
+										alt=''
+										className='img-fluid'
+									/>
+									<span
+										onClick={() =>
+											dispatch(setLogin(false))
+										}
+										className='DropDownItems logout'>
+										Logout
+									</span>
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
