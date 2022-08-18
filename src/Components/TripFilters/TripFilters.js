@@ -13,11 +13,18 @@ export default function TripFilters({ filters }) {
 	return (
 		<div className='tripFilters'>
 			<div className='filter-left' style={{ width: `${filterWidth}%` }}>
-				<input
+				{/* <input
 					className='search'
 					type='text'
 					placeholder='&#128269; Search'
-				/>
+				/> */}
+				<div className='searchBar'>
+					<input
+						className='search-inp'
+						type='text'
+						placeholder='Search'
+					/>
+				</div>
 				{filters.map((item, index) => (
 					<div
 						onClick={item.OnClick}

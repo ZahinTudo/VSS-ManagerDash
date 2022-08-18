@@ -22,6 +22,15 @@
 	text-transform: capitalize;
 	color: #5e5e62;
 }
+.tripTabTable .nav-tabs .nav-link.active::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 5px;
+	background-color: #041342;
+}
 .tripTabTable .nav-tabs .nav-link.active {
 	font-family: "Mulish";
 	font-style: normal;
@@ -30,9 +39,9 @@
 	line-height: 23px;
 	text-transform: capitalize;
 	color: #041342 !important;
-
+	position: relative;
 	background-color: transparent !important;
-	border-color: transparent transparent #041342 transparent !important;
+	border-color: transparent !important;
 }
 .tripTabTable .nav-tabs {
 	border-bottom: none !important;
@@ -40,7 +49,7 @@
 .tripTabTable .nav-tabs .nav-link:focus,
 .tripTabTable .nav-tabs .nav-link:hover {
 	color: #041342;
-	border-color: transparent transparent #041342 transparent !important;
+	border-color: transparent !important;
 	isolation: isolate;
 }
 .tripTabTable .addBtn {

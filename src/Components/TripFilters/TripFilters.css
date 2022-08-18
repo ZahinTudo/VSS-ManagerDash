@@ -27,6 +27,19 @@
 	border-radius: 4px;
 	/* margin-right: 32px; */
 }
+.tripFilters .filter-left .search-inp {
+	font-family: "Noto Sans";
+	width: 290px;
+	height: 40px;
+	border-radius: 8px;
+	border: 1px solid #9fa2b4;
+	padding: 0px 40px !important;
+	outline: none;
+	background-image: url(../../../public/assets//search.svg);
+	background-repeat: no-repeat;
+	background-position: 10px 12px;
+}
+
 .tripFilters .filters {
 	font-family: "Noto Sans";
 	font-style: normal;

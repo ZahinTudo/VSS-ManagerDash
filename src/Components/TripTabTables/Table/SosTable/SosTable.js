@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./SosTable.css";
 import {
+	faAngleDown,
 	faCommenting,
 	faMapMarkerAlt,
 	faPencil,
@@ -31,7 +32,7 @@ export default function SosTable({ activeTrip }) {
 				AddSlidingWindowAnimation={AddSlidingWindowAnimation}
 				// title='truck'
 			/>
-			<Table responsive hover className='table-borderless'>
+			<Table striped responsive hover className='table-borderless'>
 				<thead>
 					<tr>
 						<th>
@@ -43,7 +44,10 @@ export default function SosTable({ activeTrip }) {
 							/>
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
-							<th key={index}>{item}</th>
+							<th key={index}>
+								<span className='me-2'>{item}</span>{" "}
+								<FontAwesomeIcon icon={faAngleDown} />
+							</th>
 						))}
 					</tr>
 				</thead>

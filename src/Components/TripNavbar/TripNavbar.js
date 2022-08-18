@@ -54,6 +54,8 @@ export default function TripNavbar() {
 		}
 	};
 	const handleNavigation = (e) => {
+		// const prev = document.querySelector(`[data-link=${PrevActiveNav}]`);
+		// prev.classList.remove("active");
 		const target = e.currentTarget;
 		let link = target.dataset.link;
 		link = link === "dash" ? "" : link;
@@ -140,15 +142,10 @@ export default function TripNavbar() {
 				</div>
 				<div className='nav-right'>
 					<div
-						onClick={handleNavigation}
+						onClick={navClick}
 						data-link='SOS'
 						className='sosNotify'>
-						<div className='sosBtn'>
-							<img src='/assets/sosRed.png' alt='' />
-						</div>
-						<div className='sosNotiNo'>
-							<span>+2</span>
-						</div>
+						<div className='sosBtn'>SOS LOGS</div>
 					</div>
 					<div
 						onClick={handleAddSlidingWindow}

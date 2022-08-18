@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TrucksTable.css";
 import {
+	faAngleDown,
 	faCommenting,
 	faMapMarkerAlt,
 	faPencil,
@@ -40,7 +41,7 @@ export default function TrucksTable({ activeTrip }) {
 				truckDetails={activeTrip?.tableData[ClickedTruckId]}
 				TruckDetailsAnimation={TruckDetailsAnimation}
 			/>
-			<Table responsive hover className='table-borderless'>
+			<Table responsive striped hover className='table-borderless'>
 				<thead>
 					<tr>
 						<th>
@@ -52,7 +53,10 @@ export default function TrucksTable({ activeTrip }) {
 							/>
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
-							<th key={index}>{item}</th>
+							<th key={index}>
+								<span className='me-2'>{item}</span>{" "}
+								<FontAwesomeIcon icon={faAngleDown} />
+							</th>
 						))}
 					</tr>
 				</thead>

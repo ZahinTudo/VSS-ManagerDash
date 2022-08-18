@@ -1,6 +1,7 @@
 import React from "react";
 import "./DriverTable.css";
 import {
+	faAngleDown,
 	faCommenting,
 	faMapMarkerAlt,
 	faPencil,
@@ -26,7 +27,7 @@ export default function DriverTable({ activeTrip }) {
 				driverDetailsAnimation={driverDetailsAnimation}
 				driverDetails={activeTrip}
 			/>
-			<Table responsive hover className='table-borderless'>
+			<Table striped responsive hover className='table-borderless'>
 				<thead>
 					<tr>
 						<th>
@@ -38,7 +39,10 @@ export default function DriverTable({ activeTrip }) {
 							/>
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
-							<th key={index}>{item}</th>
+							<th key={index}>
+								<span className='me-2'>{item}</span>{" "}
+								<FontAwesomeIcon icon={faAngleDown} />
+							</th>
 						))}
 					</tr>
 				</thead>
