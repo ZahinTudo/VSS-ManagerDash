@@ -135,9 +135,12 @@ function Map() {
 	let m = [];
 	let activeSockets = [];
 	const subscribeToLocationUpdate = (tripId) => {
+		// const updateSocket = new WebSocket(
+		// 	"wss://devser.vahan247.com/ws/trip/tripLocation3/"
+		// );
 		const updateSocket = new WebSocket(
-			"ws://" +
-				process.env.REACT_APP_BASE_URL_PORT +
+			"wss://" +
+				process.env.REACT_APP_BASE_URL_SOCKET +
 				"/ws/trip/tripLocation" +
 				tripId +
 				"/"
@@ -202,7 +205,7 @@ function Map() {
 
 				const marker = createMarker(x);
 				m.push(marker);
-				subscribeToLocationUpdate(marker.marker_Id);
+				// subscribeToLocationUpdate(marker.marker_Id);
 				console.log(marker);
 				// m.push({ marker, id });
 				// console.log(marker.position.lat());
@@ -278,11 +281,7 @@ function Map() {
 					zoom={10}>
 					{/* Child components, such as markers, info windows, etc. */}
 				</GoogleMap>
-				{/* <div style={{ position: "absolute", left: "50%", top: "50%" }}>
-					<Autocomplete>
-						<input type='text' />
-					</Autocomplete>
-				</div> */}
+				
 			</>
 		) : (
 			<></>

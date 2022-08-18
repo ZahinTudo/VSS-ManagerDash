@@ -34,6 +34,32 @@ export default function TrucksTable({ activeTrip }) {
 			},
 		});
 	};
+	const checkStateChange = (item) => {
+		const target = item;
+		const isChecked = JSON.parse(target.dataset.checked);
+		if (!isChecked) {
+			console.log(isChecked, target);
+			target.setAttribute("src", "/assets/checkBoxChecked.png");
+			target.dataset.checked = "true";
+			return;
+		}
+		target.setAttribute("src", "/assets/checkBoxUnChecked.png");
+		target.dataset.checked = "false";
+	};
+	const handleCheck = (e) => {
+		const target = e.currentTarget;
+		const type = target.dataset.checkbox;
+		if (type === "all") {
+			const allCheckBox = document.querySelectorAll(
+				".individualCheckbox"
+			);
+			allCheckBox.forEach((item) => {
+				checkStateChange(item);
+			});
+			return;
+		}
+		checkStateChange(target);
+	};
 	return (
 		<div className=''>
 			<PermitSlidingWindow PermitAnimatinoSlide={PermitAnimatinoSlide} />
@@ -45,12 +71,22 @@ export default function TrucksTable({ activeTrip }) {
 				<thead>
 					<tr>
 						<th>
-							<input
+							{/* <input
 								className='largerCheckbox'
 								type='checkbox'
 								name=''
 								id=''
-							/>
+							/> */}
+							<span>
+								<img
+									onClick={handleCheck}
+									data-checkbox='all'
+									data-checked={false}
+									src='/assets/checkBoxUnChecked.png'
+									alt=''
+									className='img-fluid'
+								/>
+							</span>
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
 							<th key={index}>
@@ -64,12 +100,22 @@ export default function TrucksTable({ activeTrip }) {
 					{activeTrip?.tableData.map((item, id) => (
 						<tr>
 							<td style={{ verticalAlign: "middle" }}>
-								<input
+								{/* <input
 									className='largerCheckbox'
 									type='checkbox'
 									name=''
 									id={"checkbox-" + id}
-								/>
+								/> */}
+								<span>
+									<img
+										onClick={handleCheck}
+										data-checkbox={id}
+										data-checked={false}
+										src='/assets/checkBoxUnChecked.png'
+										alt=''
+										className='img-fluid individualCheckbox'
+									/>
+								</span>
 							</td>
 							{Object.entries(item).map(([key, value], index) => (
 								<td

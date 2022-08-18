@@ -58,8 +58,11 @@ export default function Sidebar() {
 	};
 	const centerFocusedMarker = (e, id) => {
 		e.stopPropagation();
-		const pos = allMarkers[id].position;
-		// console.log(MapRef);
+		const pos = {
+			lat: allMarkers[id].currentLocation.latitude,
+			lng: allMarkers[id].currentLocation.longitude,
+		};
+		// console.log(MapRef, id, e, allMarkers[id]);
 		MapRef?.setCenter(pos);
 		MapRef?.setZoom(10);
 	};

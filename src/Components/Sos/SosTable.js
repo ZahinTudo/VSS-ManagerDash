@@ -92,7 +92,7 @@ export default function SosTable() {
 				width: "100vw",
 				flex: 1,
 			}}
-			className='DetailsIndividualPage'>
+			className='DetailsIndividualPage sosTableDesing'>
 			<TripFilters filters={filters} />
 			<TripTabTables
 				tabs={Tabletabs}
