@@ -50,11 +50,11 @@ export default function TrucksDetails() {
 	const Tabletabs = [
 		{
 			name: "Active",
-			url: "/Trucks.json",
+			url: "/activeTrucks.json",
 		},
 		{
 			name: "Inactive",
-			url: "/Trucks.json",
+			url: "/inactiveTrucks.json",
 		},
 	];
 	const addBtn = () => {

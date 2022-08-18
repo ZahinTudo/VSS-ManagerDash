@@ -2,11 +2,11 @@
     "tableHeads":[
         "Truck Details", 
         "Status",
-        "Permits",
         "Make and model",
+        "class",
         "Load Capacity",
-        "Registration State & City",
-        "Registration Date",
+        "Registration\nState & City",
+        "Registration\nDate",
         "Actions"
     ],
     "tableData":[
@@ -16,11 +16,11 @@
                 "company":"VN Cosemetics"
             },        
             "Status":{
-                "type":"Driving",
-                "icon":"/assets/drivingSignal.png"
+                "type":"Available",
+                "icon":"/assets/Available.png"
             },
-            "permit":"view permits",
             "Make & Model":"Tata Prima",
+            "class":"Light duty",
             "Load Capacity":"1.5 Ton",       
             "Registration":{
                 "State":"Maharastra",
@@ -34,11 +34,11 @@
                 "company":"VN Cosemetics"
             },        
             "Status":{
-                "type":"Emergency",
-                "icon":"/assets/alarm.png"
+                "type":"Maintenance",
+                "icon":"/assets/Maintenance.png"
             },
-            "permit":"view permits",
-            "Make & Model":"Tata Prima",
+           "Make & Model":"Tata Prima",
+            "class":"Light duty",
             "Load Capacity":"1.5 Ton",       
             "Registration":{
                 "State":"Maharastra",
@@ -48,59 +48,40 @@
         },
         {
             "Truck Details":{
-                "License":"YP 01 AP 1345",
+                "License":"UP 01 AP 1345",
                 "company":"VN Cosemetics"
             },        
             "Status":{
-                "type":"Stopped",
-                "icon":"/assets/stopped.png"
+                "type":"Available",
+                "icon":"/assets/Available.png"
             },
-            "permit":"view permits",
             "Make & Model":"Tata Prima",
+            "class":"Light duty",
             "Load Capacity":"1.5 Ton",       
             "Registration":{
                 "State":"Maharastra",
                 "City":"Pune"
             },
             "Registration Date":"24/01/2022"
-        },  {
-            "Truck Details":{
-                "License":"ZP 01 AP 1345",
-                "company":"VN Cosemetics"
-            },        
-            "Status":{
-                "type":"Action Req.",
-                "icon":"/assets/actionReq.png"
-            },
-            "permit":"view permits",
-            "Make & Model":"Tata Prima",
-            "Load Capacity":"1.5 Ton",       
-            "Registration":{
-                "State":"Maharastra",
-                "City":"Pune"
-            },
-            "Registration Date":"24/01/2022"
-        },  
+        },       
         {
             "Truck Details":{
-                "License":"TP 01 AP 1345",
+                "License":"UP 01 AP 1345",
                 "company":"VN Cosemetics"
             },        
             "Status":{
-                "type":"Action Req.",
-                "icon":"/assets/actionReq.png"
+                "type":"Maintenance",
+                "icon":"/assets/Maintenance.png"
             },
-            "permit":"view permits",
-            "Make & Model":"Tata Prima",
+           "Make & Model":"Tata Prima",
+            "class":"Light duty",
             "Load Capacity":"1.5 Ton",       
             "Registration":{
                 "State":"Maharastra",
                 "City":"Pune"
             },
             "Registration Date":"24/01/2022"
-        }
-       
-        
+        }       
         
     ]
 }

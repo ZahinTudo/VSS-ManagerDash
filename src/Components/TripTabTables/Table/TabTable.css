@@ -39,7 +39,7 @@
 }
 .tripTabTable tr {
 	border: transparent !important;
-	vertical-align: middle;
+	vertical-align: text-top;
 }
 /* .tripTabTable tr:nth-child(even) {
 	background-color: rgba(79, 94, 126, 0.315);

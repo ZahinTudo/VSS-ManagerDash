@@ -80,7 +80,7 @@ export default function TripTabTables({
 				{tabs.map((item, index) => {
 					return (
 						<Tab key={index} eventKey={item.name}>
-							<TabTable url={item.url} type={type} />
+							<TabTable url={item.url} type={item.name + type} />
 						</Tab>
 					);
 				})}

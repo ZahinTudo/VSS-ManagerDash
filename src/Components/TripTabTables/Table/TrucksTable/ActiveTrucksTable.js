@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import "./TrucksTable.css";
-import {
-	faAngleDown,
-	faCommenting,
-	faMapMarkerAlt,
-	faPencil,
-	faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import "./ActiveTrucksTable.css";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import PermitSlidingWindow from "./PermitSlidingWindow/PermitSlidingWindow";
 import { useAnimation } from "framer-motion";
 import TruckDetailsSlidingWindow from "./TruckDetailsSlidingWindow/TruckDetailsSlidingWindow";
-export default function TrucksTable({ activeTrip }) {
+export default function ActiveTrucksTable({ activeTrip }) {
 	const [ClickedTruckId, setClickedTruckId] = useState(null);
 	const PermitAnimatinoSlide = useAnimation();
 	const handlePermitOpen = () => {
@@ -50,10 +44,15 @@ export default function TrucksTable({ activeTrip }) {
 		const target = e.currentTarget;
 		const type = target.dataset.checkbox;
 		if (type === "all") {
+			checkStateChange(target);
 			const allCheckBox = document.querySelectorAll(
-				".individualCheckbox"
+				".Active_individualCheckbox"
 			);
 			allCheckBox.forEach((item) => {
+				const isChecked = JSON.parse(target.dataset.checked);
+				if (isChecked) {
+					item.dataset.checked = "false";
+				} else item.dataset.checked = "true";
 				checkStateChange(item);
 			});
 			return;
@@ -90,8 +89,14 @@ export default function TrucksTable({ activeTrip }) {
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
 							<th key={index}>
-								<span className='me-2'>{item}</span>{" "}
-								<FontAwesomeIcon icon={faAngleDown} />
+								<div className='d-flex align-items-start'>
+									<span
+										style={{ whiteSpace: "pre-line" }}
+										className='me-2 d-flex align-items-start'>
+										{item}
+									</span>
+									<span><FontAwesomeIcon icon={faAngleDown} /></span>
+								</div>
 							</th>
 						))}
 					</tr>
@@ -113,7 +118,7 @@ export default function TrucksTable({ activeTrip }) {
 										data-checked={false}
 										src='/assets/checkBoxUnChecked.png'
 										alt=''
-										className='img-fluid individualCheckbox'
+										className='img-fluid Active_individualCheckbox'
 									/>
 								</span>
 							</td>

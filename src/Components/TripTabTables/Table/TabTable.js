@@ -12,7 +12,8 @@ import ClientTable from "./ClientTable/ClientTable";
 import DriverTable from "./DriverTable/DriverTable";
 import SosTable from "./SosTable/SosTable";
 import "./TabTable.css";
-import TrucksTable from "./TrucksTable/TrucksTable";
+import ActiveTrucksTable from "./TrucksTable/ActiveTrucksTable";
+import InactiveTrucksTable from "./TrucksTable/InactiveTrucksTable/InactiveTrucksTable";
 
 export default function TabTable({ url, type }) {
 	const [activeTrip, setActiveTrip] = useState(null);
@@ -25,10 +26,12 @@ export default function TabTable({ url, type }) {
 	useEffect(() => {
 		getData();
 	}, []);
-	if (type === "truck") return <TrucksTable activeTrip={activeTrip} />;
+	if (type === "Activetruck")
+		return <ActiveTrucksTable activeTrip={activeTrip} />;
+	if (type === "Inactivetruck")
+		return <InactiveTrucksTable activeTrip={activeTrip} />;
 	if (type === "Sos") return <SosTable activeTrip={activeTrip} />;
-
 	if (type === "driver") return <DriverTable activeTrip={activeTrip} />;
-
 	if (type === "client") return <ClientTable activeTrip={activeTrip} />;
+	else return <></>;
 }
