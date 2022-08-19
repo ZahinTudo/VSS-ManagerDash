@@ -58,7 +58,14 @@ export default function PinOnMap({ pinMapAnimation, onMapLoad }) {
 						onClick={handlePinMapClose}
 						className='position-absolute'
 						style={{ right: "0", top: "50%", cursor: "pointer" }}>
-						<FontAwesomeIcon size='4x' icon={faAngleRight} />
+						{/* <FontAwesomeIcon size='4x' icon={faAngleRight} /> */}
+						<span>
+							<img
+								src='/assets/mapClose.png'
+								alt=''
+								className='img-fluid'
+							/>
+						</span>
 					</span>
 					{/* <Marker
 						draggable={true}

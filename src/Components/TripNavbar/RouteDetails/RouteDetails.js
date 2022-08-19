@@ -13,6 +13,8 @@ import "./RouteDetails.css";
 import PinOnMap from "../PinOnMap/PinOnMap";
 import { useAnimation } from "framer-motion";
 import { useCallback } from "react";
+import SimpleBar from "simplebar-react";
+import "simplebar-react/dist/simplebar.min.css";
 export default function RouteDetails() {
 	const pinMapAnimation = useAnimation();
 	// const [AutoCompleteRef, setAutoCompleteRef] = useState(null);
@@ -151,10 +153,10 @@ export default function RouteDetails() {
 				position: place.geometry.location,
 				map: map,
 				icon: {
-					url: "https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-Download-PNG.png",
+					url: "/assets/pinMarker.png",
 					// set marker width and height
 					// eslint-disable-next-line no-undef
-					scaledSize: new google.maps.Size(50, 50),
+					scaledSize: new google.maps.Size(50, 70),
 				},
 				title: "Location marker",
 				draggable: true,
@@ -376,17 +378,22 @@ export default function RouteDetails() {
 											className='form-label'
 											htmlFor=''
 											style={{ whiteSpace: "nowrap" }}>
-											Note(Optional)
+											Note (Optional)
 										</label>
 										<div
 											data-target={`noteSec-${index}`}
 											onClick={handleNote}
 											className='btnBox'>
-											<img
+											{/* <img
 												src='/assets/AddCircle.png'
 												alt=''
 												className='img-fluid'
-											/>
+											/> */}
+											<div className='addbox'>
+												<FontAwesomeIcon
+													icon={faPlus}
+												/>
+											</div>
 										</div>
 									</div>
 								</div>

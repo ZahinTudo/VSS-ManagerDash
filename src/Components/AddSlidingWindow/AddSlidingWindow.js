@@ -19,7 +19,6 @@ export default function AddSlidingWindow({
 	const [submitFlag, setsubmitFlag] = useState(false);
 	const handleCloseAddSlidingWindow = () => {
 		AddSlidingWindowAnimation.start({
-			
 			x: 700,
 			opacity: 0,
 			transition: {
@@ -32,7 +31,7 @@ export default function AddSlidingWindow({
 		<motion.div
 			className='AddSlidingWindow'
 			style={{ zIndex: 600 }}
-			initial={{  x: 700, opacity: 0 }}
+			initial={{ x: 700, opacity: 0 }}
 			animate={AddSlidingWindowAnimation}>
 			<div className=' d-flex flex-column h-100'>
 				<div className='headNav '>
@@ -48,8 +47,8 @@ export default function AddSlidingWindow({
 					<div className='d-flex align-items-center justify-content-end mt-2'>
 						<span
 							onClick={() => (key !== 1 ? setKey(key - 1) : "")}
-							className={`PrevNextBtn d-flex align-items-center ${
-								key === 1 && "disabled"
+							className={`PrevNextBtn secondary d-flex align-items-center ${
+								key === 1 && "d-none"
 							}`}>
 							<span className='me-1 d-flex align-items-center'>
 								<FontAwesomeIcon icon={faAngleLeft} />

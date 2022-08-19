@@ -63,7 +63,7 @@ export default function InactiveTrucksTable({ activeTrip }) {
 	};
 	return (
 		<div className=''>
-			<PermitSlidingWindow PermitAnimatinoSlide={PermitAnimatinoSlide} />
+			{/* <PermitSlidingWindow PermitAnimatinoSlide={PermitAnimatinoSlide} /> */}
 			<TruckDetailsSlidingWindow
 				truckDetails={activeTrip?.tableData[ClickedTruckId]}
 				TruckDetailsAnimation={TruckDetailsAnimation}
