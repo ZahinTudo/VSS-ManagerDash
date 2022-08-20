@@ -3,6 +3,8 @@ import { Tab, Tabs } from "react-bootstrap";
 import TabTable from "./Table/TabTable";
 
 import "./TripTabTables.css";
+import { useDispatch } from "react-redux";
+import { clearSelectedTableItems } from "../../Redux-toolkit/selectedTableItemsSlice";
 export default function TripTabTables({
 	tabs,
 	addBtn,
@@ -11,8 +13,18 @@ export default function TripTabTables({
 	type,
 }) {
 	const [key, setKey] = useState(tabs[0].name);
+	const dispatch = useDispatch();
 	// const [activeTrip, setActiveTrip] = useState(null);
+	const setTableTab = (keyvalue) => {
+		setKey(keyvalue);
 
+		// clearing state of the selected item
+		dispatch(clearSelectedTableItems());
+	};
+
+	useEffect(() => {
+		setTableTab(tabs[0].name);
+	}, []);
 	return (
 		<div className='tripTabTable'>
 			<div className='d-flex align-items-center justify-content-between'>
@@ -25,7 +37,9 @@ export default function TripTabTables({
 									class='nav-item'
 									role='presentation'>
 									<button
-										onClick={() => setKey(item.name)}
+										onClick={() => {
+											setTableTab(item.name);
+										}}
 										type='button'
 										id='controlled-tab-example-tab-ActiveTrip'
 										role='tab'

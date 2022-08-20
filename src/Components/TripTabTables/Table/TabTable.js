@@ -30,8 +30,10 @@ export default function TabTable({ url, type }) {
 		return <ActiveTrucksTable activeTrip={activeTrip} />;
 	if (type === "Inactivetruck")
 		return <InactiveTrucksTable activeTrip={activeTrip} />;
-	if (type === "Sos") return <SosTable activeTrip={activeTrip} />;
-	if (type === "driver") return <DriverTable activeTrip={activeTrip} />;
-	if (type === "client") return <ClientTable activeTrip={activeTrip} />;
+	if (type === "SOS NotificationsSos")
+		return <SosTable activeTrip={activeTrip} />;
+	if (type === " Occupieddriver")
+		return <DriverTable activeTrip={activeTrip} />;
+	if (type === "Activeclient") return <ClientTable activeTrip={activeTrip} />;
 	else return <></>;
 }

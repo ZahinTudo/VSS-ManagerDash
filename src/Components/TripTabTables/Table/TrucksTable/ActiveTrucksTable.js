@@ -6,7 +6,14 @@ import { Table } from "react-bootstrap";
 import PermitSlidingWindow from "./PermitSlidingWindow/PermitSlidingWindow";
 import { useAnimation } from "framer-motion";
 import TruckDetailsSlidingWindow from "./TruckDetailsSlidingWindow/TruckDetailsSlidingWindow";
+import { useDispatch } from "react-redux";
+import {
+	handleCheck,
+	removeSelectedTableItems,
+	setSelectedtableItems,
+} from "../../../../Redux-toolkit/selectedTableItemsSlice";
 export default function ActiveTrucksTable({ activeTrip }) {
+	const dispatch = useDispatch();
 	const [ClickedTruckId, setClickedTruckId] = useState(null);
 	const PermitAnimatinoSlide = useAnimation();
 	const handlePermitOpen = () => {
@@ -28,36 +35,41 @@ export default function ActiveTrucksTable({ activeTrip }) {
 			},
 		});
 	};
-	const checkStateChange = (item) => {
-		const target = item;
-		const isChecked = JSON.parse(target.dataset.checked);
-		if (!isChecked) {
-			console.log(isChecked, target);
-			target.setAttribute("src", "/assets/checkBoxChecked.png");
-			target.dataset.checked = "true";
-			return;
-		}
-		target.setAttribute("src", "/assets/checkBoxUnChecked.png");
-		target.dataset.checked = "false";
-	};
-	const handleCheck = (e) => {
-		const target = e.currentTarget;
-		const type = target.dataset.checkbox;
-		if (type === "all") {
-			checkStateChange(target);
-			const allCheckBox = document.querySelectorAll(
-				".Active_individualCheckbox"
-			);
-			allCheckBox.forEach((item) => {
-				const isChecked = JSON.parse(target.dataset.checked);
-				if (isChecked) {
-					item.dataset.checked = "false";
-				} else item.dataset.checked = "true";
-				checkStateChange(item);
-			});
-			return;
-		}
-		checkStateChange(target);
+	// const checkStateChange = (item) => {
+	// 	const target = item;
+	// 	const isChecked = JSON.parse(target.dataset.checked);
+	// 	if (!isChecked) {
+	// 		console.log(isChecked, target);
+	// 		target.setAttribute("src", "/assets/checkBoxChecked.png");
+	// 		target.dataset.checked = "true";
+	// 		dispatch(setSelectedtableItems(target.dataset.checkboxid));
+	// 		return;
+	// 	}
+	// 	target.setAttribute("src", "/assets/checkBoxUnChecked.png");
+	// 	target.dataset.checked = "false";
+	// 	dispatch(removeSelectedTableItems(target.dataset.checkboxid));
+	// };
+	// const handleCheck = (e) => {
+	// 	const target = e.currentTarget;
+	// 	const type = target.dataset.checkboxid;
+	// 	if (type === "all") {
+	// 		checkStateChange(target);
+	// 		const allCheckBox = document.querySelectorAll(
+	// 			".Active_individualCheckbox"
+	// 		);
+	// 		allCheckBox.forEach((item) => {
+	// 			const isChecked = JSON.parse(target.dataset.checked);
+	// 			if (isChecked) {
+	// 				item.dataset.checked = "false";
+	// 			} else item.dataset.checked = "true";
+	// 			checkStateChange(item);
+	// 		});
+	// 		return;
+	// 	}
+	// 	checkStateChange(target);
+	// };
+	const checkboxHandle = (e) => {
+		dispatch(handleCheck(e));
 	};
 	return (
 		<div className=''>
@@ -78,8 +90,8 @@ export default function ActiveTrucksTable({ activeTrip }) {
 							/> */}
 							<span>
 								<img
-									onClick={handleCheck}
-									data-checkbox='all'
+									onClick={checkboxHandle}
+									data-checkboxid='all'
 									data-checked={false}
 									src='/assets/checkBoxUnChecked.png'
 									alt=''
@@ -95,7 +107,9 @@ export default function ActiveTrucksTable({ activeTrip }) {
 										className='me-2 d-flex align-items-start'>
 										{item}
 									</span>
-									<span><FontAwesomeIcon icon={faAngleDown} /></span>
+									<span>
+										<FontAwesomeIcon icon={faAngleDown} />
+									</span>
 								</div>
 							</th>
 						))}
@@ -113,8 +127,8 @@ export default function ActiveTrucksTable({ activeTrip }) {
 								/> */}
 								<span>
 									<img
-										onClick={handleCheck}
-										data-checkbox={id}
+										onClick={checkboxHandle}
+										data-checkboxid={id}
 										data-checked={false}
 										src='/assets/checkBoxUnChecked.png'
 										alt=''

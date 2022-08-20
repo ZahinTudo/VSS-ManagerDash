@@ -6,6 +6,7 @@ import MarkerSlice from "./MarkerSlice";
 import AddTruckSlice from "./AddTruckSlice";
 import AddClientSlice from "./AddClientSlice";
 import AddTripSlice from "./AddTripSlice";
+import selectedTableItemsSlice from "./selectedTableItemsSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
 		addTruck: AddTruckSlice,
 		addClient: AddClientSlice,
 		addTrip: AddTripSlice,
+		selectedTableItems: selectedTableItemsSlice,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
