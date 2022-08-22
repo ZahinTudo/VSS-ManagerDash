@@ -11,8 +11,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import DriverDetailsSlidingWindow from "./DriverDetailsSlidingWindow/DriverDetailsSlidingWindow";
 import { useAnimation } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { handleCheck } from "../../../../Redux-toolkit/selectedTableItemsSlice";
 export default function DriverTable({ activeTrip }) {
 	const driverDetailsAnimation = useAnimation();
+	const dispatch = useDispatch();
 	const handleDriverDetailsSlideOpen = () => {
 		driverDetailsAnimation.start({
 			x: 0,
@@ -20,6 +23,9 @@ export default function DriverTable({ activeTrip }) {
 				duration: 0.15,
 			},
 		});
+	};
+	const checkboxHandle = (e) => {
+		dispatch(handleCheck([e, "Occupied_individualCheckbox"]));
 	};
 	return (
 		<div>
@@ -31,12 +37,22 @@ export default function DriverTable({ activeTrip }) {
 				<thead>
 					<tr>
 						<th>
-							<input
+							{/* <input
 								className='largerCheckbox'
 								type='checkbox'
 								name=''
 								id=''
-							/>
+							/> */}
+							<span>
+								<img
+									onClick={checkboxHandle}
+									data-checkboxid='all'
+									data-checked={false}
+									src='/assets/checkBoxUnChecked.png'
+									alt=''
+									className='img-fluid Occupied_individualCheckbox'
+								/>
+							</span>
 						</th>
 						{activeTrip?.tableHeads.map((item, index) => (
 							<th key={index}>
@@ -47,15 +63,25 @@ export default function DriverTable({ activeTrip }) {
 					</tr>
 				</thead>
 				<tbody>
-					{activeTrip?.tableData.map((item, index) => (
+					{activeTrip?.tableData.map((item, id) => (
 						<tr>
 							<td style={{ verticalAlign: "middle" }}>
-								<input
+								{/* <input
 									className='largerCheckbox'
 									type='checkbox'
 									name=''
 									id={index}
-								/>
+								/> */}
+								<span>
+									<img
+										onClick={checkboxHandle}
+										data-checkboxid={id}
+										data-checked={false}
+										src='/assets/checkBoxUnChecked.png'
+										alt=''
+										className='img-fluid Occupied_individualCheckbox'
+									/>
+								</span>
 							</td>
 							{Object.entries(item).map(([key, value], index) => (
 								<td

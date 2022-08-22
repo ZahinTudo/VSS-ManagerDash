@@ -50,7 +50,7 @@ export default function DriverDetails() {
 	]);
 	const [Tabletabs, setTabletabs] = useState([
 		{
-			name: " Occupied",
+			name: "Occupied",
 			url: "/Drivers.json",
 		},
 		{

@@ -11,7 +11,7 @@ export const selectedTableItemsSlice = createSlice({
 		clearSelectedTableItems: (state, action) => {
 			state.selectedTableItems = [];
 			const allCheckBox = document.querySelectorAll("." + action.payload);
-			allCheckBox.forEach((item) => {
+			allCheckBox?.forEach((item) => {
 				item.dataset.checked = "true";
 				selectedTableItemsSlice.caseReducers.checkStateChange(
 					state,

@@ -4,13 +4,14 @@ import TripTabTables from "../TripTabTables/TripTabTables";
 import TripNavbar from "../TripNavbar/TripNavbar";
 import "./TripDashboard.css";
 import Map from "../Map/Map";
-import Sidebar from "../TripSidebarAndSlide/Sidebar/Sidebar";
+// import Sidebar from "../TripSidebarAndSlide/Sidebar/Sidebar";
 import SlideWindow from "../TripSidebarAndSlide/SlideWindow/SlideWindow";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import TrucksDetails from "../TrucksDetails/TrucksDetails";
 import DriverDetails from "../DriverDetails/DriverDetails";
 import ClientDetails from "../ClientDetails/ClientDetails";
 import SosTable from "../Sos/SosTable";
+import Sidebar from "../Sidebar/Sidebar/Sidebar";
 
 export default function TripDashboard() {
 	const { url, path } = useRouteMatch();
@@ -51,20 +52,14 @@ export default function TripDashboard() {
 							width: "100vw",
 							flex: 1,
 						}}>
-						<div
-							className='position-absolute w-100 h-100'
-							style={{
-								zIndex: 500,
-								pointerEvents: "none",
-								padding: "8px 65px 29px 24px",
-							}}>
-							<TripFilters filters={filters} />
-							<div style={{ marginTop: "8px" }}>
+						<div className='d-flex align-items-center h-100 '>
+							<div className='' style={{ zIndex: 700 }}>
 								<Sidebar />
 							</div>
+							<div className='w-100 h-100'>
+								<Map />
+							</div>
 						</div>
-						{/* socket part need to be done */}
-						<Map />
 					</div>
 				</Route>
 				<Route exact path={path + "/trucks"}>
