@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	selectedTableItems: null,
+	selectedTableItems: [],
 };
 
 export const selectedTableItemsSlice = createSlice({
@@ -9,7 +9,15 @@ export const selectedTableItemsSlice = createSlice({
 	initialState,
 	reducers: {
 		clearSelectedTableItems: (state, action) => {
-			state.selectedTableItems = null;
+			state.selectedTableItems = [];
+			const allCheckBox = document.querySelectorAll("." + action.payload);
+			allCheckBox.forEach((item) => {
+				item.dataset.checked = "true";
+				selectedTableItemsSlice.caseReducers.checkStateChange(
+					state,
+					item
+				);
+			});
 		},
 		setSelectedtableItems: (state, payload) => {
 			console.log(payload);
@@ -48,7 +56,8 @@ export const selectedTableItemsSlice = createSlice({
 			);
 		},
 		handleCheck: (state, action) => {
-			const target = action.payload.currentTarget;
+			console.log(action);
+			const target = action.payload[0].currentTarget;
 			const type = target.dataset.checkboxid;
 			if (type === "all") {
 				selectedTableItemsSlice.caseReducers.checkStateChange(
@@ -56,7 +65,7 @@ export const selectedTableItemsSlice = createSlice({
 					target
 				);
 				const allCheckBox = document.querySelectorAll(
-					".Active_individualCheckbox"
+					"." + action.payload[1]
 				);
 				allCheckBox.forEach((item) => {
 					const isChecked = JSON.parse(target.dataset.checked);

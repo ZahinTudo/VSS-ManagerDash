@@ -85,16 +85,14 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	padding: 5px;
-	gap: 10px;
-
-	width: 40px;
-	height: 40px;
+	padding: 12px;
+	gap: 6.25px;
+	cursor: pointer;
+	/* width: 91.25px;
+	height: 40px; */
 
 	background: #fafafa;
-
-	/* Background blur */
-	backdrop-filter: blur(4px);
+	backdrop-filter: blur(2.5px);
 
 	/* Note: backdrop-filter has minimal browser support */
 	border-radius: 8px;

@@ -8,8 +8,11 @@ import { useAnimation } from "framer-motion";
 
 import PermitSlidingWindow from "../PermitSlidingWindow/PermitSlidingWindow";
 import TruckDetailsSlidingWindow from "../TruckDetailsSlidingWindow/TruckDetailsSlidingWindow";
+import { useDispatch } from "react-redux";
+import { handleCheck } from "../../../../../Redux-toolkit/selectedTableItemsSlice";
 export default function InactiveTrucksTable({ activeTrip }) {
 	const [ClickedTruckId, setClickedTruckId] = useState(null);
+	const dispatch = useDispatch();
 	const PermitAnimatinoSlide = useAnimation();
 	const handlePermitOpen = () => {
 		PermitAnimatinoSlide.start({
@@ -30,36 +33,39 @@ export default function InactiveTrucksTable({ activeTrip }) {
 			},
 		});
 	};
-	const checkStateChange = (item) => {
-		const target = item;
-		const isChecked = JSON.parse(target.dataset.checked);
-		if (!isChecked) {
-			console.log(isChecked, target);
-			target.setAttribute("src", "/assets/checkBoxChecked.png");
-			target.dataset.checked = "true";
-			return;
-		}
-		target.setAttribute("src", "/assets/checkBoxUnChecked.png");
-		target.dataset.checked = "false";
-	};
-	const handleCheck = (e) => {
-		const target = e.currentTarget;
-		const type = target.dataset.checkbox;
-		if (type === "all") {
-			checkStateChange(target);
-			const allCheckBox = document.querySelectorAll(
-				".inactive_individualCheckbox"
-			);
-			allCheckBox.forEach((item) => {
-				const isChecked = JSON.parse(target.dataset.checked);
-				if (isChecked) {
-					item.dataset.checked = "false";
-				} else item.dataset.checked = "true";
-				checkStateChange(item);
-			});
-			return;
-		}
-		checkStateChange(target);
+	// const checkStateChange = (item) => {
+	// 	const target = item;
+	// 	const isChecked = JSON.parse(target.dataset.checked);
+	// 	if (!isChecked) {
+	// 		console.log(isChecked, target);
+	// 		target.setAttribute("src", "/assets/checkBoxChecked.png");
+	// 		target.dataset.checked = "true";
+	// 		return;
+	// 	}
+	// 	target.setAttribute("src", "/assets/checkBoxUnChecked.png");
+	// 	target.dataset.checked = "false";
+	// };
+	// const handleCheck = (e) => {
+	// 	const target = e.currentTarget;
+	// 	const type = target.dataset.checkbox;
+	// 	if (type === "all") {
+	// 		checkStateChange(target);
+	// 		const allCheckBox = document.querySelectorAll(
+	// 			".inactive_individualCheckbox"
+	// 		);
+	// 		allCheckBox.forEach((item) => {
+	// 			const isChecked = JSON.parse(target.dataset.checked);
+	// 			if (isChecked) {
+	// 				item.dataset.checked = "false";
+	// 			} else item.dataset.checked = "true";
+	// 			checkStateChange(item);
+	// 		});
+	// 		return;
+	// 	}
+	// 	checkStateChange(target);
+	// };
+	const checkboxHandle = (e) => {
+		dispatch(handleCheck([e, "Inactive_individualCheckbox"]));
 	};
 	return (
 		<div className=''>
@@ -80,12 +86,12 @@ export default function InactiveTrucksTable({ activeTrip }) {
 							/> */}
 							<span>
 								<img
-									onClick={handleCheck}
-									data-checkbox='all'
+									onClick={checkboxHandle}
+									data-checkboxid='all'
 									data-checked={false}
 									src='/assets/checkBoxUnChecked.png'
 									alt=''
-									className='img-fluid'
+									className='img-fluid Inactive_individualCheckbox'
 								/>
 							</span>
 						</th>
@@ -117,12 +123,12 @@ export default function InactiveTrucksTable({ activeTrip }) {
 								/> */}
 								<span>
 									<img
-										onClick={handleCheck}
-										data-checkbox={id}
+										onClick={checkboxHandle}
+										data-checkboxid={id}
 										data-checked={false}
 										src='/assets/checkBoxUnChecked.png'
 										alt=''
-										className='img-fluid inactive_individualCheckbox'
+										className='img-fluid Inactive_individualCheckbox'
 									/>
 								</span>
 							</td>

@@ -69,7 +69,7 @@ export default function ActiveTrucksTable({ activeTrip }) {
 	// 	checkStateChange(target);
 	// };
 	const checkboxHandle = (e) => {
-		dispatch(handleCheck(e));
+		dispatch(handleCheck([e, "Active_individualCheckbox"]));
 	};
 	return (
 		<div className=''>
@@ -95,7 +95,7 @@ export default function ActiveTrucksTable({ activeTrip }) {
 									data-checked={false}
 									src='/assets/checkBoxUnChecked.png'
 									alt=''
-									className='img-fluid'
+									className='img-fluid Active_individualCheckbox'
 								/>
 							</span>
 						</th>

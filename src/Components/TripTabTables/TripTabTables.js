@@ -3,7 +3,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import TabTable from "./Table/TabTable";
 
 import "./TripTabTables.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearSelectedTableItems } from "../../Redux-toolkit/selectedTableItemsSlice";
 export default function TripTabTables({
 	tabs,
@@ -16,15 +16,19 @@ export default function TripTabTables({
 	const dispatch = useDispatch();
 	// const [activeTrip, setActiveTrip] = useState(null);
 	const setTableTab = (keyvalue) => {
-		setKey(keyvalue);
-
 		// clearing state of the selected item
-		dispatch(clearSelectedTableItems());
+		dispatch(clearSelectedTableItems(key + "_individualCheckbox"));
+
+		// set the tab key
+		setKey(keyvalue);
 	};
 
 	useEffect(() => {
 		setTableTab(tabs[0].name);
 	}, []);
+	const { selectedTableItems } = useSelector(
+		(state) => state.selectedTableItems
+	);
 	return (
 		<div className='tripTabTable'>
 			<div className='d-flex align-items-center justify-content-between'>
@@ -58,22 +62,30 @@ export default function TripTabTables({
 				</div>
 				{type != "Sos" && (
 					<div className='d-flex align-items-center justify-content-between'>
-						<span onClick={deleteBtn} className='actionWrapperBox'>
-							<img
-								src='/assets/trashCan.svg'
-								alt=''
-								className='img-fluid'
-							/>
-						</span>
-						<span
-							onClick={chatBtn}
-							className='actionWrapperBox mx-4'>
-							<img
-								src='/assets/chat.svg'
-								alt=''
-								className='img-fluid'
-							/>
-						</span>
+						{selectedTableItems?.length != 0 && (
+							<>
+								<span
+									onClick={deleteBtn}
+									className='actionWrapperBox'>
+									<img
+										src='/assets/trashCan.svg'
+										alt=''
+										className='img-fluid'
+									/>{" "}
+									<span>Delete</span>
+								</span>
+								<span
+									onClick={chatBtn}
+									className='actionWrapperBox mx-4'>
+									<img
+										src='/assets/chat.svg'
+										alt=''
+										className='img-fluid'
+									/>
+									<span>Message</span>
+								</span>
+							</>
+						)}
 						<div className='addBtn' onClick={addBtn}>
 							<span className='me-2'>Add {type}</span>
 							<img
