@@ -21,7 +21,7 @@ export default function TripNavbar() {
 	const dispatch = useDispatch();
 	const navClick = (e) => {
 		const prev = document.querySelector(`[data-link=${PrevActiveNav}]`);
-		prev.classList.remove("active");
+		prev?.classList.remove("active");
 		const current = e.currentTarget;
 		current.classList.add("active");
 		setPrevActiveNav(current.dataset.link);
@@ -60,6 +60,7 @@ export default function TripNavbar() {
 		let link = target.dataset.link;
 		link = link === "dash" ? "" : link;
 		history.push(path + "/" + link);
+		setshowProfileDropDown(false);
 	};
 	const SlidingWindowTabs = [
 		{
@@ -192,7 +193,9 @@ export default function TripNavbar() {
 										</span>
 									</div>
 								</div>
-								<div className='d-flex align-items-center  w-100 border-bottom p-2'>
+								<div
+									onClick={() => {}}
+									className='d-flex align-items-center  w-100 border-bottom p-2'>
 									<img
 										src='/assets/profileDropDown/user.png'
 										alt=''
