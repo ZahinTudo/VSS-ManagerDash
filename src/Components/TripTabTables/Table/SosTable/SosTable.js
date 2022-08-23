@@ -130,22 +130,6 @@ export default function SosTable({ activeTrip }) {
 															<span>
 																{value.name}
 															</span>
-															<div>
-																<span className='mx-4'>
-																	<img
-																		src='/assets/ChatIcon.svg'
-																		alt=''
-																		className='img-fluid'
-																	/>
-																</span>
-																<span>
-																	<img
-																		src='/assets/phone.svg'
-																		alt=''
-																		className='img-fluid'
-																	/>
-																</span>
-															</div>
 														</div>
 													);
 												case "action":
@@ -159,28 +143,50 @@ export default function SosTable({ activeTrip }) {
 																	"table-cell",
 															}}
 															className='align-items-center text-dark'>
-															{value ==
-															"Emergency" ? (
+															<div
+																className='d-flex align-items-center '
+																style={{
+																	gap: "13px",
+																}}>
+																{value ==
+																	"Emergency" && (
+																	<div
+																		onClick={() =>
+																			handleAddSlidingWindow(
+																				item[
+																					"Truck Details"
+																				]
+																					.License
+																			)
+																		}
+																		className='viewSOS'>
+																		<span>
+																			SOS
+																			LOGS
+																		</span>
+																	</div>
+																)}
 																<div
-																	onClick={() =>
-																		handleAddSlidingWindow(
-																			item[
-																				"Truck Details"
-																			]
-																				.License
-																		)
-																	}
-																	className='viewSOS'>
-																	<span>
-																		View SOS
-																		Logs
+																	className='d-flex align-items-center'
+																	style={{
+																		gap: "16px",
+																	}}>
+																	<span className='d-inline-block'>
+																		<img
+																			src='/assets/ChatIcon.svg'
+																			alt=''
+																			className='img-fluid'
+																		/>
+																	</span>
+																	<span className='d-inline-block'>
+																		<img
+																			src='/assets/phone.svg'
+																			alt=''
+																			className='img-fluid'
+																		/>
 																	</span>
 																</div>
-															) : (
-																<span>
-																	No action
-																</span>
-															)}
+															</div>
 														</td>
 													);
 												default:

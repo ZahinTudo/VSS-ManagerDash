@@ -12,6 +12,7 @@ import DriverDetails from "../DriverDetails/DriverDetails";
 import ClientDetails from "../ClientDetails/ClientDetails";
 import SosTable from "../Sos/SosTable";
 import Sidebar from "../Sidebar/Sidebar/Sidebar";
+import MessageBox from "../MessageLog/MessageBox/MessageBox";
 
 export default function TripDashboard() {
 	const { url, path } = useRouteMatch();
@@ -73,6 +74,9 @@ export default function TripDashboard() {
 				</Route>
 				<Route exact path={path + "/SOS"}>
 					<SosTable />
+				</Route>
+				<Route exact path={path + "/MessageLogs"}>
+					<MessageBox />
 				</Route>
 			</Switch>
 

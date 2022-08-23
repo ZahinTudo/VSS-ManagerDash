@@ -209,7 +209,10 @@ export default function TripNavbar() {
 										alt=''
 										className='img-fluid'
 									/>
-									<span className='DropDownItems'>
+									<span
+										onClick={navClick}
+										data-link='MessageLogs'
+										className='DropDownItems'>
 										Message logs
 									</span>
 								</div>
