@@ -11,7 +11,7 @@ export default function TruckDetailsSlidingWindow({
 	TruckDetailsAnimation,
 	truckDetails,
 }) {
-	const [key, setKey] = useState("Documents");
+	const [key, setKey] = useState("Basic Details");
 	// console.log(truckDetails);
 	const handleClose = () => {
 		TruckDetailsAnimation.start({
@@ -56,28 +56,34 @@ export default function TruckDetailsSlidingWindow({
 							</span>
 						</div>
 
-						<div className='d-flex align-items-center'>
-							<img
-								src='/assets/truckDetailsSlideWindow/editor.png'
-								alt=''
-								className='img-fluid ms-3'
-							/>
-							<img
-								src='/assets/truckDetailsSlideWindow/delete.png'
-								alt=''
-								className='img-fluid ms-3'
-							/>
-							<img
-								src='/assets/truckDetailsSlideWindow/location.png'
-								alt=''
-								className='img-fluid ms-3'
-							/>
+						<div
+							className='d-flex align-items-center'
+							style={{ gap: "24px" }}>
+							<div
+								className='d-flex align-items-center'
+								style={{ gap: "13px" }}>
+								<img
+									src='/assets/truckDetailsSlideWindow/editor.png'
+									alt=''
+									className='img-fluid '
+								/>
+								<img
+									src='/assets/truckDetailsSlideWindow/delete.png'
+									alt=''
+									className='img-fluid '
+								/>
+								<img
+									src='/assets/truckDetailsSlideWindow/location.png'
+									alt=''
+									className='img-fluid '
+								/>
+							</div>
 							<img
 								style={{ cursor: "pointer" }}
 								onClick={handleClose}
 								src='/assets/truckDetailsSlideWindow/times.png'
 								alt=''
-								className='img-fluid ms-3'
+								className='img-fluid '
 							/>
 						</div>
 					</div>
@@ -119,6 +125,14 @@ export default function TruckDetailsSlidingWindow({
 						</div>
 						<div className='col'>
 							<div className='d-flex flex-column'>
+								<span className='title'>Unladen weight</span>
+								<span className='infoText'>
+									{truckDetails?.["Load Capacity"]}
+								</span>
+							</div>
+						</div>
+						{/* <div className='col'>
+							<div className='d-flex flex-column'>
 								<span
 									className='title'
 									style={{ whiteSpace: "nowrap" }}>
@@ -151,14 +165,7 @@ export default function TruckDetailsSlidingWindow({
 								<span className='infoText'>Tata</span>
 							</div>
 						</div>
-						<div className='col'>
-							<div className='d-flex flex-column'>
-								<span className='title'>Unladen weight</span>
-								<span className='infoText'>
-									{truckDetails?.["Load Capacity"]}
-								</span>
-							</div>
-						</div>
+
 						<div className='col'>
 							<div className='d-flex flex-column'>
 								<span className='title'>Chasis Number</span>
@@ -170,10 +177,10 @@ export default function TruckDetailsSlidingWindow({
 								<span className='title'>Engine Number</span>
 								<span className='infoText'>22112</span>
 							</div>
-						</div>
+						</div> */}
 					</div>
 					{/* =======================================================
-                            truckDetailsSlideInfo
+                          end of truckDetailsSlideInfo
                 ======================================================= */}
 					<div className='d-flex align-items-center justify-content-between driverPersonal'>
 						<span className='label'>Current Driver</span>
@@ -200,7 +207,7 @@ export default function TruckDetailsSlidingWindow({
 				<div className='my-2 bottomTabs'>
 					<div>
 						<ul className='mb-2 nav nav-tabs' role='tablist'>
-							{["Documents", "Trip History"].map(
+							{["Basic Details", "Documents", "Trip History"].map(
 								(item, index) => {
 									return (
 										<li
@@ -231,6 +238,83 @@ export default function TruckDetailsSlidingWindow({
 						activeKey={key}
 						onSelect={(k) => setKey(k)}
 						className='mb-3'>
+						<Tab eventKey='Basic Details'>
+							<div className='basicDetails'>
+								<div className='row row-cols-3 gy-4 mt-3'>
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span className='title'>
+												Registration City
+											</span>
+											<span className='infoText'>
+												{
+													truckDetails?.[
+														"Registration"
+													].City
+												}
+											</span>
+										</div>
+									</div>
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span className='title'>
+												Registration State
+											</span>
+											<span className='infoText'>
+												{
+													truckDetails?.[
+														"Registration"
+													].State
+												}
+											</span>
+										</div>
+									</div>
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span className='title'>Class</span>
+											<span className='infoText'>
+												Tata
+											</span>
+										</div>
+									</div>
+
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span className='title'>
+												Chasis Number
+											</span>
+											<span className='infoText'>
+												12345
+											</span>
+										</div>
+									</div>
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span className='title'>
+												Engine Number
+											</span>
+											<span className='infoText'>
+												22112
+											</span>
+										</div>
+									</div>
+									<div className='col'>
+										<div className='d-flex flex-column'>
+											<span
+												className='title'
+												style={{
+													whiteSpace: "nowrap",
+												}}>
+												Year of Manufacture
+											</span>
+											<span className='infoText'>
+												2016
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</Tab>
 						<Tab eventKey='Documents'>
 							<div className='documents'>
 								<div className='reg_certificate'>

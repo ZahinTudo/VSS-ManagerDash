@@ -41,10 +41,17 @@ export default function SosLogs({ SosvehicleId, AddSlidingWindowAnimation }) {
 							</span>
 						</div>
 					</div>
+
 					<span
 						style={{ cursor: "pointer" }}
 						onClick={handleCloseAddSlidingWindow}>
-						&times;
+						<img
+							// style={{ cursor: "pointer" }}
+							// onClick={handleCloseAddSlidingWindow}
+							src='/assets/truckDetailsSlideWindow/times.png'
+							alt=''
+							className='img-fluid '
+						/>
 					</span>
 				</div>
 				<div className='d-flex justify-content-end'>
